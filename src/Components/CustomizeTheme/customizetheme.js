@@ -34,7 +34,7 @@ const CustomizeTheme = () => {
             <Box className='body-3'>
 
             </Box>
-            <Link to={'/choosetheme'} className='proceed-3'>Proceed <span className="arrow">&#10132;</span></Link>
+            <Link to={'/storedetails'} className='proceed-3'>Proceed <span className="arrow">&#10132;</span></Link>
         </Box>
     );
 }
