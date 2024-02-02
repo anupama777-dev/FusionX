@@ -1,0 +1,70 @@
+.signuptext {
+    position: absolute;
+    width: 395px;
+    height: 72px;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 112%;
+    margin-left: 502px;
+    margin-top: 150px;
+}
+.name-input{
+    width: 375px !important;
+    height: 50px !important;
+    color: white;
+    top: 242px !important;
+    left: 550px !important;
+    border-radius: 4px;
+    border: 1px solid #4A5568 !important;
+}
+.uname-input, .email-input,.pass-input {
+    width: 375px !important;
+    height: 50px !important;
+    color: white;
+    top: 242px !important;
+    left: 550px !important;
+    margin-top: 20px;
+    border-radius: 4px;
+    border: 1px solid #4A5568 !important;
+}
+.signupbtn {
+    position: absolute;
+    display: flex;
+    width: 375px;
+    height: 42px;
+    padding: 0px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+    background-color: #B794F4 !important;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    top: 280px;
+    left: 550px;
+}
+
+.signupbtn:hover {
+    background-color: #805ad5 !important;
+}
+.already{
+    position: absolute;
+    color: white;
+    top: 600px;
+    left: 620px;
+}
+.link{
+    position: absolute;
+    color: #805ad5;
+    font-weight: bold;
+    top: 600px;
+    left: 810px;
+}
+.link:hover{
+    color: #B794F4;
+}

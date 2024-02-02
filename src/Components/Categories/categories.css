@@ -1,0 +1,214 @@
+.dashboard {
+    position: absolute;
+    width: 278px;
+    height: 804px;
+    flex-shrink: 0;
+    background-color: #171923;
+    border: 0px, 1px, 0px, 0px;
+    opacity: 0.7px;
+    left: 1px;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+.home {
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 43px;
+}
+
+.hometxt {
+    position: absolute;
+    color: white;
+    margin-top: 21px;
+    margin-left: 80px;
+}
+
+.profile {
+    position: absolute;
+    margin-top: 70px;
+    margin-left: 43px;
+
+}
+
+.proftxt {
+    position: absolute;
+    color: white;
+    margin-top: 71px;
+    margin-left: 80px;
+}
+
+.help {
+    position: absolute;
+    margin-top: 120px;
+    margin-left: 43px;
+
+}
+
+.helptxt {
+    position: absolute;
+    color: white;
+    margin-top: 121px;
+    margin-left: 80px;
+}
+
+.dash {
+    position: absolute;
+    margin-top: 170px;
+    margin-left: 43px;
+}
+
+.dashtxt {
+    position: absolute;
+    color: white;
+    margin-top: 171px;
+    margin-left: 80px;
+}
+
+.categories-nav-1 {
+    position: absolute;
+    color: white;
+    margin-top: 40px;
+    margin-left: 350px;
+
+}
+
+.theme-nav-1 {
+    position: absolute;
+    color: rgb(157, 150, 150);
+    margin-top: 40px;
+    margin-left: 470px;
+}
+
+.cust-theme-nav-1 {
+    position: absolute;
+    color: rgb(157, 150, 150);
+    margin-top: 40px;
+    margin-left: 610px;
+}
+
+.store-nav-1 {
+    position: absolute;
+    color: rgb(157, 150, 150);
+    margin-top: 40px;
+    margin-left: 770px;
+}
+
+.addprod-nav-1 {
+    position: absolute;
+    color: rgb(157, 150, 150);
+    margin-top: 40px;
+    margin-left: 890px;
+}
+
+.line-nav-1 {
+    padding-top: 70px;
+    margin-left: 350px;
+    color: #805ad5;
+}
+
+.cat1 {
+    position: absolute;
+    width: 300px;
+    height: 220px;
+    background-color: #171923;
+    margin-top: 70px;
+    margin-left: 350px;
+    border: 1px solid #805ad5;
+}
+
+.cat1img {
+    margin-left: 80px;
+    margin-top: 30px;
+}
+
+.cat1txt,
+.cat2txt,
+.cat3txt,
+.cat4txt,
+.cat5txt {
+    text-align: center;
+    color: white;
+    padding-top: 20px;
+}
+.cat6txt{
+    text-align: center;
+    color: white;
+}
+.cat2 {
+    position: absolute;
+    width: 300px;
+    height: 220px;
+    background-color: #171923;
+    margin-top: 70px;
+    margin-left: 750px;
+    border: 1px solid #805ad5;
+}
+
+.cat2img,
+.cat3img,
+.cat4img,
+.cat5img{
+    margin-left: 80px;
+    margin-top: 30px;
+}
+.cat6img{
+    margin-top: 10px;
+    margin-left: 65px;
+}
+.cat3 {
+    position: absolute;
+    width: 300px;
+    height: 220px;
+    background-color: #171923;
+    margin-top: 70px;
+    margin-left: 1150px;
+    border: 1px solid #805ad5;
+}
+
+.cat4 {
+    position: absolute;
+    width: 300px;
+    height: 220px;
+    background-color: #171923;
+    margin-top: 330px;
+    margin-left: 350px;
+    border: 1px solid #805ad5;
+}
+
+.cat5 {
+    position: absolute;
+    width: 300px;
+    height: 220px;
+    background-color: #171923;
+    margin-top: 330px;
+    margin-left: 750px;
+    border: 1px solid #805ad5;
+}
+
+.cat6 {
+    position: absolute;
+    width: 300px;
+    height: 220px;
+    background-color: #171923;
+    margin-top: 330px;
+    margin-left: 1150px;
+    border: 1px solid #805ad5;
+}
+
+.proceed {
+    position: absolute;
+    padding: 7px 15px;
+    background-color: transparent;
+    color: white;
+    border: 2px solid #805ad5;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 1320px;
+    margin-top: 580px;
+}
+
+.proceed:hover {
+    background-color: #805ad5;
+}
