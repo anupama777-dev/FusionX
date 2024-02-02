@@ -12,7 +12,7 @@ const ChooseTheme = () => {
                 <Link className='proftxt' to={'/profile'}>Profile</Link>
                 <Image className="help" src="/images/help.svg" />
                 <Link className='helptxt' to={'/help'}>How to Create?</Link>
-                <Image className="dash" src="/images/log.svg" />
+                <Image className="dash" src="/images/logout.svg" />
                 <Link className='dashtxt' to={'/userhome'}>Back to dashboard</Link>
             </Box>
             <Image className="line" src='/images/line_1.svg' />
