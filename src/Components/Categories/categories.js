@@ -5,7 +5,7 @@ const Categories = () => {
     return (
         <Box className='bg'>
             <Box className='dashboard'>
-                <Image className="imageuserhome" src='/images/logo.svg' />
+                <Image className="imagecategories" src='/images/logo.svg' />
                 <Image className="home" src="/images/home.svg" />
                 <Link className='hometxt' to={'/'}>Home</Link>
                 <Image className="profile" src="/images/profile.svg" />

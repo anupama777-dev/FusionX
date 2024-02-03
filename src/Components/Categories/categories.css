@@ -1,57 +1,11 @@
-.dashboard {
-    position: absolute;
-    width: 278px;
-    height: 804px;
+.imagecategories{
+    width: 160px;
+    height: 106.667px;
     flex-shrink: 0;
-    background-color: #171923;
-    border: 0px, 1px, 0px, 0px;
-    opacity: 0.7px;
-    left: 1px;
-    margin-left: 0px;
-    margin-top: 0px;
+    border-right: 100px;
+    margin-left: 40px;
+    margin-top: -8px;
 }
-
-.home {
-    position: absolute;
-    margin-top: 20px;
-    margin-left: 43px;
-}
-
-.hometxt {
-    position: absolute;
-    color: white;
-    margin-top: 21px;
-    margin-left: 80px;
-}
-
-.profile {
-    position: absolute;
-    margin-top: 70px;
-    margin-left: 43px;
-
-}
-
-.proftxt {
-    position: absolute;
-    color: white;
-    margin-top: 71px;
-    margin-left: 80px;
-}
-
-.help {
-    position: absolute;
-    margin-top: 120px;
-    margin-left: 43px;
-
-}
-
-.helptxt {
-    position: absolute;
-    color: white;
-    margin-top: 121px;
-    margin-left: 80px;
-}
-
 .dash {
     position: absolute;
     margin-top: 170px;

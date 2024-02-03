@@ -1,0 +1,217 @@
+.imageuserhome {
+    position: absolute;
+    width: 160px;
+    height: 106.667px;
+    border-right: 100px;
+    margin-left: 40px;
+    margin-top: -8px;
+}
+
+.dashboard {
+    position: absolute;
+    width: 278px;
+    height: 804px;
+    background-color: #171923;
+    border: 0px 1px 0px 0px;
+    opacity: 0.7;
+    left: 1px;
+}
+
+.user {
+    margin-top: 130px;
+    margin-left: 30px;
+    float: left;
+}
+
+.name {
+    position: absolute;
+    color: white;
+    margin-top: 132px;
+    margin-left: 92px;
+}
+
+.email {
+    position: absolute;
+    color: rgb(157, 150, 150);
+    margin-top: 153px;
+    margin-left: 92px;
+}
+
+.home {
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 43px;
+
+}
+
+.hometxt {
+    position: absolute;
+    color: white;
+    margin-top: 21px;
+    margin-left: 80px;
+}
+
+.linedash {
+    margin-top: 210px;
+}
+
+.profile {
+    position: absolute;
+    margin-top: 70px;
+    margin-left: 43px;
+
+}
+
+.proftxt {
+    position: absolute;
+    color: white;
+    margin-top: 71px;
+    margin-left: 80px;
+}
+
+.help {
+    position: absolute;
+    margin-top: 120px;
+    margin-left: 43px;
+
+}
+
+.helptxt {
+    position: absolute;
+    color: white;
+    margin-top: 121px;
+    margin-left: 80px;
+}
+
+.category {
+    position: absolute;
+    margin-top: 170px;
+    margin-left: 43px;
+
+}
+
+.categtxt {
+    position: absolute;
+    color: white;
+    margin-top: 171px;
+    margin-left: 80px;
+}
+
+.logout {
+    position: absolute;
+    margin-top: 500px;
+    margin-left: 43px;
+
+}
+
+.logtxt {
+    position: absolute;
+    color: white;
+    margin-top: 500px;
+    margin-left: 80px;
+}
+
+.begin {
+    position: absolute;
+    width: 1040px;
+    height: 280px;
+    flex-shrink: 0;
+    background-color: #171923;
+    border: 0px, 1px, 0px, 0px;
+    opacity: 0.7px;
+    border-radius: 8px;
+    margin-left: 345px;
+    margin-top: 145px;
+}
+
+.prev {
+    position: absolute;
+    width: 1040px;
+    height: 280px;
+    flex-shrink: 0;
+    background-color: #171923;
+    border: 0px, 1px, 0px, 0px;
+    opacity: 0.7px;
+    border-radius: 8px;
+    margin-left: 345px;
+    margin-top: 458px;
+}
+
+.line1 {
+    text-align: center;
+    color: rgb(148, 142, 142);
+    font-size: 45px;
+    margin-top: 40px;
+}
+
+.line2 {
+    text-align: center;
+    color: rgb(77, 73, 73);
+    font-size: 45px;
+    margin-top: -10px;
+}
+
+.beginnow {
+    position: absolute;
+    width: 120px;
+    height: 42px;
+    flex-shrink: 0;
+    border: 1px solid #4A5568 !important;
+    margin-top: 20px;
+    margin-left: 450px;
+    border-radius: 7px;
+}
+
+.begintxt {
+    color: rgb(159, 150, 150);
+    text-align: center;
+    margin-top: 7px;
+}
+
+.b1 {
+    position: absolute;
+    width: 256px;
+    height: 156px;
+    flex-shrink: 0;
+    background-color: #171923;
+    border: 0px 1px 0px 0px;
+    opacity: 0.2px;
+    border-radius: 8px;
+    margin-left: 69px;
+    margin-top: 62px;
+    border: 2px solid #3f4855;
+}
+
+.b2 {
+    position: absolute;
+    width: 256px;
+    height: 156px;
+    flex-shrink: 0;
+    background-color: #171923;
+    border: 0px 1px 0px 0px;
+    opacity: 0.2px;
+    border-radius: 8px;
+    margin-left: 389px;
+    margin-top: 62px;
+    border: 2px solid #3f4855;
+}
+
+.b3 {
+    position: absolute;
+    width: 256px;
+    height: 156px;
+    flex-shrink: 0;
+    background-color: #171923;
+    border: 0px 1px 0px 0px;
+    opacity: 0.2px;
+    border-radius: 8px;
+    margin-left: 709px;
+    margin-top: 62px;
+    border: 2px solid #3f4855;
+}
+
+.previmg {
+    position: absolute;
+    margin-left: 70px;
+    margin-top: 18px;
+}
