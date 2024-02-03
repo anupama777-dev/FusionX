@@ -6,7 +6,7 @@ const CustomizeTheme = () => {
     return (
         <Box className='bg'>
             <Box className='dashboard'>
-                <Image className="imageuserhome" src='/images/logo.svg' />
+                <Image className="imagecategories" src='/images/logo.svg' />
                 <Text className='font'>Font</Text>
                     <Select placeholder='Choose font' className='slctfont' maxWidth="220px">
                         <option value='arial' className='options'>Arial</option>
