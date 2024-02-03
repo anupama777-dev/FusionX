@@ -18,8 +18,16 @@
     margin-top: 171px;
     margin-left: 80px;
 }
-
-.categories-nav-1 {
+.tab {
+    position: absolute;
+    display: inline-flex;
+    margin-left: 348px;
+    top: 20px;
+    color: #EDF2F7;
+    width: 730px;
+    border-bottom: 3px solid var(--gray-600, #A0AEC0);
+}
+/* .categories-nav-1 {
     position: absolute;
     color: white;
     margin-top: 40px;
@@ -59,7 +67,7 @@
     padding-top: 70px;
     margin-left: 350px;
     color: #805ad5;
-}
+} */
 
 .cat1 {
     position: absolute;

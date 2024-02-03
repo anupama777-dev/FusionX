@@ -1,5 +1,5 @@
 import './categories.css';
-import { Box, Image, Text} from '@chakra-ui/react';
+import { Box, Image, Text, Tab, Tabs, TabList } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 const Categories = () => {
     return (
@@ -16,12 +16,16 @@ const Categories = () => {
                 <Link className='dashtxt' to={'/userhome'}>Back to dashboard</Link>
             </Box>
             <Image className="line" src='/images/line_1.svg' />
-            <Link className='categories-nav-1' to={'/categories'}>Categories</Link>
-            <Link className='theme-nav-1' to={'/choosetheme'}>Choose Theme</Link>
-            <Link className='cust-theme-nav-1' to={'/customizetheme'}>Customize Theme</Link>
-            <Link className='store-nav-1' to={'/storedetails'}>Store Details</Link>
-            <Link className='addprod-nav-1' to={'/addproducts'}>Add Products</Link>
-            <Image className='line-nav-1' src='/images/line_nav.svg' />
+            <Tabs className='tab' variant='unstyled'>
+                <TabList>
+                    <Tab _selected={'gray.300'}>Categories</Tab>
+                    <Tab isDisabled>Choose Theme </Tab>
+                    <Tab isDisabled>Customize Theme</Tab>
+                    <Tab isDisabled>Store Details</Tab>
+                    <Tab isDisabled>Add Products</Tab>
+                </TabList>
+            </Tabs>
+            <br />
             <Box className='cat1'>
                 <Link to={'/choosetheme'}><Image className='cat1img' src='/images/electronics.svg' /></Link>
                 <Link to={'/choosetheme'}><Text className='cat1txt'>Electronics</Text></Link>

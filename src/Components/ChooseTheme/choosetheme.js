@@ -1,5 +1,5 @@
 import './choosetheme.css';
-import {Box, Image, Text} from '@chakra-ui/react';
+import {Box, Image, Text, Tab, Tabs, TabList} from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 const ChooseTheme = () => {
     return (
@@ -16,12 +16,16 @@ const ChooseTheme = () => {
                 <Link className='dashtxt' to={'/userhome'}>Back to dashboard</Link>
             </Box>
             <Image className="line" src='/images/line_1.svg' />
-            <Link className='categories-nav-2' to={'/categories'}>Categories</Link>
-            <Link className='theme-nav-2' to={'/choosetheme'}>Choose Theme</Link>
-            <Link className='cust-theme-nav-1' to={'/customizetheme'}>Customize Theme</Link>
-            <Link className='store-nav-1' to={'/storedetails'}>Store Details</Link>
-            <Link className='addprod-nav-1' to={'/addproducts'}>Add Products</Link>
-            <Image className='line-nav-2' src='/images/line_nav_theme.svg' />
+            <Tabs className='tab' variant='unstyled'>
+                <TabList>
+                    <Link to={'/categories'}><Tab>Categories</Tab></Link>
+                    <Tab _selected={'gray.300'}>Choose Theme</Tab>
+                    <Tab isDisabled>Customize Theme</Tab>
+                    <Tab isDisabled>Store Details</Tab>
+                    <Tab isDisabled>Add Products</Tab>
+                </TabList>
+            </Tabs>
+            <br/>
             <Box className='theme1'>
                 <Link to={'/customizetheme'}><Image className='theme1img' src='/images/theme1.jpg' /></Link>
                 <Link to={'/customizetheme'}><Text className='theme1txt'>3D Windows 11/10 Theme</Text></Link>
