@@ -1,5 +1,5 @@
 import './customizetheme.css';
-import { Box, Image, Text, Select } from '@chakra-ui/react';
+import { Box, Image, Text, Select, Tab, Tabs, TabList } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
 const CustomizeTheme = () => {
@@ -8,13 +8,13 @@ const CustomizeTheme = () => {
             <Box className='dashboard'>
                 <Image className="imagecategories" src='/images/logo.svg' />
                 <Text className='font'>Font</Text>
-                    <Select placeholder='Choose font' className='slctfont' maxWidth="220px">
-                        <option value='arial' className='options'>Arial</option>
-                        <option value='helvetica' className='options'>Helvetica</option>
-                        <option value='times' className='options'>Times New Roman</option>
-                        <option value='courier' className='options'>Courier New</option>
-                        <option value='verdana' className='options'>Verdana</option>
-                    </Select>
+                <Select placeholder='Choose font' className='slctfont' maxWidth="220px">
+                    <option value='arial' className='options'>Arial</option>
+                    <option value='helvetica' className='options'>Helvetica</option>
+                    <option value='times' className='options'>Times New Roman</option>
+                    <option value='courier' className='options'>Courier New</option>
+                    <option value='verdana' className='options'>Verdana</option>
+                </Select>
                 <Text className='color'>Color</Text>
                 <Select placeholder='Choose color' className='slctcolor' maxWidth='220px'>
                     <option value='red' className='options'>Red</option>
@@ -25,12 +25,16 @@ const CustomizeTheme = () => {
                 </Select>
             </Box>
             <Image className="line" src='/images/line_1.svg' />
-            <Link className='categories-nav-3' to={'/categories'}>Categories</Link>
-            <Link className='theme-nav-1' to={'/choosetheme'}>Choose Theme</Link>
-            <Link className='cust-theme-nav-3' to={'/customizetheme'}>Customize Theme</Link>
-            <Link className='store-nav-1' to={'/storedetails'}>Store Details</Link>
-            <Link className='addprod-nav-1' to={'/addproducts'}>Add Products</Link>
-            <Image className='line-nav-3' src='/images/line_nav_cust.svg' />
+            <Tabs className='tab' variant='unstyled'>
+                <TabList>
+                    <Link to={'/categories'}><Tab>Categories</Tab></Link>
+                    <Link to={'/choosetheme'}><Tab>Choose Theme</Tab></Link>
+                    <Tab _selected={'gray.300'}>Customize Theme</Tab>
+                    <Tab isDisabled>Store Details</Tab>
+                    <Tab isDisabled>Add Products</Tab>
+                </TabList>
+            </Tabs>
+            <br/>
             <Box className='body-3'>
 
             </Box>
