@@ -1,70 +1,60 @@
-.signuptext {
-    position: absolute;
-    width: 395px;
-    height: 72px;
-    color: white;
-    text-align: center;
-    font-size: 30px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 112%;
-    margin-left: 502px;
-    margin-top: 150px;
+.signup_in_page {
+  background-color: #1a202c;
+  height: 100vh;
+  width: 100vw;
 }
-.name-input{
-    width: 375px !important;
-    height: 50px !important;
-    color: white;
-    top: 242px !important;
-    left: 550px !important;
-    border-radius: 4px;
-    border: 1px solid #4A5568 !important;
+.signup_body {
+  background-color: #1a202c;
+  height: 90vh;
+  width: 100vw;
+  padding-top: 5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.uname-input, .email-input,.pass-input {
-    width: 375px !important;
-    height: 50px !important;
-    color: white;
-    top: 242px !important;
-    left: 550px !important;
-    margin-top: 20px;
-    border-radius: 4px;
-    border: 1px solid #4A5568 !important;
+.signup_in_container {
+  width: 450px;
+  height: 500px;
 }
-.signupbtn {
-    position: absolute;
-    display: flex;
-    width: 375px;
-    height: 42px;
-    padding: 0px 12px;
-    justify-content: center;
-    align-items: center;
-    gap: 8px;
-    flex-shrink: 0;
-    background-color: #B794F4 !important;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 20px;
-    top: 280px;
-    left: 550px;
+.signup_in_text {
+  color: white;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 112%;
+  margin-bottom: 30px;
 }
-
-.signupbtn:hover {
-    background-color: #805ad5 !important;
+.signup_in_fields input {
+  margin-bottom: 30px;
+  color: white;
+  height: 50px;
+  border-radius: 4px;
+  border: 1px solid #4a5568 !important;
 }
-.already{
-    position: absolute;
-    color: white;
-    top: 600px;
-    left: 620px;
+.signup_in_btn {
+  background-color: #9f7aea !important;
+  width: 450px;
+  color: white !important;
+  padding: 2px 8px;
+  transition: background-color 0.2s ease-out;
 }
-.link{
-    position: absolute;
+.signup_in_btn:hover {
+  background-color: #805ad5 !important;
+}
+.login_signup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 20px;
+  color: white;
+}
+.login_link{
+    margin-left: 5px;
+    text-decoration: none;
     color: #805ad5;
-    font-weight: bold;
-    top: 600px;
-    left: 810px;
+    font-weight: 600;
 }
-.link:hover{
-    color: #B794F4;
+.login_link:hover{
+    color: #9f7aea;
 }
