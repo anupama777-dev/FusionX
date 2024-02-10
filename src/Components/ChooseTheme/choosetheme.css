@@ -5,7 +5,7 @@
     background-color: #171923;
     margin-top: 50px;
     margin-left: 400px;
-    border: 1px solid #805ad5;
+    border: 1px solid #718096;
 }
 .theme2{
     position: absolute;
@@ -14,7 +14,7 @@
     background-color: #171923;
     margin-top: 50px;
     margin-left: 970px;
-    border: 1px solid #805ad5;
+    border: 1px solid #718096;
 }
 .theme3{
     position: absolute;
@@ -23,7 +23,7 @@
     background-color: #171923;
     margin-top: 330px;
     margin-left: 400px;
-    border: 1px solid #805ad5;
+    border: 1px solid #718096;
 }
 .theme4{
     position: absolute;
@@ -32,7 +32,7 @@
     background-color: #171923;
     margin-top: 330px;
     margin-left: 970px;
-    border: 1px solid #805ad5;
+    border: 1px solid #718096;
 }
 .theme1img, .theme2img, .theme3img, .theme4img{
     width: 400px;
@@ -48,7 +48,7 @@
     padding: 7px 15px;
     background-color: transparent;
     color: white;
-    border: 2px solid #805ad5;
+    border: 2px solid #718096;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
