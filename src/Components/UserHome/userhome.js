@@ -39,7 +39,7 @@ const UserHome = () => {
                 </Box>
             </Box>
 
-            <Image className="line" src='/images/line_1.svg' />
+            <Image className="line_1" src='/images/line_1.svg' />
         </Box>
     );
 }

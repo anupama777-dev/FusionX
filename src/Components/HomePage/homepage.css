@@ -1,10 +1,10 @@
-.home_page{
-  background-color: #1A202C;
+.home_page {
+  background-color: #1a202c;
   height: 100vh;
   width: 100vw;
 }
 .header {
-  background-color: #1A202C;
+  background-color: #1a202c;
   height: 60px;
   display: flex;
   align-items: center;
@@ -48,8 +48,8 @@
 .signup:hover {
   background-color: #805ad5 !important;
 }
-.line_div{
-  background-color: #1A202C;
+.line_div {
+  background-color: #1a202c;
 }
 .line {
   transform: rotate(0.279deg);
@@ -58,7 +58,7 @@
   opacity: 0.5;
 }
 .home1 {
-  background-color: #1A202C;
+  background-color: #1a202c;
   margin: 0 !important;
   height: 90vh;
 }
@@ -74,23 +74,23 @@
   justify-content: center;
   background-color: transparent;
 }
-.left_eclipse{
+.left_eclipse {
   width: 29%;
   position: absolute;
   left: 0;
   top: 39px;
 }
-.right_eclipse{
+.right_eclipse {
   width: 29%;
   position: absolute;
   right: 0;
   top: 39px;
 }
 @media screen and (max-width: 968px) {
-  .left_eclipse{
+  .left_eclipse {
     display: none;
   }
-  .right_eclipse{
+  .right_eclipse {
     display: none;
   }
 }

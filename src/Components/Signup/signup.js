@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Image, Text, Input, Button } from "@chakra-ui/react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 import "./signup.css";
 function Signup() {
   const [name, setName] = useState("");
@@ -50,7 +50,7 @@ function Signup() {
           </div>
           <div className="login_signup">
             <Text className="already">Already have an account?</Text>
-            <Link to={'/login'} className="login_link">
+            <Link to={"/login"} className="login_link">
               Login
             </Link>
           </div>

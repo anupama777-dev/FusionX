@@ -15,7 +15,7 @@ const AddProducts = () => {
                 <Text className="back">Back to Dashboard</Text>
                 <Image className="backlogo" src="/images/Back.svg"></Image>
             </Box>
-            <Image className="line" src="/images/line_1.svg"></Image>
+            <Image className="line_1" src="/images/line_1.svg"></Image>
             <Tabs className='tab' variant='unstyled'>
                 <TabList>
                     <Tab isDisabled>Categories &gt; </Tab>
@@ -110,5 +110,3 @@ const AddProducts = () => {
         );
     }
 export default AddProducts;
-     
-     

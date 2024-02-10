@@ -8,7 +8,7 @@ function Categories() {
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
         <div className="header_categories">
-          <Tabs className="tab" variant="unstyled">
+          <Tabs className="tabs" variant="unstyled">
             <TabList>
               <Tab _isselected>Categories</Tab>
               <Tab isDisabled className="disabled">

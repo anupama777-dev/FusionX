@@ -23,7 +23,7 @@ margin-top: 2px;
 margin-left: 27px;    
 }
 
-.line{
+.line_1{
 position: absolute;
 width: 1440.017px;
 flex-shrink: 0;
@@ -477,7 +477,7 @@ top: 391px;
 left: 82px;  
 }
 
-.proceed{
+.proceed1{
 position: absolute;
 width: 150px;
 height: 48px;

@@ -15,7 +15,7 @@ const StoreDetails = () => {
                 <Text className="back">Back to Dashboard</Text>
                 <Image className="backlogo" src="/images/Back.svg"></Image>
             </Box>
-            <Image className="line" src="/images/line_1.svg"></Image>
+            <Image className="line_1" src="/images/line_1.svg"></Image>
             <Tabs className='tab' variant='unstyled'>
                 <TabList>
                     <Tab isDisabled>Categories &gt; </Tab>
@@ -68,7 +68,7 @@ const StoreDetails = () => {
                 </HStack>   
             </Box>
             <Link to={'/addproducts'}>
-                <Button className='proceed' rightIcon={<AiOutlineCaretRight/>}  textColor='#8C8D93' variant='outline'>Proceed</Button>
+                <Button className='proceed1' rightIcon={<AiOutlineCaretRight/>}  textColor='#8C8D93' variant='outline'>Proceed</Button>
             </Link>
         </Box>
         );

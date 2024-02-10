@@ -49,12 +49,12 @@
   margin-top: 20px;
   color: white;
 }
-.login_link{
-    margin-left: 5px;
-    text-decoration: none;
-    color: #805ad5;
-    font-weight: 600;
+.login_link {
+  margin-left: 5px;
+  text-decoration: none;
+  color: #805ad5;
+  font-weight: 600;
 }
-.login_link:hover{
-    color: #9f7aea;
+.login_link:hover {
+  color: #9f7aea;
 }
