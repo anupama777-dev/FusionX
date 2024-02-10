@@ -108,11 +108,9 @@
   font-size: 16px;
   cursor: pointer;
 }
-
 .proceed:hover {
   background-color: #805ad5;
 }
-
 @media screen and (max-width: 1050px) {
   .home_txt,
   .profile_txt,

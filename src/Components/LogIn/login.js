@@ -19,15 +19,15 @@ function Login() {
       <div className="signup_in_fields">
       <Input
                 className="username-input"
-                placeholder='Username'
+                placeholder="Username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
             />
             <Input
                 className="password-input"
-                placeholder='Password'
                 type="password"
                 value={password}
+                placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
             />
         <Button className="signup_in_btn">Login</Button>

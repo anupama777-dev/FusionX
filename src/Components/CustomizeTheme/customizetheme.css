@@ -29,14 +29,16 @@
     margin-top: 60px;
     margin-left: 375px;
     border-radius: 8px;
-    background-color: #171923;
+border: 1px solid var(--gray-700, #2D3748);
+opacity: 0.7;
+background: var(--gray-900, #171923);
 }
 .proceed-3{
     position: absolute;
     padding: 7px 15px;
     background-color: transparent;
     color: white;
-    border: 2px solid #805ad5;
+    border: 2px solid #718096;
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
