@@ -105,7 +105,7 @@ const AddProducts = () => {
                 <Input className="colorinput" placeholder='Enter the Materials' maxWidth='754px'/>
                 <Button className='plus'textColor='#8C8D93' variant='outline' fontSize='30px'>+</Button>
             </Box>
-            <Button className='proceed1' rightIcon={<AiOutlineCaretRight/>}  textColor='#8C8D93' variant='outline'>Proceed</Button>    
+            <Button className='proceed2' rightIcon={<AiOutlineCaretRight/>}  textColor='#8C8D93' variant='outline'>Proceed</Button>    
         </Box>
         );
     }
