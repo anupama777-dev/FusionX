@@ -1,41 +1,42 @@
-import './login.css';
-import { Box, Image, Text, Button, Input } from '@chakra-ui/react';
+import React from "react";
+import { Text, Button, Image, Input } from "@chakra-ui/react";
 import { useState } from 'react';
-
-const Login = () => {
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const handleLogin = () => {
-        console.log('Username:', username);
-        console.log('Password:', password);
-    };
-    return (
-        <Box className='bg'>
-            <Image className="image" src='/images/logo.svg' />
-            <Image className="line" src='/images/line_1.svg' />
-            <Text className="logintext">Log In To<br/>Your Account</Text>
-            
-            <Input
+import "./login.css"
+function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  return <div className="signup_in_page">
+  <div className="header">
+    <Image className="header_logo" src="\images\logo.svg" />
+  </div>
+  <Image className="line" src="/images/line_1.svg" />
+  <div className="login_body">
+    <div className="left_eclipse">
+      <Image className="eclipse_1" src="/images/eclipse1.svg" />
+    </div>
+    <div className="signup_in_container">
+      <Text className="signup_in_text">Login To Your Account</Text>
+      <div className="signup_in_fields">
+      <Input
                 className="username-input"
+                placeholder="Username"
                 value={username}
-                variant='outline'
-                height='60px'
-                maxWidth='375px'
                 onChange={(e) => setUsername(e.target.value)}
             />
-            <Text className="name-text">Userame</Text>
             <Input
                 className="password-input"
                 type="password"
                 value={password}
-                variant='outline'
-                height='60px'
-                maxWidth='375px'
+                placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
             />
-            <Text className="name-text">Password</Text>
-            <Button className='loginbtn' onClick={handleLogin}extColor='#FFFF' borderRadius='16px'>Login</Button>
-        </Box>
-    );
+        <Button className="signup_in_btn">Login</Button>
+      </div>
+    </div>
+    <div className="right_eclipse">
+      <Image className="eclipse_2" src="/images/eclipse2.svg" />
+    </div>
+  </div>
+</div>
 }
 export default Login;
