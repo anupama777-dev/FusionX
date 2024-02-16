@@ -12,8 +12,9 @@ function Signup() {
       <div className="header">
         <Image className="header_logo" src="\images\logo.svg" />
       </div>
-      <Image className="line" src="/images/line_1.svg" />
-      <div className="signup_body">
+      <div className="line_div">
+        <Image className="line" src="/images/line_1.svg" />
+      </div>      <div className="signup_body">
         <div className="left_eclipse">
           <Image className="eclipse_1" src="/images/eclipse1.svg" />
         </div>
@@ -27,7 +28,7 @@ function Signup() {
               onChange={(e) => setName(e.target.value)}
             />
             <Input
-              className="uname-input"
+              className="username-input"
               placeholder="Username"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -40,7 +41,7 @@ function Signup() {
               onChange={(e) => setEmail(e.target.value)}
             />
             <Input
-              className="pass-input"
+              className="password-input"
               type="password"
               placeholder="Password"
               value={password}
@@ -51,7 +52,7 @@ function Signup() {
           <div className="login_signup">
             <Text className="already">Already have an account?</Text>
             <Link to={"/login"} className="login_link">
-              Login
+              Sign In
             </Link>
           </div>
         </div>

@@ -1,50 +1,67 @@
-.font{
-    position: absolute;
-    color: white;
-    margin-top: 21px;
-    margin-left: 30px;
+.customize_page{
+  background-color: #1a202c;
 }
-.slctfont{
-    color: white;
-    margin-top: 60px;
-    margin-left: 30px;
+.customize_body {
+  display: flex;
+  flex-direction: row;
+}
+.customize_container {
+  background-color: #1a202c;
+  min-height: 100vh;
+  width: 82.65vw;
+  display: flex;
+  overflow-x: hidden;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+.customize_theme_div{
+  margin-top: 50px;
+}
+.customize_theme{
+  width: 55vw;
+  height: 75vh;
+  background-color: #171923;
+  border-radius: 6px;
+  border: 1px solid #44337A;
+}
+.customize_options {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  margin-top: 70px;
+}
+.choose_font,
+.choose_color {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  padding-right: 30px;
+}
+.font, .color{
+  color: #a0aec0;
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+.select_font, .select_color{
+  color: #a0aec0;
 }
 .options{
-    color: #171923 !important;
+  color: #171923;
 }
-.color{
-    position: absolute;
-    color: white;
-    margin-top: 51px;
-    margin-left: 30px;
+.proceed_btn1{
+  margin-top: 320px;
+  margin-left: 40px;
 }
-.slctcolor{
-    color: white;
-    margin-top: 90px;
-    margin-left: 30px;
+@media screen and (max-width: 1100px){
+  .customize_theme_div{
+    margin-right: 20px;
+  }
 }
-.body-3{
-    width: 1040px;
-    height: 510px;
-    margin-top: 60px;
-    margin-left: 375px;
-    border-radius: 8px;
-border: 1px solid var(--gray-700, #2D3748);
-opacity: 0.7;
-background: var(--gray-900, #171923);
-}
-.proceed-3{
-    position: absolute;
-    padding: 7px 15px;
-    background-color: transparent;
-    color: white;
-    border: 2px solid #718096;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-left: 1320px;
-    margin-top: 30px;
-}
-.proceed-3:hover {
-    background-color: #805ad5;
+@media screen and (max-width: 800px){
+  .customize_theme{
+    width: 50vw;
+  }
+  .dashboard1{
+    display: none;
+  }
 }
