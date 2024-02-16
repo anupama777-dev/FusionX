@@ -1,8 +1,129 @@
 import './addproducts.css';
-import {Box,Image,Tab,Text,TabList,Tabs,Input,Select,Textarea,Checkbox,HStack, NumberInput,NumberDecrementStepper,NumberIncrementStepper,NumberInputField,NumberInputStepper,Button} from '@chakra-ui/react';
+import {Box,Image,Tab,Text,TabList,Tabs,Input,Select,Textarea,Link,Checkbox,HStack, NumberInput,NumberDecrementStepper,NumberIncrementStepper,NumberInputField,NumberInputStepper,Button} from '@chakra-ui/react';
 import { AiOutlineCaretRight } from 'react-icons/ai';
 const AddProducts = () => {
     return (
+        <div className='store-details-page'>
+        <div className="header1">
+           <Image className="header_logo" src="\images\logo.svg" />
+           <div className="header_categories">
+               <Tabs className="tabs" variant="unstyled">
+                   <TabList>
+                       <Tab isDisabled className="disabled">Categories</Tab>
+                       <Tab isDisabled className="disabled">Choose Theme</Tab>
+                       <Tab isDisabled className="disabled">Customize Theme</Tab>
+                       <Tab isDisabled className="disabled">Store Details</Tab>
+                       <Tab _isSelected >Add Products</Tab>
+                   </TabList>
+               </Tabs>
+           </div>
+       </div>
+       <div className="line_div">
+           <Image className="line" src="/images/line_1.svg" />
+       </div>
+       <div className="categories_body">
+           <div className="dashboard2">
+               <div className="dash_items">
+                   <Image className="dashboard_home" src="/images/home.svg" />
+                   <Link className="home_txt" to={"/"}>Home</Link>
+               </div>
+               <div className="dash_items">
+                   <Image className="dashboard_profile" src="/images/profile.svg" />
+                   <Link className="profile_txt" to={"/profile"}>Profile</Link>
+               </div>
+           <div className="dash_items">
+               <Image className="dashboard_help" src="/images/help.svg" />
+               <Link className="help_txt" to={"/help"}>How to Create?</Link>
+           </div>
+           <div className="dash_items">
+               <Image className="back_dash" src="/images/logout.svg" />
+               <Link className="dash_txt" to={"/userhome"}>Back to Home</Link>
+           </div>
+       </div>
+       <div className='categories_container'>
+           <div classname="store-details">
+               <div className='product-details-box'>
+                   <Text className='storetxt'>Product Details</Text>
+                   <Text className='sub-txt'>Product Type</Text>
+                   <Input className='input-box' placeholder='Enter Product Type'/>
+                   <Text className='sub-txt'>Product Name</Text>
+                   <Input className='input-box' placeholder='Enter Product Name'/>
+                   <Text className='sub-txt'>Upload Product Image</Text>
+                   <div className='upload-box'>
+                       <Link className="upload-button">Upload</Link>
+                       <Text className='upload-txt'>.jpg , .jpeg , .pdf , .svg files</Text>
+                   </div>
+                   <Text className='sub-txt'>Product Description</Text>
+                   <Textarea className='input-box' placeholder='Enter Product Description'></Textarea>
+               </div>
+               <div className='store-contact-details-box'>
+                   <Text className='storetxt'>Store Contact Details</Text>
+                   <Text className='sub-txt'>Email-ID</Text>
+                   <Input className='input-box' placeholder='Enter Email ID'/>
+                   <Text className='sub-txt'>Contact Number</Text>
+                   <Input className='input-box' placeholder='Enter Contact Number'/>
+                   <Text className='sub-txt'>Store Domain Name</Text>
+                   <Input className='input-box' placeholder='Enter Store Domain Name'/>
+               </div>
+               <div className='pricing-details-box'>
+                   <Text className='storetxt'>Pricing Details</Text>
+                   <Text className='sub-txt'>Price</Text>
+                   <Input className='input-box' placeholder='Enter Price'/>
+                   <Text className='sub-txt'>Cost Per Item</Text>
+                   <Input className='input-box' placeholder='Enter Cost Per Item'/>
+                   <Checkbox className="sub-txt">Charge Tax on this product</Checkbox>
+               </div>
+               <div className='sizing-details-box'>
+                    <Text className='storetxt'>Sizing Details</Text>
+                    <Text className='sub-txt'>Size Chart</Text>
+                    <HStack className="checkbox">
+                        <Checkbox>XXXS</Checkbox>
+                        <Checkbox className='checkbox-txt'>XXS</Checkbox>
+                        <Checkbox className='checkbox-txt'>XS</Checkbox>
+                        <Checkbox className='checkbox-txt'>S</Checkbox>
+                        <Checkbox className='checkbox-txt'>M</Checkbox>
+                        <Checkbox className='checkbox-txt'>L</Checkbox>
+                        <Checkbox className='checkbox-txt'>XL</Checkbox>
+                        <Checkbox className='checkbox-txt'>XXL</Checkbox>
+                        <Checkbox className='checkbox-txt'>XXXL</Checkbox>
+                        <Checkbox className='checkbox-txt'>XXXXL</Checkbox>
+                    </HStack>
+                    <Text className='sub-txt'>Upload Size Chart</Text>
+                    <div className='upload-box'>
+                       <Link className="upload-button">Upload</Link>
+                       <Text className='upload-txt'>.jpg , .jpeg , .pdf , .svg files</Text>
+                   </div>
+               </div>
+               <div className='color-details-box'>
+                   <Text className='storetxt'>Color Details</Text>
+                   <Text className='sub-txt'>Number of Color</Text>
+                   <Input className='input-box' placeholder='Enter the number of colors'/>
+                   <Text className='sub-txt'>Colors</Text>
+                   <div className='color-box'>
+                        <Input className='input-box-1' placeholder='Enter the colors'/>
+                        <Button className='plus-box' variant='outline' color={'gray.400'} fontSize='20px'>+</Button>
+                   </div>
+               </div>
+               <div className='color-details-box'>
+                   <Text className='storetxt'>Material Details</Text>
+                   <Text className='sub-txt'>Number of Materials</Text>
+                   <Input className='input-box' placeholder='Enter the number of colors'/>
+                   <Text className='sub-txt'>Colors</Text>
+                   <div className='color-box'>
+                        <Input className='input-box-1' placeholder='Enter the Materials'/>
+                        <Button className='plus-box' variant='outline' color={'gray.400'} fontSize='20px'>+</Button>
+                    </div>
+               </div>
+           </div>    
+           <div className="proceed_btn">
+               <Link to={"/choosetheme"} className="proceed">Proceed <span className="arrow">&#10132;</span></Link>
+           </div>   
+       </div>
+   </div>   
+</div>
+        /*<div className="proceed_btn">
+               <Link to={"/choosetheme"} className="proceed">Proceed <span className="arrow">&#10132;</span></Link>
+           </div>
         <Box className="bgadd">
             <Box className="navigation1">
                 <Image className="logo" src="/images/logo.svg"></Image>
@@ -106,7 +227,7 @@ const AddProducts = () => {
                 <Button className='plus'textColor='#8C8D93' variant='outline' fontSize='30px'>+</Button>
             </Box>
             <Button className='proceed2' rightIcon={<AiOutlineCaretRight/>}  textColor='#8C8D93' variant='outline'>Proceed</Button>    
-        </Box>
+        </Box>*/
         );
     }
 export default AddProducts;

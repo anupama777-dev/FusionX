@@ -1,62 +1,85 @@
 import './storedetails.css';
-import {Box,Text,Image,Tabs,Tab,TabList, Input, Button, Textarea, HStack,PinInput,PinInputField,Link} from '@chakra-ui/react';
-import { AiOutlineCaretRight } from 'react-icons/ai';
+import {Image,Tabs,Tab,TabList,Link,Text, Input,Textarea} from '@chakra-ui/react';
 const StoreDetails = () => {
     return (
-        <Box className="bg">
-            <Box className="navigation">
-                <Image className="logo" src="/images/logo.svg"></Image>
-                <Text className="home">Home</Text>
-                <Image className="homelogo" src="/images/Home.svg"></Image>
-                <Text className="profile">Profile</Text>
-                <Image className="profilelogo" src="/images/Profile.svg"></Image>
-                <Text className="how">How to create?</Text>
-                <Image className="howlogo" src="/images/Question.svg"></Image>
-                <Text className="back">Back to Dashboard</Text>
-                <Image className="backlogo" src="/images/Back.svg"></Image>
-            </Box>
-            <Image className="line_1" src="/images/line_1.svg"></Image>
-            <Tabs className='tab' variant='unstyled'>
-                <TabList>
-                    <Tab isDisabled>Categories &gt; </Tab>
-                    <Tab isDisabled >Choose Theme &gt; </Tab>
-                    <Tab isDisabled >Customize Theme &gt; </Tab>
-                    <Tab _selected={'gray.300'}>Store Details &gt;</Tab>
-                    <Tab isDisabled>Add Products</Tab>
-                </TabList>
-            </Tabs>
-
-            <Box className="box">
-                <Text className="storedetail">Store Details</Text>
-                <Text className="storename">Store Name</Text>
-                <Input className="storeinput" placeholder='Enter the Store Name' maxWidth='800px'/>
-                <Text className="uploadlogo">Upload Logo</Text>
-                <Box className='uploadbox'>
-                    <Button className='upload' textColor='#8C8D93'variant='outline'>Upload</Button>  
-                    <Text className='fileformat'>.jpg , .jpeg , .pdf , .svg files</Text>
-                </Box>
-                <Text className="storedesc">Store Description</Text>
-                <Textarea className='descinput' placeholder='Enter the Store Description' maxWidth='800px'></Textarea>    
-            </Box>
-            <Box className='box1'>
-                <Text className="storecontactdetail">Store Contact Details</Text>
-                <Text className="emailid">Email ID</Text>
-                <Input className="emailinput" placeholder='Enter the Email ID' maxWidth='800px'/>
-                <Text className="contactnumber">Contact Number</Text>
-                <Input className="contactinput" placeholder='Enter the Contact Number' maxWidth='800px'/>
-                <Text className="storedomainname">Store Domain Name</Text>
-                <Input className="storedomaininput" placeholder='Enter the Store Domain Name' maxWidth='800px'/>
-            </Box>
-            <Box className='box2'>
-                <Text className="billingdetail">Billing Details</Text>
-                <Text className="country">Country</Text>
-                <Input className="countryinput" placeholder='Enter the Country' maxWidth='800px'/>
-                <Text className="state">State</Text>
-                <Input className="stateinput" placeholder='Enter the State' maxWidth='800px'/>
-                <Text className="city">City</Text>
-                <Input className="cityinput" placeholder='Enter the City' maxWidth='800px'/>
-                <Text className="pin">PIN Number</Text>
-                <HStack  className="pininput">
+            <div className='store-details-page'>
+                 <div className="header1">
+                    <Image className="header_logo" src="\images\logo.svg" />
+                    <div className="header_categories">
+                        <Tabs className="tabs" variant="unstyled">
+                            <TabList>
+                                <Tab isDisabled className="disabled">Categories</Tab>
+                                <Tab isDisabled className="disabled">Choose Theme</Tab>
+                                <Tab isDisabled className="disabled">Customize Theme</Tab>
+                                <Tab _isSelected>Store Details</Tab>
+                                <Tab isDisabled className="disabled">Add Products</Tab>
+                            </TabList>
+                        </Tabs>
+                    </div>
+                </div>
+                <div className="line_div">
+                    <Image className="line" src="/images/line_1.svg" />
+                </div>
+                <div className="categories_body">
+                    <div className="dashboard2">
+                        <div className="dash_items">
+                            <Image className="dashboard_home" src="/images/home.svg" />
+                            <Link className="home_txt" to={"/"}>Home</Link>
+                        </div>
+                        <div className="dash_items">
+                            <Image className="dashboard_profile" src="/images/profile.svg" />
+                            <Link className="profile_txt" to={"/profile"}>Profile</Link>
+                        </div>
+                    <div className="dash_items">
+                        <Image className="dashboard_help" src="/images/help.svg" />
+                        <Link className="help_txt" to={"/help"}>How to Create?</Link>
+                    </div>
+                    <div className="dash_items">
+                        <Image className="back_dash" src="/images/logout.svg" />
+                        <Link className="dash_txt" to={"/userhome"}>Back to Home</Link>
+                    </div>
+                </div>
+                <div className='categories_container'>
+                    <div classname="store-details">
+                        <div className='store-details-box'>
+                            <Text className='storetxt'>Store Details</Text>
+                            <Text className='sub-txt'>Store Name</Text>
+                            <Input className='input-box' placeholder='Enter Store Name'/>
+                            <Text className='sub-txt'>Upload Logo</Text>
+                            <div className='upload-box'>
+                                <Link className="upload-button">Upload</Link>
+                                <Text className='upload-txt'>.jpg , .jpeg , .pdf , .svg files</Text>
+                            </div>
+                            <Text className='sub-txt'>Store Description</Text>
+                            <Textarea className='input-box' placeholder='Enter Store Description'></Textarea>
+                        </div>
+                        <div className='store-contact-details-box'>
+                            <Text className='storetxt'>Store Contact Details</Text>
+                            <Text className='sub-txt'>Email-ID</Text>
+                            <Input className='input-box' placeholder='Enter Email ID'/>
+                            <Text className='sub-txt'>Contact Number</Text>
+                            <Input className='input-box' placeholder='Enter Contact Number'/>
+                            <Text className='sub-txt'>Store Domain Name</Text>
+                            <Input className='input-box' placeholder='Enter Store Domain Name'/>
+                        </div>
+                        <div className='billing-details-box'>
+                            <Text className='storetxt'>Billing Details</Text>
+                            <Text className='sub-txt'>Country</Text>
+                            <Input className='input-box' placeholder='Enter Country'/>
+                            <Text className='sub-txt'>State</Text>
+                            <Input className='input-box' placeholder='Enter State'/>
+                            <Text className='sub-txt'>City</Text>
+                            <Input className='input-box' placeholder='Enter City'/>
+                        </div>
+                    </div>
+                    <div className="proceed_btn">
+                        <Link to={"/choosetheme"} className="proceed">Proceed <span className="arrow">&#10132;</span></Link>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+               /* <HStack  className="pininput">
                     <PinInput type='alphanumeric' >
                         <PinInputField />
                         <PinInputField />
@@ -65,12 +88,7 @@ const StoreDetails = () => {
                         <PinInputField />
                         <PinInputField />
                     </PinInput>
-                </HStack>   
-            </Box>
-            <Link to={'/addproducts'}>
-                <Button className='proceed1' rightIcon={<AiOutlineCaretRight/>}  textColor='#8C8D93' variant='outline'>Proceed</Button>
-            </Link>
-        </Box>
+                </HStack>   */
         );
     }
 export default StoreDetails;

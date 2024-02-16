@@ -1,4 +1,108 @@
-.bgadd{
+.product-details-box{
+    display: flex; 
+    flex-direction: column;
+    width: 64vw;
+    height: 670px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-700, #2D3748);
+    opacity: 0.7;
+    background: var(--gray-900, #171923);  
+    margin-bottom: 28px;
+    padding-left: 82px;
+    padding-right: 82px;
+    color:#EDF2F7;
+    }
+
+.pricing-details-box{
+    display: flex; 
+    flex-direction: column;
+    width: 64vw;
+    height: 370px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-700, #2D3748);
+    opacity: 0.7;
+    background: var(--gray-900, #171923);  
+    margin-bottom: 28px;
+    padding-left: 82px;
+    padding-right: 82px;
+    color:#EDF2F7;    
+}    
+
+.sizing-details-box{
+    display: flex; 
+    flex-direction: column;
+    width: 64vw;
+    height: 420px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-700, #2D3748);
+    opacity: 0.7;
+    background: var(--gray-900, #171923);  
+    margin-bottom: 28px;
+    padding-left: 82px;
+    padding-right: 82px;
+    color:#EDF2F7;    
+}    
+
+.color-details-box{
+    display: flex; 
+    flex-direction: column;
+    width: 64vw;
+    height: 325px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-700, #2D3748);
+    opacity: 0.7;
+    background: var(--gray-900, #171923);  
+    margin-bottom: 28px;
+    padding-left: 82px;
+    padding-right: 82px;
+    color:#EDF2F7;    
+}   
+
+.checkbox{    
+display: flex;
+flex-direction: column; 
+justify-content: left;   
+font-size: 14px;
+font-weight: 400;
+line-height: 20px; 
+margin-top: 24px;    
+}
+
+.checkbox-txt{
+    margin-left: 1vw;
+}
+
+.color-box{
+    display: flex;
+    flex-direction: row;
+    margin-top: 12px;
+    
+}
+.input-box-1{
+    display: flex;
+    padding: 0px 16px;
+    gap: 10px;
+    border: 1px solid var(--gray-400, #A0AEC0);
+    opacity: 0.7;
+    background: var(--gray-900, #171923);
+    color: #A0AEC0;
+    max-width: 108vh;
+}
+
+.plus-box{
+display: flex;
+margin-left: 10px;
+width: 37px;
+height: 40px;
+opacity: 0.7;
+}
+ 
+@media screen and (max-width: 650px) {
+    .checkbox-txt{
+        flex-direction: row;
+    }
+}
+/*.bgadd{
     background: #1A202C;
     height: 2400px;
     width: 1520px;
@@ -362,7 +466,7 @@ color: var(--gray-50, #F7FAFC);
 font-size: 18px;
 font-style: normal;
 font-weight: 600;
-line-height: 28px; /* 155.556% */
+line-height: 28px; 
 margin-left: 82px;
 margin-top: 16px; 
 white-space: nowrap;   
@@ -422,7 +526,7 @@ white-space: nowrap;
     font-size: 18px;
     font-style: normal;
     font-weight: 600;
-    line-height: 28px; /* 155.556% */
+    line-height: 28px; 
     margin-left: 82px;
     margin-top: 115px; 
     white-space: nowrap; 
@@ -568,4 +672,4 @@ margin-top: -67px;
     height: 48px;
     margin-top: 2250px;    
     margin-left: 1230px;    
-}
+}*/
