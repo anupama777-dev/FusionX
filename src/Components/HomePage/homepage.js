@@ -37,12 +37,14 @@ function HomePage() {
         <div className="home_container">
           <Text className="title">Elevate Your Business. Ignite Success</Text>
           <Text className="subtitle">
-            Lorem ipsum dolor sit amet consectetur. Vel laoreet ornare tellus
-            erat a a sapien enim lobortis. Sit nec pulvinar mattis dolor varius
-            in.
-          </Text>
+            Discover limitless potential with our ecommerce wizardry. Innovative
+            solutions tailored to fuel your online success, making every click a
+            step towards growth.{" "}
+          </Text>{" "}
           <div className="create_store">
-            <Link to={"/signup"}>Create My Store</Link>
+            <Link to={"/signup"}>
+              Create My Store <span className="arrow">&#10132;</span>
+            </Link>
           </div>
         </div>
         <div className="right_eclipse">

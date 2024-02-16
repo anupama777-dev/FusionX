@@ -6,14 +6,14 @@ function Categories() {
   return (
     <div className="categories_page">
       <div className="header1">
-        <Image className="header_logo" src="\images\logo.svg" />
+        <Image className="header_logo" src="/images/logo.svg" />
         <div className="header_categories">
           <Tabs className="tabs" variant="unstyled">
             <TabList>
               <Tab _isselected>Categories</Tab>
-              <Tab isDisabled className="disabled">
+              {/* <Tab isDisabled className="disabled">
                 Choose Theme
-              </Tab>
+              </Tab> */}
               <Tab isDisabled className="disabled">
                 Customize Theme
               </Tab>
@@ -27,7 +27,7 @@ function Categories() {
           </Tabs>
         </div>
       </div>
-      <div className="line_div">
+      <div className="line_div1">
         <Image className="line" src="/images/line_1.svg" />
       </div>
       <div className="categories_body">
@@ -60,113 +60,65 @@ function Categories() {
         <div className="categories_container">
           <div className="cat1">
             <div className="cat">
-              <Link to={"/choosetheme"}>
                 <Image className="cat_img" src="/images/electronics.svg" />
-              </Link>
-              <Link to={"/choosetheme"}>
                 <Text className="cat_txt">Electronics</Text>
-              </Link>
             </div>
             <div className="cat">
-              <Link to={"/choosetheme"}>
                 <Image className="cat_img" src="/images/clothing.svg" />
-              </Link>
-              <Link to={"/choosetheme"}>
                 <Text className="cat_txt">Clothing & Apparel</Text>
-              </Link>
             </div>
             <div className="cat">
-              <Link to={"/choosetheme"}>
                 <Image className="cat_img" src="/images/grocery.svg" />
-              </Link>
-              <Link to={"/choosetheme"}>
                 <Text className="cat_txt">Grocery</Text>
-              </Link>
             </div>
           </div>
           <div className="cat2">
             <div className="cat">
-              <Link to={"/choosetheme"}>
                 <Image className="cat_img" src="/images/food.svg" />
-              </Link>
-              <Link to={"/choosetheme"}>
                 <Text className="cat_txt">Food & Beverages</Text>
-              </Link>
             </div>
             <div className="cat">
-              <Link to={"/choosetheme"}>
                 <Image className="cat_img" src="/images/health.svg" />
-              </Link>
-              <Link to={"/choosetheme"}>
                 <Text className="cat_txt">Health & Beauty</Text>
-              </Link>
             </div>
             <div className="cat">
-              <Link to={"/choosetheme"}>
                 <Image className="others_img" src="/images/others.svg" />
-              </Link>
-              <Link to={"/choosetheme"}>
                 <Text className="others_txt">Others</Text>
-              </Link>
             </div>
           </div>
 
           <div className="cat1_md">
             <div className="cat">
-              <Link to={"/choosetheme"}>
                 <Image className="cat_img" src="/images/electronics.svg" />
-              </Link>
-              <Link to={"/choosetheme"}>
                 <Text className="cat_txt">Electronics</Text>
-              </Link>
             </div>
             <div className="cat">
-              <Link to={"/choosetheme"}>
                 <Image className="cat_img" src="/images/clothing.svg" />
-              </Link>
-              <Link to={"/choosetheme"}>
                 <Text className="cat_txt">Clothing & Apparel</Text>
-              </Link>
             </div>
           </div>
           <div className="cat2_md">
             <div className="cat">
-              <Link to={"/choosetheme"}>
                 <Image className="cat_img" src="/images/grocery.svg" />
-              </Link>
-              <Link to={"/choosetheme"}>
                 <Text className="cat_txt">Grocery</Text>
-              </Link>
             </div>
             <div className="cat">
-              <Link to={"/choosetheme"}>
                 <Image className="cat_img" src="/images/food.svg" />
-              </Link>
-              <Link to={"/choosetheme"}>
                 <Text className="cat_txt">Food & Beverages</Text>
-              </Link>
             </div>
           </div>
           <div className="cat3_md">
             <div className="cat">
-              <Link to={"/choosetheme"}>
                 <Image className="cat_img" src="/images/health.svg" />
-              </Link>
-              <Link to={"/choosetheme"}>
                 <Text className="cat_txt">Health & Beauty</Text>
-              </Link>
             </div>
             <div className="cat">
-              <Link to={"/choosetheme"}>
                 <Image className="others_img" src="/images/others.svg" />
-              </Link>
-              <Link to={"/choosetheme"}>
                 <Text className="others_txt">Others</Text>
-              </Link>
             </div>
           </div>
           <div className="proceed_btn">
-            <Link to={"/choosetheme"} className="proceed">
+            <Link to={"/customizetheme"} className="proceed">
               Proceed <span className="arrow">&#10132;</span>
             </Link>
           </div>
