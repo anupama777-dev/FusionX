@@ -1,14 +1,13 @@
 import "./userhome.css";
-import { Box, Image, Avatar, Text, Button } from "@chakra-ui/react";
+import { Image, Avatar, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { AiOutlineCaretRight } from "react-icons/ai";
 const UserHome = () => {
   return (
     <div className="userhome_page">
       <div className="header1">
         <Image className="header_logo" src="/images/logo.svg" />
       </div>
-      <div className="line_div">
+      <div className="line_div1">
         <Image className="line" src="/images/line_1.svg" />
       </div>
       <div className="userhomebody">
@@ -22,7 +21,9 @@ const UserHome = () => {
           </div>
           <div className="dash_items">
             <Image className="dashboard_home" src="/images/home.svg" />
-            <Text className="home_txt">Home</Text>
+            <Link className="home_txt" to={"/userhome"}>
+              Home
+            </Link>
           </div>
           <div className="dash_items">
             <Image className="dashboard_profile" src="/images/profile.svg" />
@@ -56,13 +57,9 @@ const UserHome = () => {
               Build And Launch Your <br />
               E-commerce Platform Now
             </Text>
-            <Button
-              className="beginbtn"
-              rightIcon={<AiOutlineCaretRight />}
-              variant="outline"
-            >
-              Begin Now
-            </Button>
+            <Link to={"/categories"} className="beginbtn">
+              Begin Now <span className="arrow">&#10132;</span>
+            </Link>
           </div>
 
           <div className="prev_work_container">

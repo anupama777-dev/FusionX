@@ -5,6 +5,17 @@
   display: flex;
   flex-direction: row;
 }
+.dashboard2{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding-top: 80px;
+  padding-left: 50px;
+  padding-right: 50px;
+  min-height: 100vh;
+  min-width: 250px;
+  background-color: #171923;
+}
 .customize_container {
   background-color: #1a202c;
   min-height: 100vh;
@@ -52,6 +63,11 @@
   margin-top: 320px;
   margin-left: 40px;
 }
+@media screen and (max-width: 1050px) {
+  .dashboard2 {
+    min-width: 150px;
+  }
+}
 @media screen and (max-width: 1100px){
   .customize_theme_div{
     margin-right: 20px;
@@ -61,7 +77,7 @@
   .customize_theme{
     width: 50vw;
   }
-  .dashboard1{
+  .dashboard2{
     display: none;
   }
 }

@@ -34,7 +34,7 @@ function Categories() {
         <div className="dashboard1">
           <div className="dash_items">
             <Image className="dashboard_home" src="/images/home.svg" />
-            <Link className="home_txt" to={"/"}>
+            <Link className="home_txt" to={"/userhome"}>
               Home
             </Link>
           </div>
@@ -52,8 +52,8 @@ function Categories() {
           </div>
           <div className="dash_items">
             <Image className="back_dash" src="/images/logout.svg" />
-            <Link className="dash_txt" to={"/userhome"}>
-              Back to Home
+            <Link className="dash_txt" to={"/logout"}>
+              Log Out
             </Link>
           </div>
         </div>

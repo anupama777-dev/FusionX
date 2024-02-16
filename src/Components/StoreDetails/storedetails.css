@@ -1,114 +1,119 @@
 .store-details-page {
-    background-color: #1a202c;
-    height: 100vh;
-    width: 99vw;
-  }
-
-.dashboard2 {
+  background-color: #1a202c;
+  height: 100vh;
+  width: 99vw;
+}
+.store-details {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 80px;
-  padding-left: 50px;
-  padding-right: 50px;
-  min-height: 500vh;
-  min-width: 250px;
-  background-color: #171923;
-}
-.store-details{
-    display: flex;
-    flex-direction: column;    
-    align-items: center;
+  align-items: center;
 }
 
-.store-details-box{
-display: flex; 
-flex-direction: column;
-width: 64vw;
-height: 560px;
-border-radius: 8px;
-border: 1px solid var(--gray-700, #2D3748);
-opacity: 0.7;
-background: var(--gray-900, #171923);  
-margin-bottom: 28px;
-padding-left: 82px;
-padding-right: 82px;
-color:#EDF2F7;
+.store-details-box {
+  display: flex;
+  flex-direction: column;
+  align-items: space-evenly;
+  width: 64vw;
+  height: 560px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-700, #2d3748);
+  opacity: 0.7;
+  background: var(--gray-900, #171923);
+  margin-bottom: 28px;
+  padding-left: 82px;
+  padding-right: 82px;
+  color: #edf2f7;
 }
-.store-contact-details-box,.billing-details-box{
-display: flex; 
-flex-direction: column;
-width: 64vw;
-height: 430px;
-border-radius: 8px;
-border: 1px solid var(--gray-700, #2D3748);
-opacity: 0.7;
-background: var(--gray-900, #171923);  
-margin-bottom: 28px;
-padding-left: 82px;
-padding-right: 82px;
-color:#EDF2F7;
+.store-contact-details-box,
+.billing-details-box {
+  display: flex;
+  flex-direction: column;
+  width: 64vw;
+  height: 430px;
+  border-radius: 8px;
+  border: 1px solid var(--gray-700, #2d3748);
+  opacity: 0.7;
+  background: var(--gray-900, #171923);
+  margin-bottom: 28px;
+  padding-left: 82px;
+  padding-right: 82px;
+  color: #edf2f7;
 }
-.storetxt{
-font-size: 24px;
-font-weight: 600;
-line-height: 32px; 
-margin-top: 32px;    
-}
-
-.sub-txt{
-font-size: 18px;
-font-weight: 500;
-line-height: 28px; 
-margin-top: 24px;     
+.storetxt {
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  margin-top: 32px;
 }
 
-.input-box{
-padding: 0px 16px;
-gap: 10px;
-border-radius: 4px;
-border: 1px solid var(--gray-400, #A0AEC0);
-opacity: 0.7;
-background: var(--gray-900, #171923);
-margin-top: 12px;
-color: #A0AEC0;
-max-width: 115vh;
+.sub-txt {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 28px;
+  margin-top: 24px;
 }
 
-.upload-box{
-display: flex;
-flex-direction: column;
-justify-content:center;
-width: 52vw;
-margin-top: 12px;
-height: 20vh;
-border: 2px dashed #4A5568;
-background: var(--gray-900, #171923);
-padding-left: 20vw;
-padding-right: 20vw;
+.input-box {
+  padding: 0px 16px;
+  gap: 10px;
+  border-radius: 4px;
+  border: 1px solid var(--gray-400, #a0aec0);
+  opacity: 0.7;
+  background: var(--gray-900, #171923);
+  margin-top: 12px;
+  color: #a0aec0;
+  max-width: 115vh;
 }
 
-.upload-button{
-    display: flex;
-    background-color: transparent;
-    justify-content: center;
-    color: white;
-    border: 2px solid #718096;
-    border-radius: 4px;
-    font-size: 16px;
-    padding: 8px 3vw;
-    width: 9vw;
-    cursor: pointer;
-  }
+.upload-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 50vw;
+  margin-top: 12px;
+  height: 20vh;
+  border: 2px dashed #4a5568;
+  background: var(--gray-900, #171923);
+  padding-left: 20vw;
+  padding-right: 20vw;
+}
+
+.upload-button {
+  display: flex;
+  background-color: transparent;
+  justify-content: center;
+  color: white;
+  border: 2px solid #718096;
+  border-radius: 4px;
+  font-size: 16px;
+  padding: 8px 3vw;
+  width: 9vw;
+  cursor: pointer;
+}
 .upload-button:hover {
-    background-color:#1A202C;
+  background-color: #1a202c;
 }
 
-.upload-txt{
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 20px; 
-    margin-top: 1vh;   
-    color:#718096;
+.upload-txt {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+  margin-top: 1vh;
+  color: #718096;
 }
-  
+@media screen and (max-width: 768px) {
+  .upload-button {
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .upload-txt{
+    display: none;
+  }
+  .sub-txt{
+    font-size: 16px;
+  }
+  .storetxt{
+    font-size: 22px;
+  }
+}
