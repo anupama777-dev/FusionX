@@ -52,7 +52,6 @@
   background-color: #1a202c;
 }
 .line {
-  transform: rotate(0.279deg);
   stroke-width: 2px;
   stroke: #171923;
   opacity: 0.5;
