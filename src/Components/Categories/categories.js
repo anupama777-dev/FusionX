@@ -53,7 +53,7 @@ function Categories() {
           </div>
           <div className="dash_items">
             <Image className="back_dash" src="/images/logout.svg" />
-            <Link className="dash_txt" to={"/logout"}>
+            <Link className="dash_txt" to={"/"}>
               Log Out
             </Link>
           </div>

@@ -17,12 +17,8 @@ function CustomizeTheme() {
                 <Tab className="disabled">Choose Theme</Tab>
               </Link> */}
               <Tab _isselected>Customize Theme</Tab>
-              <Tab isDisabled className="disabled">
-                Store Details
-              </Tab>
-              <Tab isDisabled className="disabled">
-                Add Products
-              </Tab>
+              <Tab isDisabled className="disabled">Store Details</Tab>
+              <Tab isDisabled className="disabled">Add Products</Tab>
             </TabList>
           </Tabs>
         </div>
@@ -34,27 +30,19 @@ function CustomizeTheme() {
         <div className="dashboard2">
           <div className="dash_items">
             <Image className="dashboard_home" src="/images/home.svg" />
-            <Link className="home_txt" to={"/userhome"}>
-              Home
-            </Link>
+            <Link className="home_txt" to={"/userhome"}>Home</Link>
           </div>
           <div className="dash_items">
             <Image className="dashboard_profile" src="/images/profile.svg" />
-            <Link className="profile_txt" to={"/profile"}>
-              Profile
-            </Link>
+            <Link className="profile_txt" to={"/profile"}>Profile</Link>
           </div>
           <div className="dash_items">
             <Image className="dashboard_help" src="/images/help.svg" />
-            <Link className="help_txt" to={"/help"}>
-              How to Create?
-            </Link>
+            <Link className="help_txt" to={"/help"}>How to Create?</Link>
           </div>
           <div className="dash_items">
             <Image className="back_dash" src="/images/logout.svg" />
-            <Link className="dash_txt" to={"/logout"}>
-              Log Out
-            </Link>
+            <Link className="dash_txt" to={"/"}>Log Out</Link>
           </div>
         </div>
         <div className="customize_container">
@@ -68,23 +56,12 @@ function CustomizeTheme() {
                 placeholder="Choose font"
                 className="select_font"
                 minWidth="120px"
-                width="180px"
-              >
-                <option value="arial" className="options">
-                  Arial
-                </option>
-                <option value="helvetica" className="options">
-                  Helvetica
-                </option>
-                <option value="times" className="options">
-                  Times New Roman
-                </option>
-                <option value="courier" className="options">
-                  Courier New
-                </option>
-                <option value="verdana" className="options">
-                  Verdana
-                </option>
+                width="180px">
+                <option value="arial" className="options">Arial</option>
+                <option value="helvetica" className="options">Helvetica</option>
+                <option value="times" className="options">Times New Roman</option>
+                <option value="courier" className="options">Courier New</option>
+                <option value="verdana" className="options">Verdana</option>
               </Select>
             </div>
             <div className="choose_color">
@@ -93,23 +70,12 @@ function CustomizeTheme() {
                 placeholder="Choose color"
                 className="select_color"
                 minWidth="120px"
-                width="180px"
-              >
-                <option value="red" className="options">
-                  Red
-                </option>
-                <option value="green" className="options">
-                  Green
-                </option>
-                <option value="blue" className="options">
-                  Blue
-                </option>
-                <option value="orange" className="options">
-                  Orange
-                </option>
-                <option value="black" className="options">
-                  Black
-                </option>
+                width="180px">
+                <option value="red" className="options">Red</option>
+                <option value="green" className="options">Green</option>
+                <option value="blue" className="options">Blue</option>
+                <option value="orange" className="options">Orange</option>
+                <option value="black" className="options">Black</option>
               </Select>
             </div>
             <div className="proceed_btn1">

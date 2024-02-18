@@ -2,17 +2,10 @@ import "./storedetails.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import {
-  Image,
-  Tabs,
-  Tab,
-  TabList,
-  Text,
-  Input,
-  Textarea,
-} from "@chakra-ui/react";
+import {Image,Tabs,Tab,TabList,Text,Input,Textarea,} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 const StoreDetails = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     storeName: "",
     storeLogo: null,
@@ -24,13 +17,13 @@ const StoreDetails = () => {
     storeState: "",
     storeCity: "",
   });
-  const navigate = useNavigate();
 
   function updateForm(value) {
     setForm((prev) => {
       return { ...prev, ...value };
     });
   }
+
   async function onSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
@@ -87,9 +80,7 @@ const StoreDetails = () => {
                 <Tab className="disabled">Customize Theme</Tab>
               </Link>
               <Tab _isselected="true">Store Details</Tab>
-              <Tab isDisabled className="disabled">
-                Add Products
-              </Tab>
+              <Tab isDisabled className="disabled">Add Products</Tab>
             </TabList>
           </Tabs>
         </div>
@@ -101,34 +92,28 @@ const StoreDetails = () => {
         <div className="dashboard1">
           <div className="dash_items">
             <Image className="dashboard_home" src="/images/home.svg" />
-            <Link className="home_txt" to={"/userhome"}>
-              Home
-            </Link>
+            <Link className="home_txt" to={"/userhome"}>Home</Link>
           </div>
           <div className="dash_items">
             <Image className="dashboard_profile" src="/images/profile.svg" />
-            <Link className="profile_txt" to={"/profile"}>
-              Profile
-            </Link>
+            <Link className="profile_txt" to={"/profile"}>Profile</Link>
           </div>
           <div className="dash_items">
             <Image className="dashboard_help" src="/images/help.svg" />
-            <Link className="help_txt" to={"/help"}>
-              How to Create?
-            </Link>
+            <Link className="help_txt" to={"/help"}>How to Create?</Link>
           </div>
           <div className="dash_items">
             <Image className="back_dash" src="/images/logout.svg" />
-            <Link className="dash_txt" to={"/logout"}>
-              Log Out
-            </Link>
+            <Link className="dash_txt" to={"/"}>Log Out</Link>
           </div>
         </div>
+
         <div className="categories_container">
           <form onSubmit={onSubmit}>
             <div className="store-details">
               <div className="store-details-box">
                 <Text className="storetxt">Store Details</Text>
+
                 <Text className="sub-txt">Store Name</Text>
                 <Input
                   className="input-box"
@@ -137,10 +122,10 @@ const StoreDetails = () => {
                   value={form.storeName}
                   onChange={(e) => updateForm({ storeName: e.target.value })}
                 />
+
                 <Text className="sub-txt">Upload Logo</Text>
                 <div className="upload-box">
-                  <label className="upload-button">
-                    Upload
+                  <label className="upload-button">Upload
                     <input
                       type="file"
                       name="logo"
@@ -150,10 +135,9 @@ const StoreDetails = () => {
                     />
                   </label>
                   {form.storeLogo && <Text>{form.storeLogo.name}</Text>}
-                  <Text className="upload-txt">
-                    .jpg , .jpeg , .pdf , .svg files
-                  </Text>
+                  <Text className="upload-txt">.jpg , .jpeg , .pdf , .svg files</Text>
                 </div>
+
                 <Text className="sub-txt">Store Description</Text>
                 <Textarea
                   className="input-box"
@@ -162,11 +146,13 @@ const StoreDetails = () => {
                   value={form.storeDescription}
                   onChange={(e) =>
                     updateForm({ storeDescription: e.target.value })
-                  }
-                ></Textarea>
+                    }>
+                  </Textarea>
               </div>
+
               <div className="store-contact-details-box">
                 <Text className="storetxt">Store Contact Details</Text>
+
                 <Text className="sub-txt">Email-ID</Text>
                 <Input
                   className="input-box"
@@ -175,6 +161,7 @@ const StoreDetails = () => {
                   value={form.storeEmail}
                   onChange={(e) => updateForm({ storeEmail: e.target.value })}
                 />
+
                 <Text className="sub-txt">Contact Number</Text>
                 <Input
                   className="input-box"
@@ -183,6 +170,7 @@ const StoreDetails = () => {
                   value={form.storeContact}
                   onChange={(e) => updateForm({ storeContact: e.target.value })}
                 />
+
                 <Text className="sub-txt">Address</Text>
                 <Input
                   className="input-box"
@@ -194,8 +182,10 @@ const StoreDetails = () => {
                   }
                 />
               </div>
+
               <div className="billing-details-box">
                 <Text className="storetxt">Billing Details</Text>
+
                 <Text className="sub-txt">Country</Text>
                 <Input
                   className="input-box"
@@ -204,6 +194,7 @@ const StoreDetails = () => {
                   value={form.storeCountry}
                   onChange={(e) => updateForm({ storeCountry: e.target.value })}
                 />
+
                 <Text className="sub-txt">State</Text>
                 <Input
                   className="input-box"
@@ -212,6 +203,7 @@ const StoreDetails = () => {
                   value={form.storeState}
                   onChange={(e) => updateForm({ storeState: e.target.value })}
                 />
+
                 <Text className="sub-txt">City</Text>
                 <Input
                   className="input-box"
@@ -223,9 +215,7 @@ const StoreDetails = () => {
               </div>
             </div>
             <div className="proceed_btn">
-              <button type="submit" className="proceed">
-                Proceed <span className="arrow">&#10132;</span>
-              </button>
+              <Link to={"/addproducts"} type="submit" className="proceed">Proceed <span className="arrow">&#10132;</span></Link>
             </div>
           </form>
         </div>

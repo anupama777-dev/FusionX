@@ -16,6 +16,7 @@
 .signup_in_container {
   width: 400px;
   height: 500px;
+  margin-top: -30px;
 }
 .signup_in_text {
   color: white;

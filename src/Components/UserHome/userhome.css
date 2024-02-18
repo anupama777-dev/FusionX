@@ -12,8 +12,12 @@
   flex-direction: column;
 }
 .category_txt,
-.name_txt,
 .email_txt {
+  color: white;
+  margin-left: 15px;
+  opacity: 0.5;
+}
+.name_txt{
   color: white;
   margin-left: 15px;
 }
@@ -28,6 +32,7 @@
   border-radius: 8px;
   justify-content: center;
   margin-bottom: 40px;
+  margin-top: -50px;
 }
 .userhome_container {
   background-color: #1a202c;
@@ -88,11 +93,12 @@
   -webkit-text-fill-color: transparent;
 }
 .beginbtn {
-  padding: 5px 8px;
+  padding: 8px 20px;
   color: #8c8d93 !important;
   border: 2px solid #44337a !important;
   border-radius: 6px;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 600;
   cursor: pointer;
   margin-top: 20px;
 }

@@ -22,11 +22,12 @@
   display: flex;
   justify-content: center;
   flex-basis: 70%;
+  margin-left: 2vw;
 }
 .header_option {
   display: flex;
   flex-direction: row;
-  margin-left: 10px;
+  margin-left: 20px;
   margin-right: 10px;
   color: white;
   font-size: 17px;
@@ -41,7 +42,7 @@
   color: white;
   border-radius: 16px;
   border: 1px solid #805ad5;
-  padding: 3px 12px;
+  padding: 4px 22px;
   white-space: nowrap;
   transition: background-color 0.2s ease-out;
 }

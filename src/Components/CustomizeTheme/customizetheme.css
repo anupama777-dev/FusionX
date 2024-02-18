@@ -29,7 +29,7 @@
   margin-top: 50px;
 }
 .customize_theme{
-  width: 55vw;
+  width: 60vw;
   height: 75vh;
   background-color: #171923;
   border-radius: 6px;
@@ -60,7 +60,7 @@
   color: #171923;
 }
 .proceed_btn1{
-  margin-top: 320px;
+  margin-top: 260px;
   margin-left: 40px;
 }
 @media screen and (max-width: 1050px) {
