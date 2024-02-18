@@ -1,4 +1,7 @@
 import "./storedetails.css";
+import React, { useState } from "react";
+import { useNavigate } from "react-router";
+import axios from "axios";
 import {
   Image,
   Tabs,
@@ -8,8 +11,65 @@ import {
   Input,
   Textarea,
 } from "@chakra-ui/react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 const StoreDetails = () => {
+  const [form, setForm] = useState({
+    storeName: "",
+    storeLogo: null,
+    storeDescription: "",
+    storeEmail: "",
+    storeContact: "",
+    storeAddress: "",
+    storeCountry: "",
+    storeState: "",
+    storeCity: "",
+  });
+  const navigate = useNavigate();
+
+  function updateForm(value) {
+    setForm((prev) => {
+      return { ...prev, ...value };
+    });
+  }
+  async function onSubmit(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append('storeLogo', form.storeLogo);
+    formData.append('storeName', form.storeName);
+    formData.append('storeDescription', form.storeDescription);
+    formData.append('storeEmail', form.storeEmail);
+    formData.append('storeContact', form.storeContact);
+    formData.append('storeAddress', form.storeAddress);
+    formData.append('storeCountry', form.storeCountry);
+    formData.append('storeState', form.storeState);
+    formData.append('storeCity', form.storeCity);
+  
+    try {
+      await axios.post("http://localhost:3001/storedetails", formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      });
+      setForm({
+        storeName: "",
+        storeLogo: null,
+        storeDescription: "",
+        storeEmail: "",
+        storeContact: "",
+        storeAddress: "",
+        storeCountry: "",
+        storeState: "",
+        storeCity: "",
+      });
+      navigate("/addproducts");
+    } catch (error) {
+      console.error("Error creating store:", error.message);
+    }
+  }
+  
+  function handleLogoChange(e) {
+    updateForm({ storeLogo: e.target.files[0] });
+  }
   return (
     <div className="store-details-page">
       <div className="header1">
@@ -17,7 +77,7 @@ const StoreDetails = () => {
         <div className="header_categories">
           <Tabs className="tabs" variant="unstyled">
             <TabList>
-            <Link to={"/categories"}>
+              <Link to={"/categories"}>
                 <Tab className="disabled">Categories</Tab>
               </Link>
               {/* <Tab isDisabled className="disabled">
@@ -26,7 +86,7 @@ const StoreDetails = () => {
               <Link to={"/customizetheme"}>
                 <Tab className="disabled">Customize Theme</Tab>
               </Link>
-              <Tab _isSelected>Store Details</Tab>
+              <Tab _isselected="true">Store Details</Tab>
               <Tab isDisabled className="disabled">
                 Add Products
               </Tab>
@@ -65,64 +125,113 @@ const StoreDetails = () => {
           </div>
         </div>
         <div className="categories_container">
-          <div classname="store-details">
-            <div className="store-details-box">
-              <Text className="storetxt">Store Details</Text>
-              <Text className="sub-txt">Store Name</Text>
-              <Input className="input-box" placeholder="Enter Store Name" />
-              <Text className="sub-txt">Upload Logo</Text>
-              <div className="upload-box">
-                <Link className="upload-button">Upload</Link>
-                <Text className="upload-txt">
-                  .jpg , .jpeg , .pdf , .svg files
-                </Text>
+          <form onSubmit={onSubmit}>
+            <div className="store-details">
+              <div className="store-details-box">
+                <Text className="storetxt">Store Details</Text>
+                <Text className="sub-txt">Store Name</Text>
+                <Input
+                  className="input-box"
+                  placeholder="Enter Store Name"
+                  name="storeName"
+                  value={form.storeName}
+                  onChange={(e) => updateForm({ storeName: e.target.value })}
+                />
+                <Text className="sub-txt">Upload Logo</Text>
+                <div className="upload-box">
+                  <label className="upload-button">
+                    Upload
+                    <input
+                      type="file"
+                      name="logo"
+                      style={{ display: "none" }}
+                      accept=".jpg, .jpeg, .png, .pdf,.svg"
+                      onChange={handleLogoChange}
+                    />
+                  </label>
+                  {form.storeLogo && <Text>{form.storeLogo.name}</Text>}
+                  <Text className="upload-txt">
+                    .jpg , .jpeg , .pdf , .svg files
+                  </Text>
+                </div>
+                <Text className="sub-txt">Store Description</Text>
+                <Textarea
+                  className="input-box"
+                  name="storeDescription"
+                  placeholder="Enter Store Description"
+                  value={form.storeDescription}
+                  onChange={(e) =>
+                    updateForm({ storeDescription: e.target.value })
+                  }
+                ></Textarea>
               </div>
-              <Text className="sub-txt">Store Description</Text>
-              <Textarea
-                className="input-box"
-                placeholder="Enter Store Description"
-              ></Textarea>
+              <div className="store-contact-details-box">
+                <Text className="storetxt">Store Contact Details</Text>
+                <Text className="sub-txt">Email-ID</Text>
+                <Input
+                  className="input-box"
+                  placeholder="Enter Email ID"
+                  name="storeEmail"
+                  value={form.storeEmail}
+                  onChange={(e) => updateForm({ storeEmail: e.target.value })}
+                />
+                <Text className="sub-txt">Contact Number</Text>
+                <Input
+                  className="input-box"
+                  placeholder="Enter Contact Number"
+                  name="storeContact"
+                  value={form.storeContact}
+                  onChange={(e) => updateForm({ storeContact: e.target.value })}
+                />
+                <Text className="sub-txt">Address</Text>
+                <Input
+                  className="input-box"
+                  placeholder="Enter Address"
+                  name="storeAddress"
+                  value={form.storeAddress}
+                  onChange={(e) =>
+                    updateForm({ storeAddress: e.target.value })
+                  }
+                />
+              </div>
+              <div className="billing-details-box">
+                <Text className="storetxt">Billing Details</Text>
+                <Text className="sub-txt">Country</Text>
+                <Input
+                  className="input-box"
+                  placeholder="Enter Country"
+                  name="storeCountry"
+                  value={form.storeCountry}
+                  onChange={(e) => updateForm({ storeCountry: e.target.value })}
+                />
+                <Text className="sub-txt">State</Text>
+                <Input
+                  className="input-box"
+                  placeholder="Enter State"
+                  name="storeState"
+                  value={form.storeState}
+                  onChange={(e) => updateForm({ storeState: e.target.value })}
+                />
+                <Text className="sub-txt">City</Text>
+                <Input
+                  className="input-box"
+                  placeholder="Enter City"
+                  name="storeCity"
+                  value={form.storeCity}
+                  onChange={(e) => updateForm({ storeCity: e.target.value })}
+                />
+              </div>
             </div>
-            <div className="store-contact-details-box">
-              <Text className="storetxt">Store Contact Details</Text>
-              <Text className="sub-txt">Email-ID</Text>
-              <Input className="input-box" placeholder="Enter Email ID" />
-              <Text className="sub-txt">Contact Number</Text>
-              <Input className="input-box" placeholder="Enter Contact Number" />
-              <Text className="sub-txt">Store Domain Name</Text>
-              <Input
-                className="input-box"
-                placeholder="Enter Store Domain Name"
-              />
+            <div className="proceed_btn">
+              <button type="submit" className="proceed">
+                Proceed <span className="arrow">&#10132;</span>
+              </button>
             </div>
-            <div className="billing-details-box">
-              <Text className="storetxt">Billing Details</Text>
-              <Text className="sub-txt">Country</Text>
-              <Input className="input-box" placeholder="Enter Country" />
-              <Text className="sub-txt">State</Text>
-              <Input className="input-box" placeholder="Enter State" />
-              <Text className="sub-txt">City</Text>
-              <Input className="input-box" placeholder="Enter City" />
-            </div>
-          </div>
-          <div className="proceed_btn">
-            <Link to={"/addproducts"} className="proceed">
-              Proceed <span className="arrow">&#10132;</span>
-            </Link>
-          </div>
+          </form>
         </div>
       </div>
     </div>
-    /* <HStack  className="pininput">
-                    <PinInput type='alphanumeric' >
-                        <PinInputField />
-                        <PinInputField />
-                        <PinInputField />
-                        <PinInputField />
-                        <PinInputField />
-                        <PinInputField />
-                    </PinInput>
-                </HStack>   */
   );
 };
+
 export default StoreDetails;
