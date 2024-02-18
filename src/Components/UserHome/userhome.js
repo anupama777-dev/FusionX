@@ -1,25 +1,27 @@
 import "./userhome.css";
 import { Image, Avatar, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { useCookies } from 'react-cookie';
-import axios from 'axios';
-import { useState,useEffect } from "react";
+import { useCookies } from "react-cookie";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 const UserHome = () => {
-  const [cookies] = useCookies(['login']);
-  const[user,setUser]=useState([]);
-   
-   useEffect(() =>{
-    const fetchBills = async () => {
+  const [cookies] = useCookies(["login"]);
+  const [user, setUser] = useState([]);
+
+  useEffect(() => {
+    const fetchUser = async () => {
       try {
-        const response1 = await axios.post('http://localhost:3001/signup/' + cookies.name);
+        const response1 = await axios.post(
+          "http://localhost:3001/signup/" + cookies.username
+        );
         setUser(response1.data[0]);
       } catch (error) {
-        console.error("Error fetching bills:", error);
+        console.error("Error fetching user:", error);
       }
     };
-    fetchBills();
-   },[]);
+    fetchUser();
+  }, []);
 
   return (
     <div className="userhome_page">
@@ -34,29 +36,39 @@ const UserHome = () => {
           <div className="dash_items1">
             <Avatar className="user" image="/images/user-solid.svg" />
             <div className="avatar_txt">
-              <Text className="name_txt">{user.username}</Text>
+              <Text className="name_txt">{user.name}</Text>
               <Text className="email_txt">{user.email}</Text>
             </div>
           </div>
           <div className="dash_items">
             <Image className="dashboard_home" src="/images/home.svg" />
-            <Link className="home_txt" to={"/userhome"}>Home</Link>
+            <Link className="home_txt" to={"/userhome"}>
+              Home
+            </Link>
           </div>
           <div className="dash_items">
             <Image className="dashboard_profile" src="/images/profile.svg" />
-            <Link className="profile_txt" to={"/profile"}>Profile</Link>
+            <Link className="profile_txt" to={"/profile"}>
+              Profile
+            </Link>
           </div>
           <div className="dash_items">
             <Image className="dashboard_help" src="/images/help.svg" />
-            <Link className="help_txt" to={"/help"}>How to Create?</Link>
+            <Link className="help_txt" to={"/help"}>
+              How to Create?
+            </Link>
           </div>
           <div className="dash_items">
             <Image className="dashboard_category" src="/images/category.svg" />
-            <Link className="category_txt" to={"/categories"}>Categories</Link>
+            <Link className="category_txt" to={"/categories"}>
+              Categories
+            </Link>
           </div>
           <div className="dash_items">
             <Image className="back_dash" src="/images/logout.svg" />
-            <Link className="dash_txt" to={"/"}>Log Out</Link>
+            <Link className="dash_txt" to={"/"}>
+              Log Out
+            </Link>
           </div>
         </div>
 

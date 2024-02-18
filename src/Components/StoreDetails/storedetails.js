@@ -2,7 +2,15 @@ import "./storedetails.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
-import {Image,Tabs,Tab,TabList,Text,Input,Textarea,} from "@chakra-ui/react";
+import {
+  Image,
+  Tabs,
+  Tab,
+  TabList,
+  Text,
+  Input,
+  Textarea,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 const StoreDetails = () => {
   const navigate = useNavigate();
@@ -27,21 +35,21 @@ const StoreDetails = () => {
   async function onSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('storeLogo', form.storeLogo);
-    formData.append('storeName', form.storeName);
-    formData.append('storeDescription', form.storeDescription);
-    formData.append('storeEmail', form.storeEmail);
-    formData.append('storeContact', form.storeContact);
-    formData.append('storeAddress', form.storeAddress);
-    formData.append('storeCountry', form.storeCountry);
-    formData.append('storeState', form.storeState);
-    formData.append('storeCity', form.storeCity);
-  
+    formData.append("storeLogo", form.storeLogo);
+    formData.append("storeName", form.storeName);
+    formData.append("storeDescription", form.storeDescription);
+    formData.append("storeEmail", form.storeEmail);
+    formData.append("storeContact", form.storeContact);
+    formData.append("storeAddress", form.storeAddress);
+    formData.append("storeCountry", form.storeCountry);
+    formData.append("storeState", form.storeState);
+    formData.append("storeCity", form.storeCity);
+
     try {
       await axios.post("http://localhost:3001/storedetails", formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
-        }
+          "Content-Type": "multipart/form-data",
+        },
       });
       setForm({
         storeName: "",
@@ -59,7 +67,7 @@ const StoreDetails = () => {
       console.error("Error creating store:", error.message);
     }
   }
-  
+
   function handleLogoChange(e) {
     updateForm({ storeLogo: e.target.files[0] });
   }
@@ -80,7 +88,9 @@ const StoreDetails = () => {
                 <Tab className="disabled">Customize Theme</Tab>
               </Link>
               <Tab _isselected="true">Store Details</Tab>
-              <Tab isDisabled className="disabled">Add Products</Tab>
+              <Tab isDisabled className="disabled">
+                Add Products
+              </Tab>
             </TabList>
           </Tabs>
         </div>
@@ -92,19 +102,27 @@ const StoreDetails = () => {
         <div className="dashboard1">
           <div className="dash_items">
             <Image className="dashboard_home" src="/images/home.svg" />
-            <Link className="home_txt" to={"/userhome"}>Home</Link>
+            <Link className="home_txt" to={"/userhome"}>
+              Home
+            </Link>
           </div>
           <div className="dash_items">
             <Image className="dashboard_profile" src="/images/profile.svg" />
-            <Link className="profile_txt" to={"/profile"}>Profile</Link>
+            <Link className="profile_txt" to={"/profile"}>
+              Profile
+            </Link>
           </div>
           <div className="dash_items">
             <Image className="dashboard_help" src="/images/help.svg" />
-            <Link className="help_txt" to={"/help"}>How to Create?</Link>
+            <Link className="help_txt" to={"/help"}>
+              How to Create?
+            </Link>
           </div>
           <div className="dash_items">
             <Image className="back_dash" src="/images/logout.svg" />
-            <Link className="dash_txt" to={"/"}>Log Out</Link>
+            <Link className="dash_txt" to={"/"}>
+              Log Out
+            </Link>
           </div>
         </div>
 
@@ -125,7 +143,8 @@ const StoreDetails = () => {
 
                 <Text className="sub-txt">Upload Logo</Text>
                 <div className="upload-box">
-                  <label className="upload-button">Upload
+                  <label className="upload-button">
+                    Upload
                     <input
                       type="file"
                       name="logo"
@@ -135,7 +154,9 @@ const StoreDetails = () => {
                     />
                   </label>
                   {form.storeLogo && <Text>{form.storeLogo.name}</Text>}
-                  <Text className="upload-txt">.jpg , .jpeg , .pdf , .svg files</Text>
+                  <Text className="upload-txt">
+                    .jpg , .jpeg , .pdf , .svg files
+                  </Text>
                 </div>
 
                 <Text className="sub-txt">Store Description</Text>
@@ -146,8 +167,8 @@ const StoreDetails = () => {
                   value={form.storeDescription}
                   onChange={(e) =>
                     updateForm({ storeDescription: e.target.value })
-                    }>
-                  </Textarea>
+                  }
+                ></Textarea>
               </div>
 
               <div className="store-contact-details-box">
@@ -177,9 +198,7 @@ const StoreDetails = () => {
                   placeholder="Enter Address"
                   name="storeAddress"
                   value={form.storeAddress}
-                  onChange={(e) =>
-                    updateForm({ storeAddress: e.target.value })
-                  }
+                  onChange={(e) => updateForm({ storeAddress: e.target.value })}
                 />
               </div>
 
@@ -215,7 +234,9 @@ const StoreDetails = () => {
               </div>
             </div>
             <div className="proceed_btn">
-              <Link to={"/addproducts"} type="submit" className="proceed">Proceed <span className="arrow">&#10132;</span></Link>
+              <Link to={"/addproducts"} type="submit" className="proceed">
+                Proceed <span className="arrow">&#10132;</span>
+              </Link>
             </div>
           </form>
         </div>

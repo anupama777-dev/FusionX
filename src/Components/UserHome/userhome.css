@@ -6,6 +6,7 @@
   display: flex;
   flex-direction: row;
   margin-bottom: 50px;
+  margin-left: 50px !important;
 }
 .user{
   margin-left: -70px;
@@ -115,12 +116,6 @@
   .category_txt {
     display: none;
   }
-  /* .dashboard1 {
-    min-width: 100px;
-  } */
-  /* .dash_items {
-    justify-content: center;
-  } */
   .line1 {
     font-size: 36px;
   }
