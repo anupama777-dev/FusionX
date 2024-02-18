@@ -2,6 +2,7 @@ import React from "react";
 import { Image, Tab, Tabs, TabList, Text } from "@chakra-ui/react";
 import "./categories.css";
 import { Link } from "react-router-dom";
+
 function Categories() {
   return (
     <div className="categories_page">
