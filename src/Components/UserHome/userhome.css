@@ -7,6 +7,9 @@
   flex-direction: row;
   margin-bottom: 50px;
 }
+.user{
+  margin-left: -70px;
+}
 .avatar_txt {
   display: flex;
   flex-direction: column;
