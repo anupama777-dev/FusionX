@@ -65,7 +65,7 @@ const StoreDetails = () => {
         storeState: "",
         storeCity: "",
       });
-      navigate("/addproducts");
+      navigate("/categories");
     } catch (error) {
       console.error("Error creating store:", error.message);
     }
@@ -81,19 +81,10 @@ const StoreDetails = () => {
         <div className="header_categories">
           <Tabs className="tabs" variant="unstyled">
             <TabList>
-              <Link to={"/categories"}>
-                <Tab className="disabled">Categories</Tab>
-              </Link>
-              {/* <Tab isDisabled className="disabled">
-                Choose Theme
-              </Tab> */}
-              <Link to={"/customizetheme"}>
-                <Tab className="disabled">Customize Theme</Tab>
-              </Link>
-              <Tab _isselected="true">Store Details</Tab>
-              <Tab isDisabled className="disabled">
-                Add Products
-              </Tab>
+                <Tab _isselected="true" className="disabled">Store Details</Tab>
+                <Tab isDisabled className="disabled">Categories</Tab>
+                <Tab isDisabled >Customize theme</Tab>
+                <Tab isDisabled className="disabled">Add Products</Tab>
             </TabList>
           </Tabs>
         </div>

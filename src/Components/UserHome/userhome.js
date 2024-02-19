@@ -78,7 +78,7 @@ const UserHome = () => {
               Build And Launch Your <br />
               E-commerce Platform Now
             </Text>
-            <Link to={"/categories"} className="beginbtn">
+            <Link to={"/storedetails"} className="beginbtn">
               Begin Now <span className="arrow">&#10132;</span>
             </Link>
           </div>

@@ -1,23 +1,22 @@
 import React from "react";
 import { Image, Tab, Tabs, TabList, Text, Select } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import "./customizetheme.css";
-function CustomizeTheme() {
-  return (
+
+function ClothingTheme() {
+    return (
     <div className="customize_page">
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
         <div className="header_categories">
-          <Tabs className="tabs" variant="unstyled">
+        <Tabs className="tabs" variant="unstyled">
             <TabList>
-              <Link to={"/categories"}>
-                <Tab className="disabled">Categories</Tab>
+              <Link to={"/storedetails"}>
+                <Tab className="disabled">Store Details</Tab>
               </Link>
-              {/* <Link to={"/choosetheme"}>
-                <Tab className="disabled">Choose Theme</Tab>
-              </Link> */}
-              <Tab _isselected>Customize Theme</Tab>
-              <Tab isDisabled className="disabled">Store Details</Tab>
+              <Link to={"/categories"}>
+              <Tab _isselected>Categories</Tab>
+              </Link>
+              <Tab _isselected className="disabled">Customize Theme</Tab>
               <Tab isDisabled className="disabled">Add Products</Tab>
             </TabList>
           </Tabs>
@@ -66,20 +65,25 @@ function CustomizeTheme() {
             </div>
             <div className="choose_color">
               <Text className="color">Color</Text>
+              {/*clothing is orange*/}
               <Select
                 placeholder="Choose color"
                 className="select_color"
                 minWidth="120px"
                 width="180px">
                 <option value="red" className="options">Red</option>
+                <option value="yellow" className="options">Yellow</option>
+                <option value="gray" className="options">Gray</option>
                 <option value="green" className="options">Green</option>
+                <option value="teal" className="options">Teal</option>
                 <option value="blue" className="options">Blue</option>
-                <option value="orange" className="options">Orange</option>
-                <option value="black" className="options">Black</option>
+                <option value="cyan" className="options">Cyan</option>
+                <option value="purple" className="options">Purple</option>
+                <option value="pink" className="options">Pink</option>
               </Select>
             </div>
             <div className="proceed_btn1">
-              <Link to={"/storedetails"} className="proceed">
+              <Link to={"/clothingaddproducts"} className="proceed">
                 Proceed <span className="arrow">&#10132;</span>
               </Link>
             </div>
@@ -87,6 +91,6 @@ function CustomizeTheme() {
         </div>
       </div>
     </div>
-  );
+    );
 }
-export default CustomizeTheme;
+export default ClothingTheme;    

@@ -1,0 +1,14 @@
+.product-details-box1{
+    display: flex;
+    flex-direction: column;
+    width: 64vw;
+    height: 770px;
+    border-radius: 8px;
+    border: 1px solid var(--gray-700, #2d3748);
+    opacity: 0.7;
+    background: var(--gray-900, #171923);
+    margin-bottom: 28px;
+    padding-left: 82px;
+    padding-right: 82px;
+    color: #edf2f7;    
+}
