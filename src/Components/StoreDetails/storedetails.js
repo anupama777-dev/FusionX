@@ -1,6 +1,7 @@
 import "./storedetails.css";
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
+import { useCookies } from "react-cookie";
 import axios from "axios";
 import {
   Image,
@@ -13,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 const StoreDetails = () => {
+  const [cookies] = useCookies(["login"]);
   const navigate = useNavigate();
   const [form, setForm] = useState({
     storeName: "",
@@ -35,6 +37,8 @@ const StoreDetails = () => {
   async function onSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
+    const user = cookies.username
+    formData.append("username", user)
     formData.append("storeLogo", form.storeLogo);
     formData.append("storeName", form.storeName);
     formData.append("storeDescription", form.storeDescription);
