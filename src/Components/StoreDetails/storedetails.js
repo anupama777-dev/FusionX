@@ -44,7 +44,6 @@ const StoreDetails = () => {
     formData.append("storeCountry", form.storeCountry);
     formData.append("storeState", form.storeState);
     formData.append("storeCity", form.storeCity);
-
     try {
       await axios.post("http://localhost:3001/storedetails", formData, {
         headers: {
@@ -131,7 +130,6 @@ const StoreDetails = () => {
             <div className="store-details">
               <div className="store-details-box">
                 <Text className="storetxt">Store Details</Text>
-
                 <Text className="sub-txt">Store Name</Text>
                 <Input
                   className="input-box"
@@ -173,7 +171,6 @@ const StoreDetails = () => {
 
               <div className="store-contact-details-box">
                 <Text className="storetxt">Store Contact Details</Text>
-
                 <Text className="sub-txt">Email-ID</Text>
                 <Input
                   className="input-box"
@@ -204,7 +201,6 @@ const StoreDetails = () => {
 
               <div className="billing-details-box">
                 <Text className="storetxt">Billing Details</Text>
-
                 <Text className="sub-txt">Country</Text>
                 <Input
                   className="input-box"
@@ -234,9 +230,9 @@ const StoreDetails = () => {
               </div>
             </div>
             <div className="proceed_btn">
-              <Link to={"/addproducts"} type="submit" className="proceed">
+              <button className="proceed" type="submit">
                 Proceed <span className="arrow">&#10132;</span>
-              </Link>
+              </button>
             </div>
           </form>
         </div>
