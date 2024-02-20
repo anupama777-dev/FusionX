@@ -65,7 +65,7 @@ function OthersTheme() {
               </div>
               <div className="choose_color">
                 <Text className="color">Color</Text>
-                //others is blue
+                {/* others is blue */}
                 <Select
                   placeholder="Choose color"
                   className="select_color"

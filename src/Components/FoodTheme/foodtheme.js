@@ -84,7 +84,7 @@ function FoodTheme() {
             </div>
             <div className="choose_color">
               <Text className="color">Color</Text>
-              //food is yellow
+              {/* food is yellow */}
               <Select
                 placeholder="Choose color"
                 className="select_color"

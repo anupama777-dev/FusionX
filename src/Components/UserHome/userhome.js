@@ -21,7 +21,7 @@ const UserHome = () => {
       }
     };
     fetchUser();
-  }, []);
+  }, [cookies.username]);
 
   return (
     <div className="userhome_page">
