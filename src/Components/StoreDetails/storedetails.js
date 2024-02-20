@@ -81,9 +81,9 @@ const StoreDetails = () => {
         <div className="header_categories">
           <Tabs className="tabs" variant="unstyled">
             <TabList>
-                <Tab _isselected="true" className="disabled">Store Details</Tab>
+                <Tab _isselected="true">Store Details</Tab>
                 <Tab isDisabled className="disabled">Categories</Tab>
-                <Tab isDisabled >Customize theme</Tab>
+                <Tab isDisabled className="disabled">Customize theme</Tab>
                 <Tab isDisabled className="disabled">Add Products</Tab>
             </TabList>
           </Tabs>

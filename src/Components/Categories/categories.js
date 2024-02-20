@@ -12,13 +12,13 @@ function Categories() {
           <Tabs className="tabs" variant="unstyled">
             <TabList>
               <Link to="/storedetails">
-              <Tab _isselected>Store Details</Tab>
+              <Tab className="disabled">Store Details</Tab>
               </Link>
 
               {/* <Tab isDisabled className="disabled">
                 Choose Theme
               </Tab> */}
-              <Tab _isselected className="disabled">
+              <Tab _isselected>
                 Categories
               </Tab>
               <Tab isDisabled className="disabled">

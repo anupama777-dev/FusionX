@@ -10,13 +10,13 @@ function HealthTheme() {
           <div className="header_categories">
           <Tabs className="tabs" variant="unstyled">
             <TabList>
-              <Link to={"/storedetails"}>
+            <Link to={"/storedetails"}>
                 <Tab className="disabled">Store Details</Tab>
               </Link>
               <Link to={"/categories"}>
-              <Tab _isselected>Categories</Tab>
+              <Tab className="disabled">Categories</Tab>
               </Link>
-              <Tab _isselected className="disabled">Customize Theme</Tab>
+              <Tab _isselected>Customize Theme</Tab>
               <Tab isDisabled className="disabled">Add Products</Tab>
             </TabList>
           </Tabs>

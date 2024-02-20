@@ -10,7 +10,7 @@ import OthersAddProducts from './Components/OthersAddProducts/othersaddproducts'
 
 import Categories from './Components/Categories/categories';
 
-import ElectronicsTheme from './Components/ElectronicsTheme/elctronicstheme';
+import ElectronicsTheme from './Components/ElectronicsTheme/electronicstheme';
 import ClothingTheme from './Components/ClothingTheme/clothingtheme';
 import GroceryTheme from './Components/GroceryTheme/grocerytheme';
 import FoodTheme from './Components/FoodTheme/foodtheme';
