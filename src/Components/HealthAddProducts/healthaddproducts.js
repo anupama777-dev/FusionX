@@ -52,7 +52,7 @@ const HealthAddProducts = () => {
     formData.append("productName", form.productName);
     formData.append("productImage", form.productImage);
     formData.append("productDescription", form.productDescription);
-    formData.append("productFoodPref", form.productFeatures);
+    formData.append("productFeatures", form.productFeatures);
     formData.append("productPrice", form.productPrice);
     formData.append("productPAT", form.productPAT);
     formData.append("productTax", form.productTax);

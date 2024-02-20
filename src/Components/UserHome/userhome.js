@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 const UserHome = () => {
   const [cookies] = useCookies(["login"]);
   const [user, setUser] = useState([]);
-
+  const [stores, setStores] = useState([]);
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -17,11 +17,23 @@ const UserHome = () => {
         );
         setUser(response1.data[0]);
       } catch (error) {
-        console.error("Error fetching user:", error);
+        console.error("Error fetching user", error);
       }
     };
     fetchUser();
   }, [cookies.username]);
+  useEffect(() => {
+    const fetchStores = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/userhome");
+        setStores(response.data);
+      } catch (error) {
+        console.error("Error fetching stores:", error);
+        setStores([]);
+      }
+    };
+    fetchStores();
+  }, []);
 
   return (
     <div className="userhome_page">
@@ -59,12 +71,6 @@ const UserHome = () => {
             </Link>
           </div>
           <div className="dash_items">
-            <Image className="dashboard_category" src="/images/category.svg" />
-            <Link className="category_txt" to={"/categories"}>
-              Categories
-            </Link>
-          </div>
-          <div className="dash_items">
             <Image className="back_dash" src="/images/logout.svg" />
             <Link className="dash_txt" to={"/"}>
               Log Out
@@ -84,27 +90,40 @@ const UserHome = () => {
           </div>
 
           <div className="prev_work_container">
-            <div className="b1">
-              <Image className="previmg" src="/images/home-prev.svg" />
-            </div>
-            <div className="b2">
-              <Image className="previmg" src="/images/home-prev.svg" />
-            </div>
-            <div className="b3">
-              <Image className="previmg" src="/images/home-prev.svg" />
-            </div>
+            {stores.map((store, index) => {
+              let imagePath = store.storeLogo.image;
+              if (typeof imagePath === "string") {
+                imagePath = imagePath.replace(/\\/g, "/");
+                imagePath = `http://localhost:3001/${imagePath}`;
+              }
+              return (
+                <div className={`b${index + 1}`} key={store._id}>
+                  <img
+                    className="previmg"
+                    src={imagePath}
+                    alt={`Store ${index + 1} Logo`}
+                  />
+                </div>
+              );
+            })}
           </div>
-
           <div className="prev_work_container1">
-            <div className="b1">
-              <Image className="previmg" src="/images/home-prev.svg" />
-            </div>
-            <div className="b2">
-              <Image className="previmg" src="/images/home-prev.svg" />
-            </div>
-            <div className="b3">
-              <Image className="previmg" src="/images/home-prev.svg" />
-            </div>
+            {stores.map((store, index) => {
+              let imagePath = store.storeLogo.image;
+              if (typeof imagePath === "string") {
+                imagePath = imagePath.replace(/\\/g, "/");
+                imagePath = `http://localhost:3001/${imagePath}`;
+              }
+              return (
+                <div className={`b${index + 1}`} key={store._id}>
+                  <img
+                    className="previmg"
+                    src={imagePath}
+                    alt={`Store ${index + 1} Logo`}
+                  />
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

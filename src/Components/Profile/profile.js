@@ -22,7 +22,7 @@ const Profile = () => {
       }
     };
     fetchUser();
-  }, []);
+  }, [cookies.username]);
 
   return (
     <div className="profile_page">
@@ -57,12 +57,6 @@ const Profile = () => {
             <Image className="dashboard_help" src="/images/help.svg" />
             <Link className="help_txt" to={"/help"}>
               How to Create?
-            </Link>
-          </div>
-          <div className="dash_items">
-            <Image className="dashboard_category" src="/images/category.svg" />
-            <Link className="category_txt" to={"/categories"}>
-              Categories
             </Link>
           </div>
           <div className="dash_items">
