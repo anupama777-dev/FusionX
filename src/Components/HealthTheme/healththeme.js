@@ -65,7 +65,7 @@ function HealthTheme() {
               </div>
               <div className="choose_color">
                 <Text className="color">Color</Text>
-                //health is purple
+                {/* health is purple */}
                 <Select
                   placeholder="Choose color"
                   className="select_color"

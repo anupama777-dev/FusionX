@@ -354,7 +354,6 @@ const ClothingAddProducts = () => {
                   }
                 />
               </div>
-
               <div className="color-details-box">
                 <Text className="storetxt">Material Details</Text>
                 <Text className="sub-txt">Number of Materials</Text>
