@@ -18,7 +18,7 @@ function Categories() {
               {/* <Tab isDisabled className="disabled">
                 Choose Theme
               </Tab> */}
-              <Tab _isselected>
+              <Tab _isselected="true">
                 Categories
               </Tab>
               <Tab isDisabled className="disabled">
