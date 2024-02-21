@@ -1,6 +1,6 @@
 import "./clothingaddproducts.css";
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import axios from "axios";
 import {
   Image,
@@ -11,11 +11,15 @@ import {
   Input,
   Textarea,
   Checkbox,
-  HStack
+  HStack,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 const ClothingAddProducts = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const category = searchParams.get("category");
+  const theme = searchParams.get("theme")
   const [form, setForm] = useState({
     productType: "",
     productName: "",
@@ -110,13 +114,13 @@ const ClothingAddProducts = () => {
               <Link to={"/categories"}>
                 <Tab className="disabled">Categories</Tab>
               </Link>
-              {/* <Link to={"/categories"}>
-                <Tab className="disabled">Categories</Tab>
-              </Link> */}
-              <Link to={"/clothingtheme"}>
+              <Link to={`/choosetheme?category=${category}`}>
+                <Tab className="disabled">Choose Theme</Tab>
+              </Link>
+              <Link to={`/customizetheme?category=${category}&theme=${theme}`}>
                 <Tab className="disabled">Customize Theme</Tab>
               </Link>
-              <Tab _isSelected="true">Add Products</Tab>
+              <Tab _isselected="true">Add Products</Tab>
             </TabList>
           </Tabs>
         </div>
@@ -160,7 +164,7 @@ const ClothingAddProducts = () => {
           </div>
         </div>
         <div className="categories_container">
-        <form onSubmit={onSubmit}>
+          <form onSubmit={onSubmit}>
             <div className="store-details">
               <div className="product-details-box">
                 <Text className="storetxt">Product Details</Text>
