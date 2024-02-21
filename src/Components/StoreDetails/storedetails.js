@@ -83,6 +83,7 @@ const StoreDetails = () => {
             <TabList>
                 <Tab _isselected="true">Store Details</Tab>
                 <Tab isDisabled className="disabled">Categories</Tab>
+                <Tab isDisabled className="disabled">Choose Theme</Tab>
                 <Tab isDisabled className="disabled">Customize theme</Tab>
                 <Tab isDisabled className="disabled">Add Products</Tab>
             </TabList>

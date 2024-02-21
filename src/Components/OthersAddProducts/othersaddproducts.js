@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 import axios from "axios";
 import {
   Image,
@@ -19,6 +19,10 @@ import {
 import { Link } from "react-router-dom";
 const OthersAddProducts = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const category = searchParams.get("category");
+  const theme = searchParams.get("theme")
   const [form, setForm] = useState({
     productType: "",
     productName: "",
@@ -122,10 +126,10 @@ const OthersAddProducts = () => {
               <Link to={"/categories"}>
                 <Tab className="disabled">Categories</Tab>
               </Link>
-              {/* <Link to={"/categories"}>
-                  <Tab className="disabled">Categories</Tab>
-                </Link> */}
-              <Link to={"/otherstheme"}>
+              <Link to={`/choosetheme?category=${category}`}>
+                <Tab className="disabled">Choose Theme</Tab>
+              </Link>
+              <Link to={`/customizetheme?category=${category}&theme=${theme}`}>
                 <Tab className="disabled">Customize Theme</Tab>
               </Link>
               <Tab _isselected="true">Add Products</Tab>
@@ -165,7 +169,7 @@ const OthersAddProducts = () => {
         </div>
         <div className="categories_container">
           <form onSubmit={onSubmit}>
-            <div classname="store-details">
+            <div className="store-details">
               <div className="product-details-box1">
                 <Text className="storetxt">Product Details</Text>
                 <Text className="sub-txt">Product Type</Text>
