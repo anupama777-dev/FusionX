@@ -10,7 +10,8 @@ function Signup() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  
+  const [Error, setError] = useState('');
+
   const handleUsername = (e) => {
     setUsername(e.target.value)
   };
@@ -27,7 +28,7 @@ function Signup() {
     setPassword(e.target.value)
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
   const formData = {
@@ -39,14 +40,19 @@ function Signup() {
 
   console.log(JSON.stringify(formData))
 
-  axios.post('http://localhost:3001/signup', formData)
-  .then(response => {
-    navigate('/login')
-  })
-  .catch(error => {
-    console.error(error);
-  });
-};
+  const response = await axios.post('http://localhost:3001/signup/' + username);
+    const data = response.data
+    console.log(data)
+    if (data.length > 0) {
+      if (username === data[0].username) {
+        setError('Account Exists.Log In to your Account')
+      }
+      else { 
+             navigate("/login");    
+           }
+    }
+   };
+
   return (
     <div className="signup_in_page">
       <div className="header">
@@ -93,7 +99,8 @@ function Signup() {
               value={password} 
               onChange={handlePassword}
             />
-            <Button className="signup_in_btn" onClick={handleSubmit}>Sign Up</Button>
+            {Error && <Text className="error-message">{Error}</Text>}
+            <Button className="login_in_btn" onClick={handleSubmit}>Sign Up</Button>
           </div>
           <div className="login_signup">
             <Link to={"/login"} className="already">Already have an account?</Link>

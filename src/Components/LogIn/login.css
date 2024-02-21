@@ -8,3 +8,24 @@
   justify-content: center;
   align-items: center;
 }
+.login_in_btn {
+  display: flex;
+  background-color: #9F7AEA !important;
+  width: 400px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  color: #FFFF !important;
+  padding: 0px 24px;
+  border-radius: 16px;
+  margin-top: 10px;
+  transition: background-color 0.2s ease-out;
+}
+.login_in_btn:hover {
+  background-color: #50338e !important;
+}
+
+.error-message{
+  color: #CBD5E0;
+  opacity: 0.7;
+}

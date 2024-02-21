@@ -53,25 +53,33 @@ const UserHome = () => {
             </div>
           </div>
           <div className="dash_items">
+            <Link  to={"/userhome"}>
             <Image className="dashboard_home" src="/images/home.svg" />
+            </Link>
             <Link className="home_txt" to={"/userhome"}>
               Home
             </Link>
           </div>
           <div className="dash_items">
-            <Image className="dashboard_profile" src="/images/profile.svg" />
+            <Link to={"/profile"}>
+              <Image className="dashboard_profile" src="/images/profile.svg" />
+            </Link>
             <Link className="profile_txt" to={"/profile"}>
               Profile
             </Link>
           </div>
           <div className="dash_items">
-            <Image className="dashboard_help" src="/images/help.svg" />
+            <Link to={"/help"}>
+              <Image className="dashboard_help" src="/images/help.svg" />
+            </Link>
             <Link className="help_txt" to={"/help"}>
               How to Create?
             </Link>
           </div>
           <div className="dash_items">
+            <Link to={"/"}>
             <Image className="back_dash" src="/images/logout.svg" />
+            </Link>
             <Link className="dash_txt" to={"/"}>
               Log Out
             </Link>

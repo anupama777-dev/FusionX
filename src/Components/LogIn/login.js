@@ -31,9 +31,11 @@ function Login() {
           setCookie('name', data[0].name);
           { navigate("/userhome"); }
       }
-      else { setError('Incorrect Password') }
+      else { setError('Incorrect Password.Please try again') 
+             
+           }
     }
-    else { setError('Incorrect Username') }
+    else { setError('Incorrect Username.Please try again') }
    };
 
 
@@ -67,7 +69,9 @@ function Login() {
               value={password} 
               onChange={handlePassword}
             />
-            <Button className="signup_in_btn" onClick={handleSubmit}>Log In</Button>
+            {Error && <Text className="error-message">{Error}</Text>}
+            <Button className="login_in_btn" onClick={handleSubmit}>Log In</Button>
+
           </div>
           <div className="login_signup">
             <Link to={"/signup"}  className="already">New to FusionX?</Link>
