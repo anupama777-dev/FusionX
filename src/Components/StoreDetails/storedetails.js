@@ -16,6 +16,8 @@ import { Link } from "react-router-dom";
 const StoreDetails = () => {
   const [cookies] = useCookies(["login"]);
   const navigate = useNavigate();
+  const [error, setError] = useState("");
+  
   const [form, setForm] = useState({
     storeName: "",
     storeLogo: null,
@@ -67,9 +69,15 @@ const StoreDetails = () => {
       });
       navigate("/categories");
     } catch (error) {
+      if (error.response && error.response.data && error.response.data.message) {
+        // Store already exists error handling
+        setError('Storename Already Exists. Try again')
+        console.log('Helo')
+      } else {
       console.error("Error creating store:", error.message);
     }
   }
+}
 
   function handleLogoChange(e) {
     updateForm({ storeLogo: e.target.files[0] });
@@ -233,6 +241,7 @@ const StoreDetails = () => {
                 />
               </div>
             </div>
+            {error && <Text className="error-message">{error}</Text>}
             <div className="proceed_btn">
               <button className="proceed" type="submit">
                 Proceed <span className="arrow">&#10132;</span>
