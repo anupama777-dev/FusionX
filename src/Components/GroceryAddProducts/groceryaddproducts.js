@@ -20,6 +20,7 @@ const GroceryAddProducts = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+  const storeID = searchParams.get("store");
   const category = searchParams.get("category");
   const theme = searchParams.get("theme")
   const [form, setForm] = useState({
@@ -90,18 +91,27 @@ const GroceryAddProducts = () => {
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
         <div className="header_categories">
-          <Tabs className="tabs" variant="unstyled">
+        <Tabs className="tabs" variant="unstyled">
             <TabList>
               <Link to={"/storedetails"}>
                 <Tab className="disabled">Store Details</Tab>
               </Link>
-              <Link to={"/categories"}>
+              <Link to={{
+                  pathname: "/categories",
+                  search: `?store=${storeID}`,
+                }}>
                 <Tab className="disabled">Categories</Tab>
               </Link>
-              <Link to={`/choosetheme?category=${category}`}>
+              <Link to={{
+                  pathname: "/choosetheme",
+                  search: `?store=${storeID}category=${category}`,
+                }}>
                 <Tab className="disabled">Choose Theme</Tab>
               </Link>
-              <Link to={`/customizetheme?category=${category}&theme=${theme}`}>
+              <Link to={{
+                  pathname: "/customizetheme",
+                  search: `?store=${storeID}category=${category}&theme=${theme}`,
+                }}>
                 <Tab className="disabled">Customize Theme</Tab>
               </Link>
               <Tab _isselected="true">Add Products</Tab>
