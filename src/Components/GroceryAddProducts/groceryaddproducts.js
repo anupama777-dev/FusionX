@@ -18,7 +18,6 @@ import {
 import { Link } from "react-router-dom";
 const GroceryAddProducts = () => {
   const navigate = useNavigate();
-  const [Error, setError] = useState('');
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const category = searchParams.get("category");
@@ -83,11 +82,7 @@ const GroceryAddProducts = () => {
       });
       navigate("/");
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        setError('Product Name Already Exists');
-      } else {
-        console.error("Error adding product:", error.message);
-      }
+      console.error("Error adding product:", error.message);
     }
   }
   return (
@@ -284,7 +279,6 @@ const GroceryAddProducts = () => {
                 </Select>
               </div>
             </div>
-            {Error && <Text className="error-message">{Error}</Text>}
             <div className="proceed_btn">
               <button className="proceed" type="submit">
                 Proceed <span className="arrow">&#10132;</span>

@@ -19,7 +19,6 @@ const ElectronicsAddProducts = () => {
   const searchParams = new URLSearchParams(location.search);
   const category = searchParams.get("category");
   const theme = searchParams.get("theme")
-  const [Error, setError] = useState('');
   const [form, setForm] = useState({
     productType: "",
     productName: "",
@@ -87,11 +86,7 @@ const ElectronicsAddProducts = () => {
       });
       navigate("/");
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        setError('Product Name Already Exists');
-      } else {
-        console.error("Error adding product:", error.message);
-      }
+      console.error("Error adding product:", error.message);
     }
   }
   return (
@@ -279,7 +274,7 @@ const ElectronicsAddProducts = () => {
                 />
                 <Text className="sub-txt">Colors</Text>
                 <Input
-                  className="input-box"
+                  className="input-box-1"
                   placeholder="Enter the colors (comma-separated)"
                   name="productColorList"
                   value={form.productColorList.join(",")}
@@ -300,8 +295,9 @@ const ElectronicsAddProducts = () => {
                   readOnly
                 />
                 <Text className="sub-txt">Types of Materials</Text>
+                <div className="color-box">
                   <Input
-                    className="input-box"
+                    className="input-box-1"
                     placeholder="Enter the materials (comma-separated)"
                     name="productMaterialList"
                     value={form.productMaterialList.join(",")}
@@ -311,9 +307,9 @@ const ElectronicsAddProducts = () => {
                       })
                     }
                   />
+                </div>
               </div>
             </div>
-            {Error && <Text className="error-message">{Error}</Text>}
             <div className="proceed_btn">
               <button className="proceed" type="submit">
                 Proceed <span className="arrow">&#10132;</span>

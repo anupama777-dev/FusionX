@@ -16,7 +16,6 @@ import {
 import { Link } from "react-router-dom";
 const ClothingAddProducts = () => {
   const navigate = useNavigate();
-  const [Error, setError] = useState('');
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const category = searchParams.get("category");
@@ -98,13 +97,8 @@ const ClothingAddProducts = () => {
         productMaterialList: [],
       });
       navigate("/");
-    } 
-    catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        setError('Product Name Already Exists');
-      } else {
-        console.error("Error adding product:", error.message);
-      }
+    } catch (error) {
+      console.error("Error adding product:", error.message);
     }
   }
   return (
@@ -363,7 +357,7 @@ const ClothingAddProducts = () => {
                 />
                 <Text className="sub-txt">Colors</Text>
                 <Input
-                  className="input-box"
+                  className="input-box-1"
                   placeholder="Enter the colors (comma-separated)"
                   name="productColorList"
                   value={form.productColorList.join(",")}
@@ -383,8 +377,9 @@ const ClothingAddProducts = () => {
                   readOnly
                 />
                 <Text className="sub-txt">Types of Materials</Text>
+                <div className="color-box">
                   <Input
-                    className="input-box"
+                    className="input-box-1"
                     placeholder="Enter the materials (comma-separated)"
                     name="productMaterialList"
                     value={form.productMaterialList.join(",")}
@@ -394,9 +389,9 @@ const ClothingAddProducts = () => {
                       })
                     }
                   />
+                </div>
               </div>
             </div>
-            {Error && <Text className="error-message">{Error}</Text>}
             <div className="proceed_btn">
               <button className="proceed" type="submit">
                 Proceed <span className="arrow">&#10132;</span>

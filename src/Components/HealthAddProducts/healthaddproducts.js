@@ -22,7 +22,6 @@ const HealthAddProducts = () => {
   const searchParams = new URLSearchParams(location.search);
   const category = searchParams.get("category");
   const theme = searchParams.get("theme")
-  const [Error, setError] = useState('');
   const [form, setForm] = useState({
     productType: "",
     productName: "",
@@ -83,11 +82,7 @@ const HealthAddProducts = () => {
       });
       navigate("/");
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
-        setError('Product Name Already Exists');
-      } else {
-        console.error("Error adding product:", error.message);
-      }
+      console.error("Error adding product:", error.message);
     }
   }
   return (
@@ -284,7 +279,6 @@ const HealthAddProducts = () => {
                 </Select>
               </div>
             </div>
-            {Error && <Text className="error-message">{Error}</Text>}
             <div className="proceed_btn">
               <button className="proceed" type="submit">
                 Proceed <span className="arrow">&#10132;</span>
