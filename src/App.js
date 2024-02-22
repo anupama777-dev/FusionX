@@ -23,7 +23,9 @@ import Login from './Components/LogIn/login';
 import Profile from './Components/Profile/profile';
 import Signup from './Components/Signup/signup';
 import StoreDetails from './Components/StoreDetails/storedetails';
+import EditStore from './Components/EditStore/editstore';
 import UserHome from './Components/UserHome/userhome';
+import MyStore from './Components/MyStore/mystore';
 
 function App() {
   return (
@@ -40,6 +42,7 @@ function App() {
             <Route path="/othersaddproducts" exact element={<OthersAddProducts/>}></Route>
             <Route path="/categories" exact element={<Categories/>}></Route>
 
+
             <Route path="/choosetheme" exact element={<ChooseTheme/>}></Route>
             <Route path="/electronicstheme" exact element={<ElectronicsTheme/>}></Route>
             <Route path="/clothingtheme" exact element={<ClothingTheme/>}></Route>
@@ -52,7 +55,9 @@ function App() {
             <Route path="/profile" exact element={<Profile/>}></Route>
             <Route path="/signup" exact element={<Signup/>}></Route>
             <Route path="/storedetails" exact element={<StoreDetails/>}></Route>
+            <Route path="/editstore" exact element={<EditStore/>}></Route>
             <Route path="/userhome" exact element={<UserHome/>}></Route>
+            <Route path="/mystore" exact element={<MyStore/>}></Route>
           </Routes>
         </div>
       </Router>
