@@ -39,18 +39,18 @@ function Signup() {
   }
 
   console.log(JSON.stringify(formData))
-
-  const response = await axios.post('http://localhost:3001/signup/' + username);
-    const data = response.data
-    console.log(data)
-    if (data.length > 0) {
-      if (username === data[0].username) {
-        setError('Account Exists.Log In to your Account')
-      }
-      else { 
-             navigate("/login");    
-           }
+  try {
+    const response = await axios.post('http://localhost:3001/signup', formData);
+    const data = response.data;
+    console.log(data);
+    navigate("/login");
+  } catch (error) {
+    if (error.response && error.response.data && error.response.data.message) {
+      setError('Username Already Exists. Try again');
+    } else {
+      console.error("Error creating user:", error.message);
     }
+}
    };
 
   return (
