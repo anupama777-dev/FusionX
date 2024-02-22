@@ -14,12 +14,11 @@ function Categories() {
               <Link to="/storedetails">
               <Tab className="disabled">Store Details</Tab>
               </Link>
-
-              {/* <Tab isDisabled className="disabled">
-                Choose Theme
-              </Tab> */}
               <Tab _isselected="true">
                 Categories
+              </Tab>
+              <Tab isDisabled className="disabled">
+                Choose Theme
               </Tab>
               <Tab isDisabled className="disabled">
                 Customize Theme
@@ -71,60 +70,60 @@ function Categories() {
         </div>
         <div className="categories_container">
           <div className="cat1">
-            <Link to={"/electronicstheme"} className="cat">
+            <Link to={{ pathname: "/choosetheme", search: "?category=electronics" }} className="cat">
                 <Image className="cat_img" src="/images/electronics.svg" />
                 <Text className="cat_txt">Electronics</Text>
             </Link>
-            <Link to={"/clothingtheme"} className="cat">
+            <Link to={{ pathname: "/choosetheme", search: "?category=clothing" }} className="cat">
                 <Image className="cat_img" src="/images/clothing.svg" />
                 <Text className="cat_txt">Clothing & Apparel</Text>
             </Link>
-            <Link to={"/grocerytheme"} className="cat">
+            <Link to={{ pathname: "/choosetheme", search: "?category=grocery" }} className="cat">
                 <Image className="cat_img" src="/images/grocery.svg" />
                 <Text className="cat_txt">Grocery</Text>
             </Link>
           </div>
           <div className="cat2">
-          <Link to={"/foodtheme"} className="cat">
+          <Link to={{ pathname: "/choosetheme", search: "?category=food" }} className="cat">
                 <Image className="cat_img" src="/images/food.svg" />
                 <Text className="cat_txt">Food & Beverages</Text>
             </Link>
-            <Link to={"/healththeme"} className="cat">
+            <Link to={{ pathname: "/choosetheme", search: "?category=health" }} className="cat">
                 <Image className="cat_img" src="/images/health.svg" />
                 <Text className="cat_txt">Health & Beauty</Text>
             </Link>
-            <Link to={"/otherstheme"} className="cat">
+            <Link to={{ pathname: "/choosetheme", search: "?category=others" }} className="cat">
                 <Image className="others_img" src="/images/others.svg" />
                 <Text className="others_txt">Others</Text>
             </Link>
           </div>
 
           <div className="cat1_md">
-            <Link to={"/electronicstheme"} className="cat">
+            <Link to={{ pathname: "/choosetheme", search: "?category=electronics" }} className="cat">
                 <Image className="cat_img" src="/images/electronics.svg" />
                 <Text className="cat_txt">Electronics</Text>
             </Link>
-            <Link to={"/clothingtheme"} className="cat">
+            <Link to={{ pathname: "/choosetheme", search: "?category=clothing" }} className="cat">
                 <Image className="cat_img" src="/images/clothing.svg" />
                 <Text className="cat_txt">Clothing & Apparel</Text>
             </Link>
           </div>
           <div className="cat2_md">
-          <Link to={"/grocerytheme"} className="cat">
+          <Link to={{ pathname: "/choosetheme", search: "?category=grocery" }} className="cat">
                 <Image className="cat_img" src="/images/grocery.svg" />
                 <Text className="cat_txt">Grocery</Text>
             </Link>
-            <Link to={"/foodtheme"} className="cat">
+            <Link to={{ pathname: "/choosetheme", search: "?category=food" }} className="cat">
                 <Image className="cat_img" src="/images/food.svg" />
                 <Text className="cat_txt">Food & Beverages</Text>
             </Link>
           </div>
           <div className="cat3_md">
-          <Link to={"/healththeme"} className="cat">
+          <Link to={{ pathname: "/choosetheme", search: "?category=health" }} className="cat">
                 <Image className="cat_img" src="/images/health.svg" />
                 <Text className="cat_txt">Health & Beauty</Text>
             </Link>
-            <Link to={"/otherstheme"}  className="cat">
+            <Link to={{ pathname: "/choosetheme", search: "?category=others" }}  className="cat">
                 <Image className="others_img" src="/images/others.svg" />
                 <Text className="others_txt">Others</Text>
             </Link>
