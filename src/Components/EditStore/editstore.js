@@ -9,8 +9,8 @@ function EditStore() {
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
         <div className="header_categories">
-            <Text className="edit_store_txt">Edit Store Details</Text> 
-      </div>
+          <Text className="edit_store_txt">Edit Store Details</Text>
+        </div>
       </div>
       <div className="line_div1">
         <Image className="line" src="/images/line_1.svg" />
@@ -51,9 +51,8 @@ function EditStore() {
           </div>
         </div>
         <div className="categories_container">
-
-      <form>
-      <div className="store-details">
+          <form>
+            <div className="store-details">
               <div className="store-details-box">
                 <Text className="storetxt">Store Details</Text>
                 <Text className="sub-txt">Store Name</Text>
@@ -85,8 +84,6 @@ function EditStore() {
                     .jpg , .jpeg , .pdf , .svg files
                   </Text>
                 </div>
-
-                
               </div>
               <div className="store-contact-details-box">
                 <Text className="storetxt">Store Contact Details</Text>
@@ -140,11 +137,9 @@ function EditStore() {
                 Proceed <span className="arrow">&#10132;</span>
               </button>
             </div>
-      </form>
+          </form>
+        </div>
       </div>
-      </div>
-
-      
     </div>
   );
 }

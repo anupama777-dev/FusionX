@@ -18,6 +18,7 @@ const ClothingAddProducts = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+  const storeID = searchParams.get("store");
   const category = searchParams.get("category");
   const theme = searchParams.get("theme")
   const [form, setForm] = useState({
@@ -111,13 +112,22 @@ const ClothingAddProducts = () => {
               <Link to={"/storedetails"}>
                 <Tab className="disabled">Store Details</Tab>
               </Link>
-              <Link to={"/categories"}>
+              <Link to={{
+                  pathname: "/categories",
+                  search: `?store=${storeID}`,
+                }}>
                 <Tab className="disabled">Categories</Tab>
               </Link>
-              <Link to={`/choosetheme?category=${category}`}>
+              <Link to={{
+                  pathname: "/choosetheme",
+                  search: `?store=${storeID}category=${category}`,
+                }}>
                 <Tab className="disabled">Choose Theme</Tab>
               </Link>
-              <Link to={`/customizetheme?category=${category}&theme=${theme}`}>
+              <Link to={{
+                  pathname: "/customizetheme",
+                  search: `?store=${storeID}category=${category}&theme=${theme}`,
+                }}>
                 <Tab className="disabled">Customize Theme</Tab>
               </Link>
               <Tab _isselected="true">Add Products</Tab>

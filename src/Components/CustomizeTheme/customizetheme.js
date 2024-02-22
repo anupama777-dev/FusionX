@@ -2,10 +2,12 @@ import { React, useState } from "react";
 import { Image, Tab, Tabs, TabList, Text, Select } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 import "./customizetheme.css";
+import axios from "axios";
 
 function CustomizeTheme() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+  const storeID = searchParams.get("store");
   const category = searchParams.get("category");
   const theme = searchParams.get("theme");
   const [selectedColor, setSelectedColor] = useState(theme);
@@ -13,41 +15,18 @@ function CustomizeTheme() {
   const handleColorChange = (event) => {
     setSelectedColor(event.target.value);
   };
-  let themeImageSrc = "";
-  switch (theme) {
-    case "gray":
-      themeImageSrc = `/images/${selectedColor}_theme_ss.png`;
-      break;
-    case "blue":
-      themeImageSrc = `/images/${selectedColor}_theme_ss.png`;
-      break;
-    case "teal":
-      themeImageSrc = `/images/${selectedColor}_theme_ss.png`;
-      break;
-    case "cyan":
-      themeImageSrc = `/images/${selectedColor}_theme_ss.png`;
-      break;
-    case "orange":
-      themeImageSrc = `/images/${selectedColor}_theme_ss.png`;
-      break;
-    case "green":
-      themeImageSrc = `/images/${selectedColor}_theme_ss.png`;
-      break;
-    case "yellow":
-      themeImageSrc = `/images/${selectedColor}_theme_ss.png`;
-      break;
-    case "red":
-      themeImageSrc = `/images/${selectedColor}_theme_ss.png`;
-      break;
-    case "purple":
-      themeImageSrc = `/images/${selectedColor}_theme_ss.png`;
-      break;
-    case "pink":
-      themeImageSrc = `/images/${selectedColor}_theme_ss.png`;
-      break;
-    default:
-      themeImageSrc = "";
-  }
+  const handleProceed = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:3001/customizetheme?store=${storeID}&category=${category}&theme=${selectedColor}`
+      );
+      console.log("Response: ", response.data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
+  let themeImageSrc = `/images/${selectedColor}_theme_ss.png`;
   return (
     <div className="customize_page">
       <div className="header1">
@@ -58,13 +37,18 @@ function CustomizeTheme() {
               <Link to={"/storedetails"}>
                 <Tab className="disabled">Store Details</Tab>
               </Link>
-              <Link to={"/categories"}>
+              <Link
+                to={{
+                  pathname: "/categories",
+                  search: `?store=${storeID}`,
+                }}
+              >
                 <Tab className="disabled">Categories</Tab>
               </Link>
               <Link
                 to={{
                   pathname: "/choosetheme",
-                  search: `?category=${category}`,
+                  search: `?store=${storeID}category=${category}`,
                 }}
               >
                 <Tab className="disabled">Choose Theme</Tab>
@@ -182,7 +166,14 @@ function CustomizeTheme() {
               </Select>
             </div>
             <div className="proceed_btn1">
-              <Link to={{ pathname: `/${category}addproducts`, search: `?category=${category}&theme=${theme}` }} className="proceed">
+              <Link
+                to={{
+                  pathname: `/${category}addproducts`,
+                  search: `?store=${storeID}&category=${category}&theme=${selectedColor}`,
+                }}
+                onClick={handleProceed}
+                className="proceed"
+              >
                 Proceed <span className="arrow">&#10132;</span>
               </Link>
             </div>

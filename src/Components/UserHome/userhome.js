@@ -105,6 +105,7 @@ const UserHome = () => {
                 imagePath = `http://localhost:3001/${imagePath}`;
               }
               return (
+                <Link to={{ pathname: "/mystore", search: `?store=${store._id}` }}>
                 <div className={`b${index + 1}`} key={store._id}>
                   <img
                     className="previmg"
@@ -112,6 +113,7 @@ const UserHome = () => {
                     alt={`Store ${index + 1} Logo`}
                   />
                 </div>
+                </Link>
               );
             })}
           </div>

@@ -1,15 +1,49 @@
 import React from "react";
 import "./mystore.css";
-import { Image, Text, Input, Textarea,Button } from "@chakra-ui/react";
-import { Card, CardHeader, CardBody, CardFooter } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
+import { Image, Text } from "@chakra-ui/react";
+import { Card, CardBody, CardFooter } from "@chakra-ui/react";
+import { Link, useLocation } from "react-router-dom";
+import axios from "axios";
+import { useState, useEffect } from "react";
 
 function MyStore() {
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const storeID = searchParams.get("store");
+  const [storeData, setStoreData] = useState({ stores: [], products: [] });
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const fetchStoreData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/mystore/${storeID}`
+        );
+        console.log("Response data:", response.data);
+
+        setStoreData(response.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching stores:", error);
+        setStoreData({ stores: [], products: [] });
+        setLoading(false);
+      }
+    };
+    fetchStoreData();
+  }, [storeID]);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+  const { stores, products } = storeData;
+  const category = stores[0].storeCategory;
+  const theme = stores[0].storeTheme;
+
   return (
     <div className="store-details-page">
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
-        <div className="header_categories"></div>
+        <div className="header_categories">
+          <Text className="edit_store_txt">My Stores</Text>
+        </div>
       </div>
       <div className="line_div1">
         <Image className="line" src="/images/line_1.svg" />
@@ -50,107 +84,157 @@ function MyStore() {
           </div>
         </div>
         <div className="categories_container">
-          <form>
-            <div className="store-details">
-              <div className="edit-store-details-box">
-                <div className="edit_option">
-                  <Text className="storetxt">Store Details</Text>
-                  <Link to={"/editstore"}>
-                    {/* <Text className="edit_txt" >Edit</Text> */}
-                    <Image
-                      className="edit_icon"
-                      src="/images/edit_button.svg"
-                    />
-                  </Link>
-                </div>
-                <Text className="sub-txt">Store Name</Text>
-                <Input
-                  className="input-box"
-                  placeholder="Enter Store Name"
-                  name="storeName"
-                />
-
-                <Text className="sub-txt">Store Description</Text>
-                <Textarea
-                  className="input-box"
-                  name="storeDescription"
-                  placeholder="Enter Store Description"
-                ></Textarea>
+          <div className="store-details">
+            <div className="edit-store-details-box">
+              <div className="edit_option">
+                <Text className="storetxt">Store Details</Text>
+                <Link to={"/editstore"}>
+                  <Image className="edit_icon" src="/images/edit_button.svg" />
+                </Link>
               </div>
-            </div>
-          </form>
-          <div className="edit-products-container">
-            <div className="product-card">
-              <Card bg="#1A202C">
-                <CardBody>
-                  <Image className="edit-product-image" src="/images/home-prev.svg" />
-                  <div className="edit-prdct-icon-txt">
-                  <Text className="edit-product-txt">Product 1</Text>
-                  {/* <Image className="edit-product-icon" src="/images/edit_button.svg"/> */}
-                  </div>
-                </CardBody>
-                <CardFooter>
-                  <Link to={'/clothingaddproducts'} className="edit-product-link">Edit</Link>
-                </CardFooter>
-              </Card>
-            </div>
-            <div className="product-card">
-              <Card bg="#1A202C">
-                <CardBody>
-                  <Image className="edit-product-image" src="/images/home-prev.svg" />
-                  <Text className="edit-product-txt">Product 2</Text>
-                </CardBody>
-                <CardFooter>
-                <Link to={'/clothingaddproducts'} className="edit-product-link">Edit</Link>
-                </CardFooter>
-              </Card>
-            </div>
-            <div className="product-card">
-              <Card bg="#1A202C">
-                <CardBody>
-                  <Image className="edit-product-image" src="/images/home-prev.svg" />
-                  <Text className="edit-product-txt">Product 3</Text>
-                </CardBody>
-                <CardFooter>
-                <Link to={'/clothingaddproducts'} className="edit-product-link">Edit</Link>
-                </CardFooter>
-              </Card>
+              {stores.length > 0 && (
+                <div>
+                  {stores.map((store, index) => (
+                    <div key={index}>
+                      <div className="store-name-desc">
+                        <Text className="sub-txt-left">Store Name :</Text>
+                        <Text className="sub-txt-right">{store.storeName}</Text>
+                      </div>
+                      <div className="store-name-desc">
+                        <Text className="sub-txt-left">
+                          Store Description :
+                        </Text>
+                        <Text className="sub-txt-right">
+                          {store.storeDescription}
+                        </Text>
+                      </div>
+                      <div className="store-name-desc">
+                        <Text className="sub-txt-left">Store Address :</Text>
+                        <Text className="sub-txt-right">
+                          {store.storeAddress}
+                        </Text>
+                      </div>
+                      <div className="store-name-desc">
+                        <Text className="sub-txt-left">
+                          Store Contact Number :
+                        </Text>
+                        <Text className="sub-txt-right">
+                          {store.storeContact}
+                        </Text>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
           <div className="edit-products-container">
-            <div className="product-card">
-              <Card bg="#1A202C">
-                <CardBody>
-                  <Image className="edit-product-image" src="/images/home-prev.svg" />
-                  <Text className="edit-product-txt">Product 1</Text>
-                </CardBody>
-                <CardFooter>
-                <Link to={'/clothingaddproducts'} className="edit-product-link">Edit</Link>
-                </CardFooter>
-              </Card>
+            <div className="products-heading">
+              <Text className="storetxt">Products</Text>
+              <Link
+                to={`/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}`}
+                className="add-product-btn"
+              >
+                + Add Product
+              </Link>
             </div>
-            <div className="product-card">
-              <Card bg="#1A202C">
-                <CardBody>
-                  <Image className="edit-product-image" src="/images/home-prev.svg" />
-                  <Text className="edit-product-txt">Product 2</Text>
-                </CardBody>
-                <CardFooter>
-                <Link to={'/clothingaddproducts'} className="edit-product-link">Edit</Link>
-                </CardFooter>
-              </Card>
+            <div className="products-container1">
+              {products &&
+                products.map((product, index) => {
+                  let imagePath = product.productImage.image;
+                  if (typeof imagePath === "string") {
+                    imagePath = imagePath.replace(/\\/g, "/");
+                    imagePath = `http://localhost:3001/${imagePath}`;
+                  }
+                  console.log(imagePath);
+                  return (
+                    <div key={index} className="product-card">
+                      <Card bg="#1A202C">
+                        <CardBody>
+                          <Image
+                            className="edit-product-image"
+                            src={imagePath}
+                            alt={product.productName}
+                            style={{ width: "150px", height: "120px" }}
+                          />
+                          <div className="edit-prdct-icon-txt">
+                            <Text className="edit-product-txt">
+                              {product.productName}
+                            </Text>
+                          </div>
+                        </CardBody>
+                        <CardFooter className="footer">
+                          <Link
+                            to={`/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}`}
+                            className="edit-product-link"
+                          >
+                            Edit
+                          </Link>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                  );
+                })}
             </div>
-            <div className="product-card">
-              <Card bg="#1A202C">
-                <CardBody>
-                  <Image className="edit-product-image" src="/images/home-prev.svg" />
-                  <Text className="edit-product-txt">Product 3</Text>
-                </CardBody>
-                <CardFooter>
-                <Link to={'/clothingaddproducts'} className="edit-product-link">Edit</Link>
-                </CardFooter>
-              </Card>
-            </div>
+            {/* <div className="products-container1">
+              <div className="product-card">
+                <Card bg="#1A202C">
+                  <CardBody>
+                    <Image
+                      className="edit-product-image"
+                      src="/images/home-prev.svg"
+                    />
+                    <Text className="edit-product-txt">Product 1</Text>
+                  </CardBody>
+                  <CardFooter>
+                    <Link
+                      to={"/clothingaddproducts"}
+                      className="edit-product-link"
+                    >
+                      Edit
+                    </Link>
+                  </CardFooter>
+                </Card>
+              </div>
+              <div className="product-card">
+                <Card bg="#1A202C">
+                  <CardBody>
+                    <Image
+                      className="edit-product-image"
+                      src="/images/home-prev.svg"
+                    />
+                    <Text className="edit-product-txt">Product 2</Text>
+                  </CardBody>
+                  <CardFooter>
+                    <Link
+                      to={"/clothingaddproducts"}
+                      className="edit-product-link"
+                    >
+                      Edit
+                    </Link>
+                  </CardFooter>
+                </Card>
+              </div>
+              <div className="product-card">
+                <Card bg="#1A202C">
+                  <CardBody>
+                    <Image
+                      className="edit-product-image"
+                      src="/images/home-prev.svg"
+                    />
+                    <Text className="edit-product-txt">Product 3</Text>
+                  </CardBody>
+                  <CardFooter>
+                    <Link
+                      to={"/clothingaddproducts"}
+                      className="edit-product-link"
+                    >
+                      Edit
+                    </Link>
+                  </CardFooter>
+                </Card>
+              </div>
+            </div> */}
           </div>
         </div>
       </div>

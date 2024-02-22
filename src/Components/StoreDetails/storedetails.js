@@ -49,11 +49,12 @@ const StoreDetails = () => {
     formData.append("storeState", form.storeState);
     formData.append("storeCity", form.storeCity);
     try {
-      await axios.post("http://localhost:3001/storedetails", formData, {
+      const response = await axios.post("http://localhost:3001/storedetails", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
+      const newStoreId = response.data.store_id;
       setForm({
         storeName: "",
         storeLogo: null,
@@ -65,12 +66,11 @@ const StoreDetails = () => {
         storeState: "",
         storeCity: "",
       });
-      navigate("/categories");
+      navigate(`/categories?store=${newStoreId}`);
     } catch (error) {
       console.error("Error creating store:", error.message);
     }
   }
-
   function handleLogoChange(e) {
     updateForm({ storeLogo: e.target.files[0] });
   }

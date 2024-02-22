@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 function ChooseTheme() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
+  const storeID = searchParams.get("store");
   const category = searchParams.get("category");
   return (
     <div className="choose_theme_page">
@@ -17,7 +18,10 @@ function ChooseTheme() {
               <Link to={"/storedetails"}>
                 <Tab className="disabled">Store Details</Tab>
               </Link>
-              <Link to={"/categories"}>
+              <Link to={{
+                  pathname: "/categories",
+                  search: `?store=${storeID}`,
+                }}>
                 <Tab className="disabled">Categories</Tab>
               </Link>
               <Tab _isselected="true">Choose Theme</Tab>
@@ -65,24 +69,24 @@ function ChooseTheme() {
           {category === "electronics" && (
             <>
               <div className="theme1 gray">
-                <Link to={{ pathname: "/customizetheme", search: "?category=electronics&theme=gray" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=electronics&theme=gray` }}>
                   <Image
                     className="theme1img"
                     src="/images/gray_theme_ss.png"
                   />
                 </Link>
-                <Link to={{ pathname: "/customizetheme", search: "?category=electronics&theme=gray" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=electronics&theme=gray` }}>
                   <Text className="theme1txt">Asher</Text>
                 </Link>
               </div>
               <div className="theme2 blue">
-                <Link to={{ pathname: "/customizetheme", search: "?category=electronics&theme=blue" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=electronics&theme=blue` }}>
                   <Image
                     className="theme2img"
                     src="/images/blue_theme_ss.png"
                   />
                 </Link>
-                <Link to={{ pathname: "/customizetheme", search: "?category=electronics&theme=blue" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=electronics&theme=blue` }}>
                   <Text className="theme2txt">Ocean</Text>
                 </Link>
               </div>
@@ -91,24 +95,24 @@ function ChooseTheme() {
           {category === "clothing" && (
             <>
               <div className="theme1 teal">
-                <Link to={{ pathname: "/customizetheme", search: "?category=clothing&theme=teal" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=clothing&theme=teal` }}>
                   <Image
                     className="theme1img"
                     src="/images/teal_theme_ss.png"
                   />
                 </Link>
-                <Link to={{ pathname: "/customizetheme", search: "?category=clothing&theme=teal" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=clothing&theme=teal` }}>
                   <Text className="theme1txt">Aqua</Text>
                 </Link>
               </div>
               <div className="theme2 cyan">
-                <Link to={{ pathname: "/customizetheme", search: "?category=clothing&theme=cyan" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=clothing&theme=cyan` }}>
                   <Image
                     className="theme2img"
                     src="/images/cyan_theme_ss.png"
                   />
                 </Link>
-                <Link to={{ pathname: "/customizetheme", search: "?category=clothing&theme=cyan" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=clothing&theme=cyan` }}>
                   <Text className="theme2txt">Neptune</Text>
                 </Link>
               </div>
@@ -117,21 +121,21 @@ function ChooseTheme() {
           {category === "grocery" && (
             <>
               <div className="theme1 orange">
-                <Link to={{ pathname: "/customizetheme", search: "?category=grocery&theme=orange" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=grocery&theme=orange` }}>
                   <Image
                     className="theme1img"
                     src="/images/orange_theme_ss.png"
                   />
                 </Link>
-                <Link to={{ pathname: "/customizetheme", search: "?category=grocery&theme=orange" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=grocery&theme=orange` }}>
                   <Text className="theme1txt">Amber</Text>
                 </Link>
               </div>
               <div className="theme2 green">
-                <Link to={{ pathname: "/customizetheme", search: "?category=grocery&theme=green" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=grocery&theme=green` }}>
                   <Image className="theme2img" src="/images/green_theme_ss.png" />
                 </Link>
-                <Link to={{ pathname: "/customizetheme", search: "?category=grocery&theme=green" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=grocery&theme=green` }}>
                   <Text className="theme2txt">Ivy</Text>
                 </Link>
               </div>
@@ -140,21 +144,21 @@ function ChooseTheme() {
           {category === "food" && (
             <>
               <div className="theme1 yellow">
-                <Link to={{ pathname: "/customizetheme", search: "?category=food&theme=yellow" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=food&theme=yellow` }}>
                   <Image
                     className="theme1img"
                     src="/images/yellow_theme_ss.png"
                   />
                 </Link>
-                <Link to={{ pathname: "/customizetheme", search: "?category=food&theme=yellow" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=food&theme=yellow` }}>
                   <Text className="theme1txt">Sunny</Text>
                 </Link>
               </div>
               <div className="theme2 red">
-                <Link to={{ pathname: "/customizetheme", search: "?category=food&theme=red" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=food&theme=red` }}>
                   <Image className="theme2img" src="/images/red_theme_ss.png" />
                 </Link>
-                <Link to={{ pathname: "/customizetheme", search: "?category=food&theme=red" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=food&theme=red` }}>
                   <Text className="theme2txt">Ruby</Text>
                 </Link>
               </div>
@@ -163,21 +167,21 @@ function ChooseTheme() {
           {category === "health" && (
             <>
               <div className="theme1 purple">
-                <Link to={{ pathname: "/customizetheme", search: "?category=health&theme=purple" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=health&theme=purple` }}>
                   <Image
                     className="theme1img"
                     src="/images/purple_theme_ss.png"
                   />
                 </Link>
-                <Link to={{ pathname: "/customizetheme", search: "?category=health&theme=purple" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=health&theme=purple` }}>
                   <Text className="theme1txt">Wisteria</Text>
                 </Link>
               </div>
               <div className="theme2 pink">
-                <Link to={{ pathname: "/customizetheme", search: "?category=health&theme=pink" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=health&theme=pink` }}>
                   <Image className="theme2img" src="/images/pink_theme_ss.png" />
                 </Link>
-                <Link to={{ pathname: "/customizetheme", search: "?category=health&theme=pink" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=health&theme=pink` }}>
                   <Text className="theme2txt">Sakura</Text>
                 </Link>
               </div>
@@ -186,21 +190,21 @@ function ChooseTheme() {
           {category === "others" && (
             <>
               <div className="theme1 gray">
-                <Link to={{ pathname: "/customizetheme", search: "?category=others&theme=gray" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=others&theme=gray` }}>
                   <Image
                     className="theme1img"
                     src="/images/gray_theme_ss.png"
                   />
                 </Link>
-                <Link to={{ pathname: "/customizetheme", search: "?category=others&theme=gray" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=others&theme=gray` }}>
                   <Text className="theme1txt">Asher</Text>
                 </Link>
               </div>
               <div className="theme2 blue">
-                <Link to={{ pathname: "/customizetheme", search: "?category=others&theme=blue" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=others&theme=blue` }}>
                   <Image className="theme2img" src="/images/blue_theme_ss.png" />
                 </Link>
-                <Link to={{ pathname: "/customizetheme", search: "?category=others&theme=blue" }}>
+                <Link to={{ pathname: "/customizetheme", search: `?store=${storeID}&category=others&theme=blue` }}>
                   <Text className="theme2txt">Ocean</Text>
                 </Link>
               </div>
