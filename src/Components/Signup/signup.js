@@ -37,8 +37,6 @@ function Signup() {
     'email': email,
     'password': password,
   }
-
-  console.log(JSON.stringify(formData))
   try {
     const response = await axios.post('http://localhost:3001/signup', formData);
     const data = response.data;
