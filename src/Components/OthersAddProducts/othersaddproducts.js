@@ -119,7 +119,7 @@ const OthersAddProducts = () => {
     <div className="store-details-page">
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
-        {add !== "1" && (
+        {!add && (
           <div className="header_categories">
             <Tabs className="tabs" variant="unstyled">
               <TabList>
@@ -155,11 +155,21 @@ const OthersAddProducts = () => {
             </Tabs>
           </div>
         )}
-        {add == "1" && (
+        {add === "1" && (
           <div className="header_categories">
             <Tabs className="tabs" variant="unstyled">
               <TabList>
-                <Tab _isselected="true">Add Products</Tab>
+                <Tab
+                  _isselected="true"
+                  style={{
+                    color: "#edf2f7",
+                    fontSize: "22px",
+                    fontWeight: "500",
+                    opacity: "0.7",
+                  }}
+                >
+                  Add Products
+                </Tab>
               </TabList>
             </Tabs>
           </div>
