@@ -41,8 +41,9 @@ function MyStore() {
     <div className="store-details-page">
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
-          <Text className="edit_store_txt">My Store Details</Text>
-      </div>
+        <div className="header_categories">
+          <Text className="edit_store_txt">My Stores</Text>
+        </div>      </div>
       <div className="line_div1">
         <Image className="line" src="/images/line_1.svg" />
       </div>
