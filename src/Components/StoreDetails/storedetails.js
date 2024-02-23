@@ -55,6 +55,7 @@ const StoreDetails = () => {
         },
       });
       const newStoreId = response.data.store_id;
+      console.log('Store id: ', newStoreId)
       setForm({
         storeName: "",
         storeLogo: null,

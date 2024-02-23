@@ -19,7 +19,8 @@ const ElectronicsAddProducts = () => {
   const searchParams = new URLSearchParams(location.search);
   const storeID = searchParams.get("store");
   const category = searchParams.get("category");
-  const theme = searchParams.get("theme")
+  const theme = searchParams.get("theme");
+  const add = searchParams.get("add")
   const [form, setForm] = useState({
     productType: "",
     productName: "",
@@ -67,11 +68,15 @@ const ElectronicsAddProducts = () => {
     formData.append("productMaterialCount", productMaterialCount);
     formData.append("productMaterialList", form.productMaterialList);
     try {
-      await axios.post("http://localhost:3001/electronicsaddproducts", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        `http://localhost:3001/electronicsaddproducts?store=${storeID}&category=electronics&theme=${theme}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       setForm({
         productType: "",
         productName: "",
@@ -94,42 +99,59 @@ const ElectronicsAddProducts = () => {
     <div className="store-details-page">
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
-        <div className="header_categories">
-        <Tabs className="tabs" variant="unstyled">
-            <TabList>
-              <Link to={"/storedetails"}>
-                <Tab className="disabled">Store Details</Tab>
-              </Link>
-              <Link to={{
-                  pathname: "/categories",
-                  search: `?store=${storeID}`,
-                }}>
-                <Tab className="disabled">Categories</Tab>
-              </Link>
-              <Link to={{
-                  pathname: "/choosetheme",
-                  search: `?store=${storeID}category=${category}`,
-                }}>
-                <Tab className="disabled">Choose Theme</Tab>
-              </Link>
-              <Link to={{
-                  pathname: "/customizetheme",
-                  search: `?store=${storeID}category=${category}&theme=${theme}`,
-                }}>
-                <Tab className="disabled">Customize Theme</Tab>
-              </Link>
-              <Tab _isselected="true">Add Products</Tab>
-            </TabList>
-          </Tabs>
-        </div>
+        {add !== "1" && (
+          <div className="header_categories">
+            <Tabs className="tabs" variant="unstyled">
+              <TabList>
+                <Link to={"/storedetails"}>
+                  <Tab className="disabled">Store Details</Tab>
+                </Link>
+                <Link
+                  to={{
+                    pathname: "/categories",
+                    search: `?store=${storeID}`,
+                  }}
+                >
+                  <Tab className="disabled">Categories</Tab>
+                </Link>
+                <Link
+                  to={{
+                    pathname: "/choosetheme",
+                    search: `?store=${storeID}&category=${category}`,
+                  }}
+                >
+                  <Tab className="disabled">Choose Theme</Tab>
+                </Link>
+                <Link
+                  to={{
+                    pathname: "/customizetheme",
+                    search: `?store=${storeID}&category=${category}&theme=${theme}`,
+                  }}
+                >
+                  <Tab className="disabled">Customize Theme</Tab>
+                </Link>
+                <Tab _isselected="true">Add Products</Tab>
+              </TabList>
+            </Tabs>
+          </div>
+        )}
+        {add == "1" && (
+          <div className="header_categories">
+            <Tabs className="tabs" variant="unstyled">
+              <TabList>
+                <Tab _isselected="true">Add Products</Tab>
+              </TabList>
+            </Tabs>
+          </div>
+        )}
       </div>
       <div className="line_div1">
         <Image className="line" src="/images/line_1.svg" />
       </div>
       <div className="categories_body">
-      <div className="dashboard1">
+        <div className="dashboard1">
           <div className="dash_items">
-          <Link  to={"/userhome"}>
+            <Link to={"/userhome"}>
               <Image className="dashboard_home" src="/images/home.svg" />
             </Link>
             <Link className="home_txt" to={"/userhome"}>
@@ -137,7 +159,7 @@ const ElectronicsAddProducts = () => {
             </Link>
           </div>
           <div className="dash_items">
-          <Link to={"/profile"}>
+            <Link to={"/profile"}>
               <Image className="dashboard_profile" src="/images/profile.svg" />
             </Link>
             <Link className="profile_txt" to={"/profile"}>
@@ -145,7 +167,7 @@ const ElectronicsAddProducts = () => {
             </Link>
           </div>
           <div className="dash_items">
-          <Link to={"/help"}>
+            <Link to={"/help"}>
               <Image className="dashboard_help" src="/images/help.svg" />
             </Link>
             <Link className="help_txt" to={"/help"}>
@@ -153,7 +175,7 @@ const ElectronicsAddProducts = () => {
             </Link>
           </div>
           <div className="dash_items">
-          <Link to={"/"}>
+            <Link to={"/"}>
               <Image className="back_dash" src="/images/logout.svg" />
             </Link>
             <Link className="dash_txt" to={"/"}>
@@ -245,7 +267,9 @@ const ElectronicsAddProducts = () => {
                   placeholder="Enter the weight of the product"
                   name="productWeight"
                   value={form.productWeight}
-                  onChange={(e) => updateForm({ productWeight: e.target.value })}
+                  onChange={(e) =>
+                    updateForm({ productWeight: e.target.value })
+                  }
                 />
                 <Text className="sub-txt">Weight Unit</Text>
                 <Select
@@ -255,7 +279,9 @@ const ElectronicsAddProducts = () => {
                   height="40px"
                   name="productWeightUnit"
                   value={form.productWeightUnit}
-                  onChange={(e) => updateForm({ productWeightUnit: e.target.value })}
+                  onChange={(e) =>
+                    updateForm({ productWeightUnit: e.target.value })
+                  }
                 >
                   <option value="kg" className="options">
                     Kg

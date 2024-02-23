@@ -8,6 +8,7 @@ function CustomizeTheme() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const storeID = searchParams.get("store");
+  console.log('Store id: ', storeID)
   const category = searchParams.get("category");
   const theme = searchParams.get("theme");
   const [selectedColor, setSelectedColor] = useState(theme);
@@ -48,7 +49,7 @@ function CustomizeTheme() {
               <Link
                 to={{
                   pathname: "/choosetheme",
-                  search: `?store=${storeID}category=${category}`,
+                  search: `?store=${storeID}&category=${category}`,
                 }}
               >
                 <Tab className="disabled">Choose Theme</Tab>

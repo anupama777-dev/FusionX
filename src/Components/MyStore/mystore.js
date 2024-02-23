@@ -132,13 +132,13 @@ function MyStore() {
             <div className="products-heading">
               <Text className="storetxt">Products</Text>
               <Link
-                to={`/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}`}
+                to={`/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=1`}
                 className="add-product-btn"
               >
                 + Add Product
               </Link>
             </div>
-            <div className="products-container1">
+            <div className="products-container">
               {products &&
                 products.map((product, index) => {
                   let imagePath = product.productImage.image;
@@ -146,7 +146,6 @@ function MyStore() {
                     imagePath = imagePath.replace(/\\/g, "/");
                     imagePath = `http://localhost:3001/${imagePath}`;
                   }
-                  console.log(imagePath);
                   return (
                     <div key={index} className="product-card">
                       <Card bg="#1A202C">
@@ -176,65 +175,43 @@ function MyStore() {
                   );
                 })}
             </div>
-            {/* <div className="products-container1">
-              <div className="product-card">
-                <Card bg="#1A202C">
-                  <CardBody>
-                    <Image
-                      className="edit-product-image"
-                      src="/images/home-prev.svg"
-                    />
-                    <Text className="edit-product-txt">Product 1</Text>
-                  </CardBody>
-                  <CardFooter>
-                    <Link
-                      to={"/clothingaddproducts"}
-                      className="edit-product-link"
-                    >
-                      Edit
-                    </Link>
-                  </CardFooter>
-                </Card>
-              </div>
-              <div className="product-card">
-                <Card bg="#1A202C">
-                  <CardBody>
-                    <Image
-                      className="edit-product-image"
-                      src="/images/home-prev.svg"
-                    />
-                    <Text className="edit-product-txt">Product 2</Text>
-                  </CardBody>
-                  <CardFooter>
-                    <Link
-                      to={"/clothingaddproducts"}
-                      className="edit-product-link"
-                    >
-                      Edit
-                    </Link>
-                  </CardFooter>
-                </Card>
-              </div>
-              <div className="product-card">
-                <Card bg="#1A202C">
-                  <CardBody>
-                    <Image
-                      className="edit-product-image"
-                      src="/images/home-prev.svg"
-                    />
-                    <Text className="edit-product-txt">Product 3</Text>
-                  </CardBody>
-                  <CardFooter>
-                    <Link
-                      to={"/clothingaddproducts"}
-                      className="edit-product-link"
-                    >
-                      Edit
-                    </Link>
-                  </CardFooter>
-                </Card>
-              </div>
-            </div> */}
+            <div className="products-container1">
+              {products &&
+                products.map((product, index) => {
+                  let imagePath = product.productImage.image;
+                  if (typeof imagePath === "string") {
+                    imagePath = imagePath.replace(/\\/g, "/");
+                    imagePath = `http://localhost:3001/${imagePath}`;
+                  }
+                  return (
+                    <div key={index} className="product-card">
+                      <Card bg="#1A202C">
+                        <CardBody>
+                          <Image
+                            className="edit-product-image"
+                            src={imagePath}
+                            alt={product.productName}
+                            style={{ width: "150px", height: "120px" }}
+                          />
+                          <div className="edit-prdct-icon-txt">
+                            <Text className="edit-product-txt">
+                              {product.productName}
+                            </Text>
+                          </div>
+                        </CardBody>
+                        <CardFooter className="footer">
+                          <Link
+                            to={`/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}`}
+                            className="edit-product-link"
+                          >
+                            Edit
+                          </Link>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                  );
+                })}
+            </div>
           </div>
         </div>
       </div>

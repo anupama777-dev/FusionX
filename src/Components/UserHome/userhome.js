@@ -53,8 +53,8 @@ const UserHome = () => {
             </div>
           </div>
           <div className="dash_items">
-            <Link  to={"/userhome"}>
-            <Image className="dashboard_home" src="/images/home.svg" />
+            <Link to={"/userhome"}>
+              <Image className="dashboard_home" src="/images/home.svg" />
             </Link>
             <Link className="home_txt" to={"/userhome"}>
               Home
@@ -78,7 +78,7 @@ const UserHome = () => {
           </div>
           <div className="dash_items">
             <Link to={"/"}>
-            <Image className="back_dash" src="/images/logout.svg" />
+              <Image className="back_dash" src="/images/logout.svg" />
             </Link>
             <Link className="dash_txt" to={"/"}>
               Log Out
@@ -96,7 +96,6 @@ const UserHome = () => {
               Begin Now <span className="arrow">&#10132;</span>
             </Link>
           </div>
-
           <div className="prev_work_container">
             {stores.map((store, index) => {
               let imagePath = store.storeLogo.image;
@@ -105,14 +104,17 @@ const UserHome = () => {
                 imagePath = `http://localhost:3001/${imagePath}`;
               }
               return (
-                <Link to={{ pathname: "/mystore", search: `?store=${store._id}` }}>
-                <div className={`b${index + 1}`} key={store._id}>
-                  <img
-                    className="previmg"
-                    src={imagePath}
-                    alt={`Store ${index + 1} Logo`}
-                  />
-                </div>
+                <Link
+                  to={{ pathname: "/mystore", search: `?store=${store._id}` }}
+                >
+                  <div className="box" key={store._id}>
+                    <Image
+                      className="previmg"
+                      src={imagePath}
+                      alt={`Store ${index + 1} Logo`}
+                      style={{ width: "150px", height: "120px", borderRadius: "5px" }}
+                    />
+                  </div>
                 </Link>
               );
             })}
@@ -125,13 +127,18 @@ const UserHome = () => {
                 imagePath = `http://localhost:3001/${imagePath}`;
               }
               return (
-                <div className={`b${index + 1}`} key={store._id}>
-                  <img
-                    className="previmg"
-                    src={imagePath}
-                    alt={`Store ${index + 1} Logo`}
-                  />
-                </div>
+                <Link
+                  to={{ pathname: "/mystore", search: `?store=${store._id}` }}
+                >
+                  <div className="box" key={store._id}>
+                    <Image
+                      className="previmg"
+                      src={imagePath}
+                      alt={`Store ${index + 1} Logo`}
+                      style={{ width: "150px", height: "120px" }}
+                    />
+                  </div>
+                </Link>
               );
             })}
           </div>
