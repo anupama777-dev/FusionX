@@ -180,21 +180,29 @@ const HealthAddProducts = () => {
             <div className="store-details">
               <div className="product-details-box1">
                 <Text className="storetxt">Product Details</Text>
-                <Text className="sub-txt">Product Type</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Type</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box"
                   placeholder="Enter Product Type"
                   name="productType"
                   value={form.productType}
                   onChange={(e) => updateForm({ productType: e.target.value })}
+                  required
                 />
-                <Text className="sub-txt">Product Name</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Name</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box"
                   placeholder="Enter Product Name"
                   name="productName"
                   value={form.productName}
                   onChange={(e) => updateForm({ productName: e.target.value })}
+                  required
                 />
                 <Text className="sub-txt">Upload Product Image</Text>
                 <div className="upload-box">
@@ -213,7 +221,10 @@ const HealthAddProducts = () => {
                     .jpg , .jpeg , .pdf , .svg files
                   </Text>
                 </div>
-                <Text className="sub-txt">Product Description</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Description</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Textarea
                   className="input-box"
                   placeholder="Enter Product Description"
@@ -222,18 +233,26 @@ const HealthAddProducts = () => {
                   onChange={(e) =>
                     updateForm({ productDescription: e.target.value })
                   }
+                  required
                 ></Textarea>
-                <Text className="sub-txt">Product Features</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Features</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <RadioGroup
                   value={form.productFeatures}
                   onChange={(value) => updateForm({ productFeatures: value })}
+                  required
                 >
                   <Stack direction="row" className="checkbox">
                     <Radio value="Vegetarian" name="diet">
                       Vegetarian
                     </Radio>
                     <Radio value="Non-Vegetarian" name="diet">
-                      Non-Vegetarian
+                      Recyclable
+                    </Radio>
+                    <Radio value="Vegan" name="diet">
+                      Cruelty-Free
                     </Radio>
                     <Radio value="Vegan" name="diet">
                       Vegan
@@ -243,13 +262,17 @@ const HealthAddProducts = () => {
               </div>
               <div className="pricing-details-box">
                 <Text className="storetxt">Pricing Details</Text>
-                <Text className="sub-txt">Price</Text>
+                <div className="text">
+                  <Text className="sub-txt">Price</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box"
                   placeholder="Enter Price"
                   name="productPrice"
                   value={form.productPrice}
                   onChange={(e) => updateForm({ productPrice: e.target.value })}
+                  required
                 />
                 <Text className="sub-txt">Price After Tax</Text>
                 <Input
@@ -270,7 +293,10 @@ const HealthAddProducts = () => {
               </div>
               <div className="color-details-box">
                 <Text className="storetxt">Weight Details</Text>
-                <Text className="sub-txt">Product Weight</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Weight</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box"
                   placeholder="Enter the weight of the product"
@@ -279,8 +305,12 @@ const HealthAddProducts = () => {
                   onChange={(e) =>
                     updateForm({ productWeight: e.target.value })
                   }
+                  required
                 />
-                <Text className="sub-txt">Weight Unit</Text>
+                <div className="text">
+                  <Text className="sub-txt">Unit of Weight</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Select
                   placeholder="Choose Weight Unit"
                   className="input-box"
@@ -291,6 +321,7 @@ const HealthAddProducts = () => {
                   onChange={(e) =>
                     updateForm({ productWeightUnit: e.target.value })
                   }
+                  required
                 >
                   <option value="kg" className="options">
                     Kg

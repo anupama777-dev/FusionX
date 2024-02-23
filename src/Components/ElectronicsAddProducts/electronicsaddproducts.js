@@ -188,21 +188,29 @@ const ElectronicsAddProducts = () => {
             <div className="store-details">
               <div className="product-details-box">
                 <Text className="storetxt">Product Details</Text>
-                <Text className="sub-txt">Product Type</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Type</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box"
                   placeholder="Enter Product Type"
                   name="productType"
                   value={form.productType}
                   onChange={(e) => updateForm({ productType: e.target.value })}
+                  required
                 />
-                <Text className="sub-txt">Product Name</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Name</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box"
                   placeholder="Enter Product Name"
                   name="productName"
                   value={form.productName}
                   onChange={(e) => updateForm({ productName: e.target.value })}
+                  required
                 />
                 <Text className="sub-txt">Upload Product Image</Text>
                 <div className="upload-box">
@@ -221,7 +229,10 @@ const ElectronicsAddProducts = () => {
                     .jpg , .jpeg , .pdf , .svg files
                   </Text>
                 </div>
-                <Text className="sub-txt">Product Description</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Description</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Textarea
                   className="input-box"
                   placeholder="Enter Product Description"
@@ -230,17 +241,22 @@ const ElectronicsAddProducts = () => {
                   onChange={(e) =>
                     updateForm({ productDescription: e.target.value })
                   }
+                  required
                 ></Textarea>
               </div>
               <div className="pricing-details-box">
                 <Text className="storetxt">Pricing Details</Text>
-                <Text className="sub-txt">Price</Text>
+                <div className="text">
+                  <Text className="sub-txt">Price</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box"
                   placeholder="Enter Price"
                   name="productPrice"
                   value={form.productPrice}
                   onChange={(e) => updateForm({ productPrice: e.target.value })}
+                  required
                 />
                 <Text className="sub-txt">Price After Tax</Text>
                 <Input
@@ -261,17 +277,22 @@ const ElectronicsAddProducts = () => {
               </div>
               <div className="color-details-box">
                 <Text className="storetxt">Weight Details</Text>
-                <Text className="sub-txt">Product Weight</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Weight</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box"
                   placeholder="Enter the weight of the product"
                   name="productWeight"
                   value={form.productWeight}
-                  onChange={(e) =>
-                    updateForm({ productWeight: e.target.value })
-                  }
+                  onChange={(e) => updateForm({ productWeight: e.target.value })}
+                  required
                 />
-                <Text className="sub-txt">Weight Unit</Text>
+                <div className="text">
+                  <Text className="sub-txt">Weight Unit</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Select
                   placeholder="Choose Weight Unit"
                   className="input-box"
@@ -279,9 +300,8 @@ const ElectronicsAddProducts = () => {
                   height="40px"
                   name="productWeightUnit"
                   value={form.productWeightUnit}
-                  onChange={(e) =>
-                    updateForm({ productWeightUnit: e.target.value })
-                  }
+                  onChange={(e) => updateForm({ productWeightUnit: e.target.value })}
+                  required
                 >
                   <option value="kg" className="options">
                     Kg
@@ -308,7 +328,10 @@ const ElectronicsAddProducts = () => {
                   value={form.productColorList.length}
                   readOnly
                 />
-                <Text className="sub-txt">Colors</Text>
+                <div className="text">
+                  <Text className="sub-txt">Colors</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box-1"
                   placeholder="Enter the colors (comma-separated)"
@@ -317,6 +340,7 @@ const ElectronicsAddProducts = () => {
                   onChange={(e) =>
                     updateForm({ productColorList: e.target.value.split(",") })
                   }
+                  required
                 />
               </div>
 
@@ -330,7 +354,10 @@ const ElectronicsAddProducts = () => {
                   value={form.productMaterialList.length}
                   readOnly
                 />
-                <Text className="sub-txt">Types of Materials</Text>
+                <div className="text">
+                  <Text className="sub-txt">Type of Materials</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <div className="color-box">
                   <Input
                     className="input-box-1"
