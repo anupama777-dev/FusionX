@@ -86,7 +86,7 @@ function MyStore() {
             <div className="edit-store-details-box">
               <div className="edit_option">
                 <Text className="storetxt">Store Details</Text>
-                <Link to={"/editstore"}>
+                <Link to={`/editstore?store=${storeID}`}>
                   <Image className="edit_icon" src="/images/edit_button.svg" />
                 </Link>
               </div>
@@ -162,7 +162,7 @@ function MyStore() {
                         </CardBody>
                         <CardFooter className="footer">
                           <Link
-                            to={`/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}`}
+                            to={`/editproduct?store=${storeID}&category=${category}&theme=${theme}`}
                             className="edit-product-link"
                           >
                             Edit
@@ -199,7 +199,7 @@ function MyStore() {
                         </CardBody>
                         <CardFooter className="footer">
                           <Link
-                            to={`/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}`}
+                            to={`/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=0&edit=1`}
                             className="edit-product-link"
                           >
                             Edit
