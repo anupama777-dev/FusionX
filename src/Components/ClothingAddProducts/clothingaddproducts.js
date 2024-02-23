@@ -178,21 +178,29 @@ const ClothingAddProducts = () => {
             <div className="store-details">
               <div className="product-details-box">
                 <Text className="storetxt">Product Details</Text>
-                <Text className="sub-txt">Product Type</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Type</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box"
                   placeholder="Enter Product Type"
                   name="productType"
                   value={form.productType}
                   onChange={(e) => updateForm({ productType: e.target.value })}
+                  required
                 />
-                <Text className="sub-txt">Product Name</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Name</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box"
                   placeholder="Enter Product Name"
                   name="productName"
                   value={form.productName}
                   onChange={(e) => updateForm({ productName: e.target.value })}
+                  required
                 />
                 <Text className="sub-txt">Upload Product Image</Text>
                 <div className="upload-box">
@@ -211,7 +219,10 @@ const ClothingAddProducts = () => {
                     .jpg , .jpeg , .pdf , .svg files
                   </Text>
                 </div>
-                <Text className="sub-txt">Product Description</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Description</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Textarea
                   className="input-box"
                   placeholder="Enter Product Description"
@@ -220,17 +231,22 @@ const ClothingAddProducts = () => {
                   onChange={(e) =>
                     updateForm({ productDescription: e.target.value })
                   }
+                  required
                 ></Textarea>
               </div>
               <div className="pricing-details-box">
                 <Text className="storetxt">Pricing Details</Text>
-                <Text className="sub-txt">Price</Text>
+                <div className="text">
+                  <Text className="sub-txt">Price</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box"
                   placeholder="Enter Price"
                   name="productPrice"
                   value={form.productPrice}
                   onChange={(e) => updateForm({ productPrice: e.target.value })}
+                  required
                 />
                 <Text className="sub-txt">Price After Tax</Text>
                 <Input
@@ -251,7 +267,10 @@ const ClothingAddProducts = () => {
               </div>
               <div className="sizing-details-box">
                 <Text className="storetxt">Sizing Details</Text>
-                <Text className="sub-txt">Size Chart</Text>
+                <div className="text">
+                  <Text className="sub-txt">Size Chart</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <HStack className="checkbox">
                   {[
                     "XXXS",
@@ -365,7 +384,10 @@ const ClothingAddProducts = () => {
                   value={form.productColorList.length}
                   readOnly
                 />
-                <Text className="sub-txt">Colors</Text>
+                <div className="text">
+                  <Text className="sub-txt">Colors</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box-1"
                   placeholder="Enter the colors (comma-separated)"
@@ -374,6 +396,7 @@ const ClothingAddProducts = () => {
                   onChange={(e) =>
                     updateForm({ productColorList: e.target.value.split(",") })
                   }
+                  required
                 />
               </div>
               <div className="color-details-box">
@@ -386,7 +409,10 @@ const ClothingAddProducts = () => {
                   value={form.productMaterialList.length}
                   readOnly
                 />
-                <Text className="sub-txt">Types of Materials</Text>
+                <div className="text">
+                  <Text className="sub-txt">Types of Materials</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <div className="color-box">
                   <Input
                     className="input-box-1"
@@ -398,6 +424,7 @@ const ClothingAddProducts = () => {
                         productMaterialList: e.target.value.split(","),
                       })
                     }
+                    required
                   />
                 </div>
               </div>
