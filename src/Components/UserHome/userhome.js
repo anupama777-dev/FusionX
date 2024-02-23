@@ -96,6 +96,8 @@ const UserHome = () => {
               Begin Now <span className="arrow">&#10132;</span>
             </Link>
           </div>
+          <div className="container_1">
+          <Text className="My_store_txt">My Stores</Text>
           <div className="prev_work_container">
             {stores.map((store, index) => {
               let imagePath = store.storeLogo.image;
@@ -119,6 +121,8 @@ const UserHome = () => {
               );
             })}
           </div>
+          </div>
+
           <div className="prev_work_container1">
             {stores.map((store, index) => {
               let imagePath = store.storeLogo.image;
