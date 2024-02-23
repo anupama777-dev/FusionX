@@ -24,6 +24,7 @@ const FoodAddProducts = () => {
   const storeID = searchParams.get("store");
   const category = searchParams.get("category");
   const theme = searchParams.get("theme")
+  const add = searchParams.get("add")
   const [form, setForm] = useState({
     productType: "",
     productName: "",
@@ -65,7 +66,7 @@ const FoodAddProducts = () => {
     formData.append("productWeight", form.productWeight);
     formData.append("productWeightUnit", form.productWeightUnit);
     try {
-      await axios.post("http://localhost:3001/foodaddproducts", formData, {
+      await axios.post(`http://localhost:3001/foodaddproducts?store=${storeID}&category=food&theme=${theme}`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
@@ -91,34 +92,51 @@ const FoodAddProducts = () => {
     <div className="store-details-page">
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
-        <div className="header_categories">
-        <Tabs className="tabs" variant="unstyled">
-            <TabList>
-              <Link to={"/storedetails"}>
-                <Tab className="disabled">Store Details</Tab>
-              </Link>
-              <Link to={{
-                  pathname: "/categories",
-                  search: `?store=${storeID}`,
-                }}>
-                <Tab className="disabled">Categories</Tab>
-              </Link>
-              <Link to={{
-                  pathname: "/choosetheme",
-                  search: `?store=${storeID}category=${category}`,
-                }}>
-                <Tab className="disabled">Choose Theme</Tab>
-              </Link>
-              <Link to={{
-                  pathname: "/customizetheme",
-                  search: `?store=${storeID}category=${category}&theme=${theme}`,
-                }}>
-                <Tab className="disabled">Customize Theme</Tab>
-              </Link>
-              <Tab _isselected="true">Add Products</Tab>
-            </TabList>
-          </Tabs>
-        </div>
+        {add !== "1" && (
+          <div className="header_categories">
+            <Tabs className="tabs" variant="unstyled">
+              <TabList>
+                <Link to={"/storedetails"}>
+                  <Tab className="disabled">Store Details</Tab>
+                </Link>
+                <Link
+                  to={{
+                    pathname: "/categories",
+                    search: `?store=${storeID}`,
+                  }}
+                >
+                  <Tab className="disabled">Categories</Tab>
+                </Link>
+                <Link
+                  to={{
+                    pathname: "/choosetheme",
+                    search: `?store=${storeID}&category=${category}`,
+                  }}
+                >
+                  <Tab className="disabled">Choose Theme</Tab>
+                </Link>
+                <Link
+                  to={{
+                    pathname: "/customizetheme",
+                    search: `?store=${storeID}&category=${category}&theme=${theme}`,
+                  }}
+                >
+                  <Tab className="disabled">Customize Theme</Tab>
+                </Link>
+                <Tab _isselected="true">Add Products</Tab>
+              </TabList>
+            </Tabs>
+          </div>
+        )}
+        {add == "1" && (
+          <div className="header_categories">
+            <Tabs className="tabs" variant="unstyled">
+              <TabList>
+                <Tab _isselected="true">Add Products</Tab>
+              </TabList>
+            </Tabs>
+          </div>
+        )}
       </div>
       <div className="line_div1">
         <Image className="line" src="/images/line_1.svg" />

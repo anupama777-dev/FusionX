@@ -87,13 +87,16 @@
 .add-product-btn:hover{
   background-color: #50338e;
 }
-.products-container1 {
+.products-container {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   width: 64vw;
   height: 45vh;
   margin-bottom: 28px;
+}
+.products-container1{
+  display: none;
 }
 .product-card {
   background-color: #1a202c;
@@ -128,4 +131,13 @@
 .edit-product-link:hover {
   color: #718096;
   background-color: #171923;
+}
+@media screen and (max-width: 1050px) {
+  .products_container {
+    display: none;
+  }
+  .products_container1 {
+    display: flex;
+    flex-direction: column;
+  }
 }
