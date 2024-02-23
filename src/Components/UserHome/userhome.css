@@ -47,9 +47,9 @@
   overflow-x: hidden;
   width: 82.65vw;
 }
-.prev_work_container {
+.container_1{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   width: 59vw;
   height: 35vh;
   align-items: center;
@@ -57,6 +57,13 @@
   text-align: center;
   border-radius: 8px;
   justify-content: space-evenly;
+}
+.prev_work_container {
+  display: flex;
+  flex-direction: row;
+  margin-top: -60px;
+  justify-content: space-evenly;
+  align-items: center;
 }
 .prev_work_container1 {
   display: none;
@@ -100,6 +107,15 @@
   font-weight: 600;
   cursor: pointer;
   margin-top: 20px;
+}
+.My_store_txt{
+  color:#edf2f7;
+  font-size: 25px;
+  font-weight: 600;
+  opacity: 0.7;
+  margin-left:-650px;
+  margin-top: -15px;
+  margin-bottom: 20px;
 }
 .beginbtn:hover {
   background-color: #553c9a !important;

@@ -41,9 +41,7 @@ function MyStore() {
     <div className="store-details-page">
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
-        <div className="header_categories">
-          <Text className="edit_store_txt">My Stores</Text>
-        </div>
+          <Text className="edit_store_txt">My Store Details</Text>
       </div>
       <div className="line_div1">
         <Image className="line" src="/images/line_1.svg" />
@@ -154,7 +152,7 @@ function MyStore() {
                             className="edit-product-image"
                             src={imagePath}
                             alt={product.productName}
-                            style={{ width: "150px", height: "120px" }}
+                            style={{ width: "180px", height: "120px" }}
                           />
                           <div className="edit-prdct-icon-txt">
                             <Text className="edit-product-txt">
