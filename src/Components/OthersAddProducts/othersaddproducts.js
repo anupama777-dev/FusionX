@@ -274,7 +274,7 @@ const OthersAddProducts = () => {
                   required
                 ></Textarea>
                 <div className="text">
-                  <Text className="sub-txt">Product Name</Text>
+                  <Text className="sub-txt">Product Features</Text>
                   <Text className="asterisk">*</Text>
                 </div>
                 <RadioGroup
@@ -289,7 +289,7 @@ const OthersAddProducts = () => {
                     <Radio value="Non-Vegetarian" name="diet">
                       Recyclable
                     </Radio>
-                    <Radio value="Vegan" name="diet">
+                    <Radio value="Cruelty-Free" name="diet">
                       Cruelty-Free
                     </Radio>
                     <Radio value="Vegan" name="diet">

@@ -163,7 +163,7 @@ function MyStore() {
                         </CardBody>
                         <CardFooter className="footer">
                           <Link
-                            to={`/editproduct?store=${storeID}&category=${category}&theme=${theme}`}
+                            to={`/editproduct?store=${storeID}&category=${category}&product=${product._id}`}
                             className="edit-product-link"
                           >
                             Edit
