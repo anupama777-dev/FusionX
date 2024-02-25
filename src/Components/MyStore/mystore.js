@@ -1,13 +1,15 @@
 import React from "react";
 import "./mystore.css";
-import { Image, Text } from "@chakra-ui/react";
+import { Image, Text,Button } from "@chakra-ui/react";
 import { Card, CardBody, CardFooter } from "@chakra-ui/react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import { IoTrash } from 'react-icons/io5';
 import { useState, useEffect } from "react";
 
 function MyStore() {
   const location = useLocation();
+  const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const storeID = searchParams.get("store");
   const [storeData, setStoreData] = useState({ stores: [], products: [] });
@@ -36,7 +38,38 @@ function MyStore() {
   const { stores, products } = storeData;
   const category = stores[0].storeCategory;
   const theme = stores[0].storeTheme;
-
+const handleDelete=async() =>{
+  try {
+    await axios.delete(`http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}`);
+    await axios.delete(`http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=1`);
+    await axios.delete(`http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=0&edit=1`);
+    await axios.delete(`http://localhost:3001/storedetails/${storeID}`);
+    console.log('Item deleted successfully');
+    navigate(`/userhome`);
+} catch (error) {
+    console.error('Error deleting item:', error);
+} 
+};
+const handleDeleteProduct1=async() =>{
+  try{
+    await axios.delete(`http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=1`);
+    console.log('Item deleted successfully');
+    navigate(`/userhome`);
+  }
+  catch (error) {
+  console.error('Error deleting item:', error);
+}   
+};
+const handleDeleteProduct2=async() =>{
+  try{
+    await axios.delete(`http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=0&edit=1`);
+    console.log('Item deleted successfully');
+    navigate(`/userhome`);
+  }
+  catch (error) {
+  console.error('Error deleting item:', error);
+}   
+};
   return (
     <div className="store-details-page">
       <div className="header1">
@@ -90,6 +123,7 @@ function MyStore() {
                 <Link to={`/editstore?store=${storeID}`}>
                   <Image className="edit_icon" src="/images/edit_button.svg" />
                 </Link>
+                <Button className="edit_icon1" leftIcon={<IoTrash fontSize="1.4em"/>} colorScheme="white" onClick={handleDelete}></Button>   
               </div>
               {stores.length > 0 && (
                 <div>
@@ -168,6 +202,7 @@ function MyStore() {
                           >
                             Edit
                           </Link>
+                          <Button className="edit_icon2" leftIcon={<IoTrash fontSize="1.4em"/>} colorScheme="white" onClick={handleDeleteProduct1}></Button>
                         </CardFooter>
                       </Card>
                     </div>
@@ -205,6 +240,7 @@ function MyStore() {
                           >
                             Edit
                           </Link>
+                          <Button className="edit_icon2" leftIcon={<IoTrash fontSize="1.4em"/>} colorScheme="white" onClick={handleDeleteProduct2}></Button>
                         </CardFooter>
                       </Card>
                     </div>

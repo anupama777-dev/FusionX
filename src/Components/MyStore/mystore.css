@@ -42,8 +42,14 @@
 .edit_icon {
   height: 25px;
   margin-top: 2vw;
-  margin-left: 42vw;
+  margin-left: 46vw;
 }
+.edit_icon1{
+  height: 25px;
+  margin-top: 2vw;
+  margin-left: 3vw;
+}
+
 .edit_icon:hover {
   border: 2px solid white;
   border-radius: 4px;
@@ -103,7 +109,7 @@
   border: 2px solid var(--gray-700, #2d3748);
   border-radius: 4px;
   display: flex;
-  width: 15vw;
+  width: 19vw;
   height: 40vh;
   flex-direction: column;
   align-items: center;
@@ -116,6 +122,11 @@
 }
 .edit-product-image {
   margin-top: 1vh;
+}
+.edit_icon2{
+  height: 25px;
+  margin-top: 0.5vw;
+  margin-left: 1vw;
 }
 .footer {
   display: flex !important;

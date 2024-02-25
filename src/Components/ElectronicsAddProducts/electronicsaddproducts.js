@@ -90,7 +90,7 @@ const ElectronicsAddProducts = () => {
         productColorList: [],
         productMaterialList: [],
       });
-      navigate("/");
+      navigate("/userhome");
     } catch (error) {
       console.error("Error adding product:", error.message);
     }

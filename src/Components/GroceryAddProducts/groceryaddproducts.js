@@ -82,7 +82,7 @@ const GroceryAddProducts = () => {
         productWeight: "",
         productWeightUnit: "",
       });
-      navigate("/");
+      navigate("/userhome");
     } catch (error) {
       console.error("Error adding product:", error.message);
     }
