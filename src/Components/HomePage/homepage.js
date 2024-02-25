@@ -71,7 +71,7 @@ function HomePage() {
                                        Join us at FusionX and embark on a journey towards online success.
           </Text>
       </div>
-      <div className="line_div1" ref={contactRef}>
+      <div className="line_div_1" ref={contactRef}>
         <Image className="line" src="/images/line_1.svg" />
       </div>
       <div className="contact-us">
