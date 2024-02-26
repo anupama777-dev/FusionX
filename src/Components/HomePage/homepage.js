@@ -64,7 +64,7 @@ function HomePage() {
           <Image className="eclipse_2" src="/images/eclipse2.svg" />
         </div>
       </div>
-      <div classname="about-us">
+      <div className="about-us">
         <Text className="about-us-title">About FusionX</Text>
         <Text className="subtitle-1">
           Welcome to FusionX, where we believe in the power of empowerment for

@@ -1,10 +1,10 @@
 import React from "react";
 import "./mystore.css";
-import { Image, Text,Button } from "@chakra-ui/react";
+import { Image, Text, Button } from "@chakra-ui/react";
 import { Card, CardBody, CardFooter } from "@chakra-ui/react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
-import { IoTrash } from 'react-icons/io5';
+import { IoTrash } from "react-icons/io5";
 import { useState, useEffect } from "react";
 
 function MyStore() {
@@ -38,45 +38,37 @@ function MyStore() {
   const { stores, products } = storeData;
   const category = stores[0].storeCategory;
   const theme = stores[0].storeTheme;
-const handleDelete=async() =>{
-  try {
-    await axios.delete(`http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}`);
-    await axios.delete(`http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=1`);
-    await axios.delete(`http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=0&edit=1`);
-    await axios.delete(`http://localhost:3001/storedetails/${storeID}`);
-    console.log('Item deleted successfully');
-    navigate(`/userhome`);
-} catch (error) {
-    console.error('Error deleting item:', error);
-} 
-};
-const handleDeleteProduct1=async() =>{
-  try{
-    await axios.delete(`http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=1`);
-    console.log('Item deleted successfully');
-    navigate(`/userhome`);
-  }
-  catch (error) {
-  console.error('Error deleting item:', error);
-}   
-};
-const handleDeleteProduct2=async() =>{
-  try{
-    await axios.delete(`http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=0&edit=1`);
-    console.log('Item deleted successfully');
-    navigate(`/userhome`);
-  }
-  catch (error) {
-  console.error('Error deleting item:', error);
-}   
-};
+  const handleDelete = async () => {
+    try {
+      await axios.delete(
+        `http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}`
+      );
+      await axios.delete(`http://localhost:3001/storedetails/${storeID}`);
+      console.log("Item deleted successfully");
+      navigate(`/userhome`);
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
+  const handleDeleteProduct1 = async () => {
+    try {
+      await axios.delete(
+        `http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=1`
+      );
+      console.log("Item deleted successfully");
+      navigate(`/mystore/?store=${storeID}`);
+    } catch (error) {
+      console.error("Error deleting item:", error);
+    }
+  };
   return (
     <div className="store-details-page">
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
         <div className="header_categories">
           <Text className="edit_store_txt">My Stores</Text>
-        </div>      </div>
+        </div>{" "}
+      </div>
       <div className="line_div1">
         <Image className="line" src="/images/line_1.svg" />
       </div>
@@ -123,7 +115,12 @@ const handleDeleteProduct2=async() =>{
                 <Link to={`/editstore?store=${storeID}`}>
                   <Image className="edit_icon" src="/images/edit_button.svg" />
                 </Link>
-                <Button className="edit_icon1" leftIcon={<IoTrash fontSize="1.4em"/>} colorScheme="white" onClick={handleDelete}></Button>   
+                <Button
+                  className="edit_icon1"
+                  leftIcon={<IoTrash fontSize="1.4em" />}
+                  colorScheme="white"
+                  onClick={handleDelete}
+                ></Button>
               </div>
               {stores.length > 0 && (
                 <div>
@@ -196,13 +193,26 @@ const handleDeleteProduct2=async() =>{
                           </div>
                         </CardBody>
                         <CardFooter className="footer">
+                          {/* <Link
+                            to={`/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=0&edit=1`}
+                          >
+                            <Image
+                              className="edit-product-link"
+                              src="/images/edit_button.svg"
+                            />
+                          </Link> */}
                           <Link
                             to={`/editproduct?store=${storeID}&category=${category}&product=${product._id}`}
                             className="edit-product-link"
                           >
                             Edit
                           </Link>
-                          <Button className="edit_icon2" leftIcon={<IoTrash fontSize="1.4em"/>} colorScheme="white" onClick={handleDeleteProduct1}></Button>
+                          <Button
+                            className="edit_icon2"
+                            leftIcon={<IoTrash fontSize="1.4em" />}
+                            colorScheme="white"
+                            onClick={handleDeleteProduct1}
+                          ></Button>
                         </CardFooter>
                       </Card>
                     </div>
@@ -234,13 +244,26 @@ const handleDeleteProduct2=async() =>{
                           </div>
                         </CardBody>
                         <CardFooter className="footer">
-                          <Link
+                          {/* <Link
                             to={`/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=0&edit=1`}
+                          >
+                            <Image
+                              className="edit-product-link"
+                              src="/images/edit_button.svg"
+                            />
+                          </Link> */}
+                          <Link
+                            to={`/editproduct?store=${storeID}&category=${category}&product=${product._id}`}
                             className="edit-product-link"
                           >
                             Edit
                           </Link>
-                          <Button className="edit_icon2" leftIcon={<IoTrash fontSize="1.4em"/>} colorScheme="white" onClick={handleDeleteProduct2}></Button>
+                          <Button
+                            className="edit_icon2"
+                            leftIcon={<IoTrash fontSize="1.4em" />}
+                            colorScheme="white"
+                            onClick={handleDeleteProduct1}
+                          ></Button>
                         </CardFooter>
                       </Card>
                     </div>

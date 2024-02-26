@@ -23,6 +23,7 @@ const EditProduct = () => {
   const searchParams = new URLSearchParams(location.search);
   const storeID = searchParams.get("store");
   const category = searchParams.get("category");
+  console.log('Category: ', category)
   const productID = searchParams.get("product");
   const [loading, setLoading] = useState(true);
   const [productData, setProductData] = useState({});
