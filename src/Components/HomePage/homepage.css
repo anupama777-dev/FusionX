@@ -80,16 +80,16 @@
   background-color: transparent;
 }
 .left_eclipse {
-  width: 29%;
+  width: 12%;
   position: absolute;
   left: 0;
-  top: 39px;
+  top: 200px;
 }
 .right_eclipse {
-  width: 29%;
+  width: 12%;
   position: absolute;
   right: 0;
-  top: 39px;
+  top: 200px;
 }
 .about-us{
   height: 100%;
