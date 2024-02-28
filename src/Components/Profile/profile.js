@@ -4,25 +4,29 @@ import { Link } from "react-router-dom";
 import "./profile.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useCookies } from "react-cookie";
 
 const Profile = () => {
-  const [cookies] = useCookies(["login"]);
   const [user, setUser] = useState([]);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response1 = await axios.post(
-          "http://localhost:3001/signup/" + cookies.username
-        );
-        setUser(response1.data[0]);
+        const response = await axios.get("http://localhost:3001/user", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUser(response.data.user);
       } catch (error) {
         console.error("Error fetching user:", error);
       }
     };
     fetchUser();
-  }, [cookies.username]);
+  }, [token]);
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
 
   return (
     <div className="profile_page">
@@ -61,7 +65,7 @@ const Profile = () => {
           </div>
           <div className="dash_items">
             <Image className="back_dash" src="/images/logout.svg" />
-            <Link className="dash_txt" to={"/"}>
+            <Link className="dash_txt" to={"/"} onClick={handleLogout}>
               Log Out
             </Link>
           </div>
@@ -91,17 +95,6 @@ const Profile = () => {
                 </div>
                 <div className="right">
                   <Text>{user.username}</Text>
-                </div>
-              </div>
-              <div className="rect1">
-                <div className="left">
-                  <Text>Password</Text>
-                </div>
-                <div className="col3">
-                  <Text>:</Text>
-                </div>
-                <div className="right">
-                  <Text>{user.password}</Text>
                 </div>
               </div>
               <div className="rect1">

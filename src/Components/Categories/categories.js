@@ -7,6 +7,9 @@ function Categories() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const storeID = searchParams.get("store");
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <div className="categories_page">
       <div className="header1">
@@ -66,7 +69,7 @@ function Categories() {
             <Link to={"/"}>
               <Image className="back_dash" src="/images/logout.svg" />
             </Link>
-            <Link className="dash_txt" to={"/"}>
+            <Link className="dash_txt" to={"/"} onClick={handleLogout}>
               Log Out
             </Link>
           </div>

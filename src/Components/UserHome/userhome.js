@@ -1,39 +1,50 @@
 import "./userhome.css";
 import { Image, Avatar, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { useCookies } from "react-cookie";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
 
 const UserHome = () => {
-  const [cookies] = useCookies(["login"]);
-  const [user, setUser] = useState([]);
-  const [stores, setStores] = useState([]);
+  const [user, setUser] = useState({});
+  const [stores, setStores] = useState([{}]);
+  const token = localStorage.getItem("token");
+
   useEffect(() => {
-    const fetchUser = async () => {
+    const fetchUserData = async () => {
       try {
-        const response1 = await axios.post(
-          "http://localhost:3001/signup/" + cookies.username
-        );
-        setUser(response1.data[0]);
+        const response = await axios.get("http://localhost:3001/user", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUser(response.data.user);
       } catch (error) {
-        console.error("Error fetching user", error);
+        console.error("Error fetching user:", error);
       }
     };
-    fetchUser();
-  }, [cookies.username]);
-  useEffect(() => {
+
     const fetchStores = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/userhome");
-        setStores(response.data);
+        const response = await axios.get("http://localhost:3001/stores", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setStores(response.data.stores);
       } catch (error) {
         console.error("Error fetching stores:", error);
-        setStores([]);
       }
     };
-    fetchStores();
-  }, []);
+
+    if (token) {
+      fetchUserData();
+      fetchStores();
+    }
+  }, [token]);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
 
   return (
     <div className="userhome_page">
@@ -77,10 +88,10 @@ const UserHome = () => {
             </Link>
           </div>
           <div className="dash_items">
-            <Link to={"/"}>
+            <Link to={"/"} onClick={handleLogout}>
               <Image className="back_dash" src="/images/logout.svg" />
             </Link>
-            <Link className="dash_txt" to={"/"}>
+            <Link className="dash_txt" to={"/"} onClick={handleLogout}>
               Log Out
             </Link>
           </div>
@@ -97,35 +108,40 @@ const UserHome = () => {
             </Link>
           </div>
           <div className="container_1">
-          <Text className="My_store_txt">My Stores</Text>
-          <div className="prev_work_container">
-            {stores.map((store, index) => {
-              let imagePath = store.storeLogo.image;
-              if (typeof imagePath === "string") {
-                imagePath = imagePath.replace(/\\/g, "/");
-                imagePath = `http://localhost:3001/${imagePath}`;
-              }
-              return (
-                <Link
-                  to={{ pathname: "/mystore", search: `?store=${store._id}` }}
-                >
-                  <div className="box" key={store._id}>
-                    <Image
-                      className="previmg"
-                      src={imagePath}
-                      alt={`Store ${index + 1} Logo`}
-                      style={{ width: "150px", height: "120px", borderRadius: "5px" }}
-                    />
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
+            <Text className="My_store_txt">My Stores</Text>
+            <div className="prev_work_container">
+              {stores.map((store, index) => {
+                let imagePath = store.storeLogo ? store.storeLogo.image : "";
+                if (typeof imagePath === "string") {
+                  imagePath = imagePath.replace(/\\/g, "/");
+                  imagePath = `http://localhost:3001/${imagePath}`;
+                }
+                return (
+                  <Link
+                    to={{ pathname: "/mystore", search: `?store=${store._id}` }}
+                    key={store._id}
+                  >
+                    <div className="box">
+                      <Image
+                        className="previmg"
+                        src={imagePath}
+                        alt={`Store ${index + 1} Logo`}
+                        style={{
+                          width: "150px",
+                          height: "120px",
+                          borderRadius: "5px",
+                        }}
+                      />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
 
           <div className="prev_work_container1">
             {stores.map((store, index) => {
-              let imagePath = store.storeLogo.image;
+              let imagePath = store.storeLogo ? store.storeLogo.image : "";
               if (typeof imagePath === "string") {
                 imagePath = imagePath.replace(/\\/g, "/");
                 imagePath = `http://localhost:3001/${imagePath}`;
@@ -133,8 +149,9 @@ const UserHome = () => {
               return (
                 <Link
                   to={{ pathname: "/mystore", search: `?store=${store._id}` }}
+                  key={store._id}
                 >
-                  <div className="box" key={store._id}>
+                  <div className="box">
                     <Image
                       className="previmg"
                       src={imagePath}

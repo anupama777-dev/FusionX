@@ -125,6 +125,9 @@ const EditProduct = () => {
       console.error("Error editing store:", error.message);
     }
   };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <div className="store-details-page">
       <div className="header1">
@@ -180,7 +183,7 @@ const EditProduct = () => {
             <Link to={"/"}>
               <Image className="back_dash" src="/images/logout.svg" />
             </Link>
-            <Link className="dash_txt" to={"/"}>
+            <Link className="dash_txt" to={"/"} onClick={handleLogout}>
               Log Out
             </Link>
           </div>
@@ -253,15 +256,15 @@ const EditProduct = () => {
                   onChange={handleInputChange}
                   required
                 ></Textarea>
-                {category === "food" ||
-                  (category === "grocery" && (
+                {( category === "food" ||
+                  category === "grocery") && (
                     <div className="text">
                       <Text className="sub-txt">Food Preference</Text>
                       <Text className="asterisk">*</Text>
                     </div>
-                  ))}
-                {category === "food" ||
-                  (category === "grocery" && (
+                  )}
+                {( category === "food" ||
+                  category === "grocery") && (
                     <RadioGroup
                       value={productData.productFoodPref}
                       onChange={(value) =>
@@ -277,18 +280,18 @@ const EditProduct = () => {
                         <Radio value="Vegan">Vegan</Radio>
                       </Stack>
                     </RadioGroup>
-                  ))}
-                {category === "health" ||
-                  (category === "others" && (
+                  )}
+                {( category === "health" ||
+                  category === "others") && (
                     <div className="text">
                       <Text className="sub-txt">Product Features</Text>
                       {category !== "others" && (
                       <Text className="asterisk">*</Text>
                       )}
                     </div>
-                  ))}
-                {category === "health" ||
-                  (category === "others" && (
+                  )}
+                {( category === "health" ||
+                  category === "others") && (
                     <RadioGroup
                       value={productData.productFeatures}
                       onChange={(value) =>
@@ -313,7 +316,7 @@ const EditProduct = () => {
                         </Radio>
                       </Stack>
                     </RadioGroup>
-                  ))}
+                  )}
               </div>
               <div className="pricing-details-box">
                 <Text className="storetxt">Pricing Details</Text>
@@ -346,8 +349,8 @@ const EditProduct = () => {
                   Charge Tax on this product
                 </Checkbox>
               </div>
-              {category === "clothing" ||
-                (category === "others" && (
+              {( category === "clothing" ||
+                category === "others") && (
                   <div className="sizing-details-box">
                     <Text className="storetxt">Sizing Details</Text>
                     <div className="text">
@@ -467,11 +470,11 @@ const EditProduct = () => {
                       </Text>
                     </div>
                   </div>
-                ))}
-              {category === "electronics" ||
+                )}
+              {( category === "electronics" ||
                 category === "food" ||
                 category === "grocery" ||
-                (category === "others" && (
+                category === "others") && (
                   <div className="color-details-box">
                     <Text className="storetxt">Weight Details</Text>
                     <div className="text">
@@ -514,10 +517,10 @@ const EditProduct = () => {
                       </option>
                     </Select>
                   </div>
-                ))}
-              {category === "clothing" ||
+                )}
+              {( category === "clothing" ||
                 category === "electronics" ||
-                (category === "others" && (
+                category === "others") && (
                   <div className="color-details-box">
                     <Text className="storetxt">Color Details</Text>
                     <Text className="sub-txt">Number of Colors</Text>
@@ -560,10 +563,10 @@ const EditProduct = () => {
                       required={category !== "others"}
                     />
                   </div>
-                ))}
-              {category === "clothing" ||
+                )}
+              {( category === "clothing" ||
                 category === "electronics" ||
-                (category === "others" && (
+                category === "others") && (
                   <div className="color-details-box">
                     <Text className="storetxt">Material Details</Text>
                     <Text className="sub-txt">Number of Materials</Text>
@@ -608,7 +611,7 @@ const EditProduct = () => {
                       />
                     </div>
                   </div>
-                ))}
+                )}
             </div>
             <div className="proceed_btn">
               <button className="proceed" type="submit">

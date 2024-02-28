@@ -63,6 +63,9 @@ function EditStore() {
       console.error("Error editing store:", error.message);
     }
   };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <div className="store-details-page">
       <div className="header1">
@@ -104,7 +107,7 @@ function EditStore() {
             <Link to={"/"}>
               <Image className="back_dash" src="/images/logout.svg" />
             </Link>
-            <Link className="dash_txt" to={"/"}>
+            <Link className="dash_txt" to={"/"} onClick={handleLogout}>
               Log Out
             </Link>
           </div>

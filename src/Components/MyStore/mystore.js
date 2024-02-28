@@ -40,9 +40,11 @@ function MyStore() {
   const theme = stores[0].storeTheme;
   const handleDelete = async () => {
     try {
-      await axios.delete(
-        `http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}`
-      );
+      if (products && products.length > 0) {
+        await axios.delete(
+          `http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}`
+        );
+      }
       await axios.delete(`http://localhost:3001/storedetails/${storeID}`);
       console.log("Item deleted successfully");
       navigate(`/userhome`);
@@ -50,16 +52,25 @@ function MyStore() {
       console.error("Error deleting item:", error);
     }
   };
-  const handleDeleteProduct1 = async () => {
+  const handleDeleteProduct = async (productId) => {
     try {
       await axios.delete(
         `http://localhost:3001/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=1`
       );
       console.log("Item deleted successfully");
+      setStoreData((prevStoreData) => ({
+        ...prevStoreData,
+        products: prevStoreData.products.filter(
+          (product) => product._id !== productId
+        ),
+      }));
       navigate(`/mystore/?store=${storeID}`);
     } catch (error) {
       console.error("Error deleting item:", error);
     }
+  };
+  const handleLogout = () => {
+    localStorage.removeItem("token");
   };
   return (
     <div className="store-details-page">
@@ -102,7 +113,7 @@ function MyStore() {
             <Link to={"/"}>
               <Image className="back_dash" src="/images/logout.svg" />
             </Link>
-            <Link className="dash_txt" to={"/"}>
+            <Link className="dash_txt" to={"/"} onClick={handleLogout}>
               Log Out
             </Link>
           </div>
@@ -193,14 +204,6 @@ function MyStore() {
                           </div>
                         </CardBody>
                         <CardFooter className="footer">
-                          {/* <Link
-                            to={`/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=0&edit=1`}
-                          >
-                            <Image
-                              className="edit-product-link"
-                              src="/images/edit_button.svg"
-                            />
-                          </Link> */}
                           <Link
                             to={`/editproduct?store=${storeID}&category=${category}&product=${product._id}`}
                             className="edit-product-link"
@@ -211,8 +214,8 @@ function MyStore() {
                             className="edit_icon2"
                             leftIcon={<IoTrash fontSize="1.4em" />}
                             colorScheme="white"
-                            onClick={handleDeleteProduct1}
-                          ></Button>
+                            onClick={() => handleDeleteProduct(product._id)}
+                            ></Button>
                         </CardFooter>
                       </Card>
                     </div>
@@ -244,14 +247,6 @@ function MyStore() {
                           </div>
                         </CardBody>
                         <CardFooter className="footer">
-                          {/* <Link
-                            to={`/${category}addproducts?store=${storeID}&category=${category}&theme=${theme}&add=0&edit=1`}
-                          >
-                            <Image
-                              className="edit-product-link"
-                              src="/images/edit_button.svg"
-                            />
-                          </Link> */}
                           <Link
                             to={`/editproduct?store=${storeID}&category=${category}&product=${product._id}`}
                             className="edit-product-link"
@@ -262,7 +257,7 @@ function MyStore() {
                             className="edit_icon2"
                             leftIcon={<IoTrash fontSize="1.4em" />}
                             colorScheme="white"
-                            onClick={handleDeleteProduct1}
+                            onClick={() => handleDeleteProduct(product._id)}
                           ></Button>
                         </CardFooter>
                       </Card>
