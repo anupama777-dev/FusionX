@@ -1,6 +1,7 @@
 .home_page {
   background-color: #1a202c;
-  height: 230vh;
+  /* height: 230vh; */
+  height: 100%;
   width: 100vw;
 }
 .header {
@@ -92,7 +93,6 @@
   top: 200px;
 }
 .about-us{
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -105,7 +105,6 @@
   font-weight: 600;
   line-height: 28px;
   text-align: center;
-  margin-top: 40px;
 }
 .subtitle-1 {
   color: #cbd5e0;

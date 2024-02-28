@@ -111,7 +111,19 @@
   margin-left: 7px;
   color: #E53E3E;
 }
-
+.add-more {
+  padding: 8px 16px;
+  background-color: transparent;
+  color: white;
+  border: 2px solid #44337A;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+.add-more:hover {
+  background-color: #553C9A;
+}
 @media screen and (max-width: 1150px) {
   .checkbox {
     display: none !important;

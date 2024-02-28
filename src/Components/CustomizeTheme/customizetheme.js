@@ -8,7 +8,7 @@ function CustomizeTheme() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const storeID = searchParams.get("store");
-  console.log('Store id: ', storeID)
+  console.log("Store id: ", storeID);
   const category = searchParams.get("category");
   const theme = searchParams.get("theme");
   const [selectedColor, setSelectedColor] = useState(theme);
@@ -26,8 +26,10 @@ function CustomizeTheme() {
       console.error("Error:", error);
     }
   };
-
   let themeImageSrc = `/images/${selectedColor}_theme_ss.png`;
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <div className="customize_page">
       <div className="header1">
@@ -87,7 +89,7 @@ function CustomizeTheme() {
           </div>
           <div className="dash_items">
             <Image className="back_dash" src="/images/logout.svg" />
-            <Link className="dash_txt" to={"/"}>
+            <Link className="dash_txt" to={"/"} onClick={handleLogout}>
               Log Out
             </Link>
           </div>

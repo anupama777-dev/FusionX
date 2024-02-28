@@ -46,9 +46,11 @@ const GroceryAddProducts = () => {
   }
   const handleTaxChange = (e) => {
     const isChecked = e.target.checked;
+    const updatedPAT = isChecked ? form.productPAT : "";
     setForm((prevForm) => ({
       ...prevForm,
       productTax: isChecked,
+      productPAT: updatedPAT,
     }));
   };
   async function onSubmit(e) {
@@ -87,6 +89,9 @@ const GroceryAddProducts = () => {
       console.error("Error adding product:", error.message);
     }
   }
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <div className="store-details-page">
       <div className="header1">
@@ -180,7 +185,7 @@ const GroceryAddProducts = () => {
           <Link to={"/"}>
               <Image className="back_dash" src="/images/logout.svg" />
             </Link>
-            <Link className="dash_txt" to={"/"}>
+            <Link className="dash_txt" to={"/"} onClick={handleLogout}>
               Log Out
             </Link>
           </div>

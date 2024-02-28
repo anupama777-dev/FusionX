@@ -8,6 +8,9 @@ function ChooseTheme() {
   const searchParams = new URLSearchParams(location.search);
   const storeID = searchParams.get("store");
   const category = searchParams.get("category");
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <div className="choose_theme_page">
       <div className="header1">
@@ -60,7 +63,7 @@ function ChooseTheme() {
           </div>
           <div className="dash_items">
             <Image className="back_dash" src="/images/logout.svg" />
-            <Link className="dash_txt" to={"/"}>
+            <Link className="dash_txt" to={"/"} onClick={handleLogout}>
               Log Out
             </Link>
           </div>

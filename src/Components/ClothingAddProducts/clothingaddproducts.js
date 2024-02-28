@@ -45,9 +45,11 @@ const ClothingAddProducts = () => {
   }
   const handleTaxChange = (e) => {
     const isChecked = e.target.checked;
+    const updatedPAT = isChecked ? form.productPAT : "";
     setForm((prevForm) => ({
       ...prevForm,
       productTax: isChecked,
+      productPAT: updatedPAT,
     }));
   };
   function handleSizeChart(e) {
@@ -107,6 +109,9 @@ const ClothingAddProducts = () => {
       console.error("Error adding product:", error.message);
     }
   }
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <div className="store-details-page">
       <div className="header1">
@@ -200,7 +205,7 @@ const ClothingAddProducts = () => {
             <Link to={"/"}>
               <Image className="back_dash" src="/images/logout.svg" />
             </Link>
-            <Link className="dash_txt" to={"/"}>
+            <Link className="dash_txt" to={"/"} onClick={handleLogout}>
               Log Out
             </Link>
           </div>

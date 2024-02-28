@@ -1,7 +1,6 @@
 import "./storedetails.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { useCookies } from "react-cookie";
 import axios from "axios";
 import {
   Image,
@@ -14,8 +13,9 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 const StoreDetails = () => {
-  const [cookies] = useCookies(["login"]);
   const navigate = useNavigate();
+  const token = localStorage.getItem("token");
+  const [user, setUser] = useState({});
   const [form, setForm] = useState({
     storeName: "",
     storeLogo: null,
@@ -29,6 +29,24 @@ const StoreDetails = () => {
   });
   const [proceedClicked, setProceedClicked] = useState(false);
 
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3001/user", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        setUser(response.data.user);
+      } catch (error) {
+        console.error("Error fetching user:", error);
+      }
+    };
+    if (token) {
+      fetchUserData();
+    }
+  }, [token]);
+
   function updateForm(value) {
     setForm((prev) => {
       return { ...prev, ...value };
@@ -39,12 +57,10 @@ const StoreDetails = () => {
     e.preventDefault();
     if (!form.storeLogo) {
       alert("Please upload a logo before proceeding");
-      return; 
+      return;
     }
-
     const formData = new FormData();
-    const user = cookies.username
-    formData.append("username", user)
+    formData.append("username", user.username);
     formData.append("storeLogo", form.storeLogo);
     formData.append("storeName", form.storeName);
     formData.append("storeDescription", form.storeDescription);
@@ -55,13 +71,18 @@ const StoreDetails = () => {
     formData.append("storeState", form.storeState);
     formData.append("storeCity", form.storeCity);
     try {
-      const response = await axios.post("http://localhost:3001/storedetails", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const response = await axios.post(
+        "http://localhost:3001/storedetails",
+        formData,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       const newStoreId = response.data.store_id;
-      console.log('Store id: ', newStoreId)
+      console.log("Store id: ", newStoreId);
       setForm({
         storeName: "",
         storeLogo: null,
@@ -81,6 +102,9 @@ const StoreDetails = () => {
   function handleLogoChange(e) {
     updateForm({ storeLogo: e.target.files[0] });
   }
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+  };
   return (
     <div className="store-details-page">
       <div className="header1">
@@ -88,11 +112,19 @@ const StoreDetails = () => {
         <div className="header_categories">
           <Tabs className="tabs" variant="unstyled">
             <TabList>
-                <Tab _isselected="true">Store Details</Tab>
-                <Tab isDisabled className="disabled">Categories</Tab>
-                <Tab isDisabled className="disabled">Choose Theme</Tab>
-                <Tab isDisabled className="disabled">Customize theme</Tab>
-                <Tab isDisabled className="disabled">Add Products</Tab>
+              <Tab _isselected="true">Store Details</Tab>
+              <Tab isDisabled className="disabled">
+                Categories
+              </Tab>
+              <Tab isDisabled className="disabled">
+                Choose Theme
+              </Tab>
+              <Tab isDisabled className="disabled">
+                Customize theme
+              </Tab>
+              <Tab isDisabled className="disabled">
+                Add Products
+              </Tab>
             </TabList>
           </Tabs>
         </div>
@@ -103,8 +135,8 @@ const StoreDetails = () => {
       <div className="categories_body">
         <div className="dashboard1">
           <div className="dash_items">
-            <Link  to={"/userhome"}>
-                <Image className="dashboard_home" src="/images/home.svg" />
+            <Link to={"/userhome"}>
+              <Image className="dashboard_home" src="/images/home.svg" />
             </Link>
             <Link className="home_txt" to={"/userhome"}>
               Home
@@ -127,10 +159,10 @@ const StoreDetails = () => {
             </Link>
           </div>
           <div className="dash_items">
-             <Link to={"/"}>
+            <Link to={"/"}>
               <Image className="back_dash" src="/images/logout.svg" />
             </Link>
-            <Link className="dash_txt" to={"/"}>
+            <Link className="dash_txt" to={"/"} onClick={handleLogout}>
               Log Out
             </Link>
           </div>
@@ -171,7 +203,9 @@ const StoreDetails = () => {
                     />
                   </label>
                   {form.storeLogo && <Text>{form.storeLogo.name}</Text>}
-                  {proceedClicked && !form.storeLogo && (<div className="alert-txt">Please upload a logo.</div>)}
+                  {proceedClicked && !form.storeLogo && (
+                    <div className="alert-txt">Please upload a logo.</div>
+                  )}
                   <Text className="upload-txt">
                     .jpg , .jpeg , .pdf , .svg files
                   </Text>
@@ -278,7 +312,11 @@ const StoreDetails = () => {
               </div>
             </div>
             <div className="proceed_btn">
-              <button className="proceed" type="submit" onClick={() => setProceedClicked(true)}>
+              <button
+                className="proceed"
+                type="submit"
+                onClick={() => setProceedClicked(true)}
+              >
                 Proceed <span className="arrow">&#10132;</span>
               </button>
             </div>
