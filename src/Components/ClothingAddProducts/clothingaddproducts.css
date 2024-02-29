@@ -162,3 +162,69 @@
     height: 390px;
   }
 }
+.popup-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-box {
+  background-color: #553C9A;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 450px;
+}
+
+.popup-content {
+  position: relative;
+  text-align: center;
+}
+
+.popup-content h2 {
+  margin-bottom: 20px;
+  color: #ffffff;
+  font-size: 18px;
+}
+
+.link-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.link-container p {
+  color: white;
+}
+
+.popup-content button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.popup-content button:hover {
+  color: #ffffff;
+}
+
+.close-icon {
+  position: absolute;
+  top: -15px;
+  right: 0;
+  font-size: 24px;
+  color: rgb(33, 30, 30);
+  cursor: pointer;
+}
+
+.close-icon:hover {
+  color: #edf2f7;
+}

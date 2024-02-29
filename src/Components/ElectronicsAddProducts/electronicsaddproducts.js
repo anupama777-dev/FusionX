@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router";
+import { FaCopy, FaTimes } from "react-icons/fa";
 import axios from "axios";
 import {
   Image,
@@ -20,7 +21,8 @@ const ElectronicsAddProducts = () => {
   const storeID = searchParams.get("store");
   const category = searchParams.get("category");
   const theme = searchParams.get("theme");
-  const add = searchParams.get("add")
+  const add = searchParams.get("add");
+  const [showPopup, setShowPopup] = useState(false);
   const [form, setForm] = useState({
     productType: "",
     productName: "",
@@ -50,6 +52,32 @@ const ElectronicsAddProducts = () => {
       productTax: isChecked,
       productPAT: updatedPAT,
     }));
+  };
+  const handleAddMore = async (e) => {
+    e.preventDefault();
+    const requiredFields = [
+      "productType",
+      "productName",
+      "productDescription",
+      "productPrice",
+      "productWeight",
+      "productColorList",
+      "productMaterialList",
+      "productImage",
+    ];
+    const isFormValid = requiredFields.every((field) => !!form[field]);
+    if (!isFormValid) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+    try {
+      await onSubmit(e);
+      navigate(
+        `/electronicsaddproducts?store=${storeID}&category=${category}&theme=${theme}`
+      );
+    } catch (error) {
+      console.error("Error adding more products:", error.message);
+    }
   };
   async function onSubmit(e) {
     e.preventDefault();
@@ -92,11 +120,53 @@ const ElectronicsAddProducts = () => {
         productColorList: [],
         productMaterialList: [],
       });
-      navigate("/userhome");
+      add === "1" && navigate(`/mystore?store=${storeID}`);
     } catch (error) {
       console.error("Error adding product:", error.message);
     }
   }
+  async function addStoreLink(storeID, storeLink) {
+    try {
+      const encodedStoreLink = encodeURIComponent(storeLink);
+      await axios.post(
+        `http://localhost:3001/addStoreLink?store=${storeID}&link=${encodedStoreLink}`
+      );
+    } catch (error) {
+      console.error("Error adding/updating store link:", error.message);
+      throw error;
+    }
+  }
+  const handleProceed = async (e) => {
+    e.preventDefault();
+    const requiredFields = [
+      "productType",
+      "productName",
+      "productDescription",
+      "productPrice",
+      "productWeight",
+      "productColorList",
+      "productMaterialList",
+      "productImage",
+    ];
+    const isFormValid = requiredFields.every((field) => !!form[field]);
+    if (!isFormValid) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+    const storeLink = `${window.location.origin}/store?store=${storeID}`;
+    try {
+      await onSubmit(e);
+      await navigator.clipboard.writeText(storeLink);
+      setShowPopup(true);
+      await addStoreLink(storeID, storeLink);
+    } catch (error) {
+      console.error("Error submitting form or copying link:", error.message);
+    }
+  };
+  const closePopup = () => {
+    setShowPopup(false);
+    navigate("/userhome");
+  };
   const handleLogout = () => {
     localStorage.removeItem("token");
   };
@@ -301,7 +371,9 @@ const ElectronicsAddProducts = () => {
                   placeholder="Enter the weight of the product"
                   name="productWeight"
                   value={form.productWeight}
-                  onChange={(e) => updateForm({ productWeight: e.target.value })}
+                  onChange={(e) =>
+                    updateForm({ productWeight: e.target.value })
+                  }
                   required
                 />
                 <div className="text">
@@ -315,7 +387,9 @@ const ElectronicsAddProducts = () => {
                   height="40px"
                   name="productWeightUnit"
                   value={form.productWeightUnit}
-                  onChange={(e) => updateForm({ productWeightUnit: e.target.value })}
+                  onChange={(e) =>
+                    updateForm({ productWeightUnit: e.target.value })
+                  }
                   required
                 >
                   <option value="kg" className="options">
@@ -389,13 +463,46 @@ const ElectronicsAddProducts = () => {
               </div>
             </div>
             <div className="proceed_btn">
-              <button className="proceed" type="submit">
-                Proceed <span className="arrow">&#10132;</span>
-              </button>
+              {add !== "1" && (
+                <button className="add-more" onClick={handleAddMore}>
+                  + Add More
+                </button>
+              )}
+              {add === "1" ? (
+                <button className="proceed" type="submit">
+                  Proceed <span className="arrow">&#10132;</span>
+                </button>
+              ) : (
+                <button className="proceed" onClick={handleProceed}>
+                  Proceed <span className="arrow">&#10132;</span>
+                </button>
+              )}
             </div>
           </form>
         </div>
       </div>
+      {showPopup && (
+        <div className="popup-background">
+          <div className="popup-box">
+            <div className="popup-content">
+              <h2>Your store is ready. Here's the link to your store:</h2>
+              <div className="link-container">
+                <p>{`${window.location.origin}/store?store=${storeID}`}</p>
+                <button
+                  onClick={async () => {
+                    const storeLink = `${window.location.origin}/store?store=${storeID}`;
+                    await navigator.clipboard.writeText(storeLink);
+                    alert("Link copied to clipboard!");
+                  }}
+                >
+                  <FaCopy />
+                </button>
+              </div>
+              <FaTimes className="close-icon" onClick={closePopup} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router";
+import { FaCopy, FaTimes } from "react-icons/fa";
 import axios from "axios";
 import {
   Image,
@@ -22,8 +23,9 @@ const GroceryAddProducts = () => {
   const searchParams = new URLSearchParams(location.search);
   const storeID = searchParams.get("store");
   const category = searchParams.get("category");
-  const theme = searchParams.get("theme")
-  const add = searchParams.get("add")
+  const theme = searchParams.get("theme");
+  const add = searchParams.get("add");
+  const [showPopup, setShowPopup] = useState(false);
   const [form, setForm] = useState({
     productType: "",
     productName: "",
@@ -53,6 +55,31 @@ const GroceryAddProducts = () => {
       productPAT: updatedPAT,
     }));
   };
+  const handleAddMore = async (e) => {
+    e.preventDefault();
+    const requiredFields = [
+      "productType",
+      "productName",
+      "productDescription",
+      "productPrice",
+      "productWeight",
+      "productImage",
+      "productFoodPref",
+    ];
+    const isFormValid = requiredFields.every((field) => !!form[field]);
+    if (!isFormValid) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+    try {
+      await onSubmit(e);
+      navigate(
+        `/groceryaddproducts?store=${storeID}&category=${category}&theme=${theme}`
+      );
+    } catch (error) {
+      console.error("Error adding more products:", error.message);
+    }
+  };
   async function onSubmit(e) {
     e.preventDefault();
     const formData = new FormData();
@@ -67,11 +94,15 @@ const GroceryAddProducts = () => {
     formData.append("productWeight", form.productWeight);
     formData.append("productWeightUnit", form.productWeightUnit);
     try {
-      await axios.post(`http://localhost:3001/groceryaddproducts?store=${storeID}&category=grocery&theme=${theme}`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      await axios.post(
+        `http://localhost:3001/groceryaddproducts?store=${storeID}&category=grocery&theme=${theme}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       setForm({
         productType: "",
         productName: "",
@@ -84,11 +115,52 @@ const GroceryAddProducts = () => {
         productWeight: "",
         productWeightUnit: "",
       });
-      navigate("/userhome");
+      add === "1" && navigate(`/mystore?store=${storeID}`);
     } catch (error) {
       console.error("Error adding product:", error.message);
     }
   }
+  async function addStoreLink(storeID, storeLink) {
+    try {
+      const encodedStoreLink = encodeURIComponent(storeLink);
+      await axios.post(
+        `http://localhost:3001/addStoreLink?store=${storeID}&link=${encodedStoreLink}`
+      );
+    } catch (error) {
+      console.error("Error adding/updating store link:", error.message);
+      throw error;
+    }
+  }
+  const handleProceed = async (e) => {
+    e.preventDefault();
+    const requiredFields = [
+      "productType",
+      "productName",
+      "productDescription",
+      "productPrice",
+      "productWeight",
+      "productImage",
+      "productFoodPref",
+    ];
+    const isFormValid = requiredFields.every((field) => !!form[field]);
+    if (!isFormValid) {
+      alert("Please fill in all required fields.");
+      return;
+    }
+    const storeLink = `${window.location.origin}/store?store=${storeID}`;
+    try {
+      await onSubmit(e);
+      await navigator.clipboard.writeText(storeLink);
+      setShowPopup(true);
+      await addStoreLink(storeID, storeLink);
+    } catch (error) {
+      console.error("Error submitting form or copying link:", error.message);
+    }
+  };
+  const closePopup = () => {
+    setShowPopup(false);
+    navigate("/userhome");
+  };
   const handleLogout = () => {
     localStorage.removeItem("token");
   };
@@ -156,9 +228,9 @@ const GroceryAddProducts = () => {
         <Image className="line" src="/images/line_1.svg" />
       </div>
       <div className="categories_body">
-      <div className="dashboard1">
+        <div className="dashboard1">
           <div className="dash_items">
-          <Link  to={"/userhome"}>
+            <Link to={"/userhome"}>
               <Image className="dashboard_home" src="/images/home.svg" />
             </Link>
             <Link className="home_txt" to={"/userhome"}>
@@ -166,7 +238,7 @@ const GroceryAddProducts = () => {
             </Link>
           </div>
           <div className="dash_items">
-          <Link to={"/profile"}>
+            <Link to={"/profile"}>
               <Image className="dashboard_profile" src="/images/profile.svg" />
             </Link>
             <Link className="profile_txt" to={"/profile"}>
@@ -174,7 +246,7 @@ const GroceryAddProducts = () => {
             </Link>
           </div>
           <div className="dash_items">
-          <Link to={"/help"}>
+            <Link to={"/help"}>
               <Image className="dashboard_help" src="/images/help.svg" />
             </Link>
             <Link className="help_txt" to={"/help"}>
@@ -182,7 +254,7 @@ const GroceryAddProducts = () => {
             </Link>
           </div>
           <div className="dash_items">
-          <Link to={"/"}>
+            <Link to={"/"}>
               <Image className="back_dash" src="/images/logout.svg" />
             </Link>
             <Link className="dash_txt" to={"/"} onClick={handleLogout}>
@@ -350,13 +422,46 @@ const GroceryAddProducts = () => {
               </div>
             </div>
             <div className="proceed_btn">
-              <button className="proceed" type="submit">
-                Proceed <span className="arrow">&#10132;</span>
-              </button>
+              {add !== "1" && (
+                <button className="add-more" onClick={handleAddMore}>
+                  + Add More
+                </button>
+              )}
+              {add === "1" ? (
+                <button className="proceed" type="submit">
+                  Proceed <span className="arrow">&#10132;</span>
+                </button>
+              ) : (
+                <button className="proceed" onClick={handleProceed}>
+                  Proceed <span className="arrow">&#10132;</span>
+                </button>
+              )}
             </div>
           </form>
         </div>
       </div>
+      {showPopup && (
+        <div className="popup-background">
+          <div className="popup-box">
+            <div className="popup-content">
+              <h2>Your store is ready. Here's the link to your store:</h2>
+              <div className="link-container">
+                <p>{`${window.location.origin}/store?store=${storeID}`}</p>
+                <button
+                  onClick={async () => {
+                    const storeLink = `${window.location.origin}/store?store=${storeID}`;
+                    await navigator.clipboard.writeText(storeLink);
+                    alert("Link copied to clipboard!");
+                  }}
+                >
+                  <FaCopy />
+                </button>
+              </div>
+              <FaTimes className="close-icon" onClick={closePopup} />
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
