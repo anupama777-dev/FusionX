@@ -32,7 +32,7 @@ const OthersAddProducts = () => {
     productName: "",
     productImage: null,
     productDescription: "",
-    productFeatures: "",
+    productFeatures: "Vegetarian",
     productPrice: "",
     productPAT: "",
     productTax: false,
@@ -135,7 +135,7 @@ const OthersAddProducts = () => {
         productName: "",
         productImage: null,
         productDescription: "",
-        productFeatures: "",
+        productFeatures: "Vegetarian",
         productPrice: "",
         productPAT: "",
         productTax: false,
@@ -636,10 +636,10 @@ const OthersAddProducts = () => {
             <div className="popup-content">
               <h2>Your store is ready. Here's the link to your store:</h2>
               <div className="link-container">
-                <p>{`${window.location.origin}/store?store=${storeID}`}</p>
+                <p>{`http://localhost:3002/store?store=${storeID}`}</p>
                 <button
                   onClick={async () => {
-                    const storeLink = `${window.location.origin}/store?store=${storeID}`;
+                    const storeLink = `http://localhost:3002/store?store=${storeID}`;
                     await navigator.clipboard.writeText(storeLink);
                     alert("Link copied to clipboard!");
                   }}

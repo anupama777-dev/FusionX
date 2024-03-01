@@ -338,7 +338,7 @@ const HealthAddProducts = () => {
                     <Radio value="Non-Vegetarian" name="diet">
                       Recyclable
                     </Radio>
-                    <Radio value="Vegan" name="diet">
+                    <Radio value="Cruelty-Free" name="diet">
                       Cruelty-Free
                     </Radio>
                     <Radio value="Vegan" name="diet">
@@ -450,10 +450,10 @@ const HealthAddProducts = () => {
             <div className="popup-content">
               <h2>Your store is ready. Here's the link to your store:</h2>
               <div className="link-container">
-                <p>{`${window.location.origin}/store?store=${storeID}`}</p>
+                <p>{`http://localhost:3002/store?store=${storeID}`}</p>
                 <button
                   onClick={async () => {
-                    const storeLink = `${window.location.origin}/store?store=${storeID}`;
+                    const storeLink = `http://localhost:3002/store?store=${storeID}`;
                     await navigator.clipboard.writeText(storeLink);
                     alert("Link copied to clipboard!");
                   }}
