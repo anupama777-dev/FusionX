@@ -153,7 +153,7 @@ const ElectronicsAddProducts = () => {
       alert("Please fill in all required fields.");
       return;
     }
-    const storeLink = `${window.location.origin}/store?store=${storeID}`;
+    const storeLink = `http://localhost:3002/store?store=${storeID}`;
     try {
       await onSubmit(e);
       await navigator.clipboard.writeText(storeLink);
