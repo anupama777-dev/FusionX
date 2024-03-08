@@ -1,0 +1,276 @@
+  .template-home_page-gray {
+    background-color: #E2E8F0;
+    height: 251vh;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .template-home_page-red {
+    background-color: #FEB2B2;
+    height: 251vh;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+  } 
+
+  .template-home_page-yellow {
+    background-color:#FAF089;
+    height: 251vh;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+  } 
+
+  .template-home_page-green {
+    background-color: #9AE6B4;
+    height: 251vh;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+  } 
+
+  .template-home_page-teal {
+    background-color: #81E6D9;
+    height: 251vh;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+  } 
+  
+  .template-home_page-blue {
+    background-color: #90CDF4;
+    height: 251vh;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+  }   
+
+  .template-home_page-cyan {
+    background-color:#9DECF9;
+    height: 251vh;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+  } 
+
+  .template-home_page-purple {
+    background-color:#D6BCFA;
+    height: 251vh;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+  } 
+
+  .template-home_page-pink {
+    background-color:#FBB6CE;
+    height: 251vh;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+  } 
+
+  .template-font-1{
+    font-family: 'Arial';
+  }
+
+  .template-font-2{
+    font-family: 'Georgia';
+  }
+
+  .template-font-3{
+    font-family: 'Times New Roman';
+  }
+
+  .template-font-4{
+    font-family: 'Courier New';
+  }
+
+  .template-font-5{
+    font-family: 'Verdana';
+  }
+
+  .template-header_logo{
+    width: 110px;
+    object-fit: contain;
+    margin: 5px 20px;
+  }
+
+  .store_name {
+    display: flex;
+    color: #1A202C;
+    font-weight: 600;
+    font-size: 12px;
+    margin-top: -5px;
+    margin-left: -20px;
+  }
+
+  .logo_name{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }  
+  
+  .template-homepage_header {
+    height: 70px;
+    display: flex;
+    flex-direction: row;
+    z-index: 100;
+  }
+  
+  .search_bar{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 2vw;
+  }
+  
+  .search_icon{
+    max-height: 15px;
+    margin-right: 1vh;
+  }
+
+  .input_box {
+    display: flex;
+    width: 14vw;
+    background: #F7FAFC;
+    border-radius: 20px;
+  }
+  
+  .template-home_txt, 
+  .contact_us_txt, 
+  .about_us_txt, 
+  .account_txt {
+    color: #1A202C;
+    font-weight: 500;
+    font-size: 12px;
+    margin-left: 2vw;
+    margin-top: 25px;
+  }
+
+  .template-homepage_body {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    height: 100vw;
+    margin-left: 40px;
+    margin-right: 40px;
+    border-radius: 15px;
+  }
+  
+  .home_body_top{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 100px;
+    margin-left: 20px;
+    margin-right: 50px;
+    margin-top: 120px;
+  }
+  .home_image{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    width: 90vw;
+    height: 20vh;
+
+  }
+  .home_store_txt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1vw;
+    font-size: 12px;
+  }
+
+  .store_name_txt{
+    color: #1A202C;
+    font-weight: 700;
+    font-size: 40px;
+    margin-bottom: 5px;
+    margin-top: -10px;
+  }
+  
+  
+  .products{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 60px;
+  }
+  
+  .homebody_product{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .product_container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-left: 4.5vw;
+  }
+  .product_image{
+    height: 10vw;
+    margin-bottom: 10px;
+  }
+  .product_image:hover{
+    border: 2px solid #A0AEC0;
+  }
+  
+  .product_name{
+    color: #1A202C;
+    font-weight: 500;
+    font-size: 15px;
+    text-align: center;
+  }
+  
+  .product_price{
+    columns: #2D3748;
+    font-size: 12px;
+  }
+  
+  .homepage_footer{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    padding-bottom: 2vw;
+    padding-top: 2vw;
+    font-size: 13px;
+  }
+  
+  .contact{
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .address{
+    display: flex;
+    flex-direction: column;
+    text-align: right
+    ;
+  }
+  
+  .contact_footer_txt{
+    color: #1A202C;
+    font-weight: 600;
+  }
+  
+  .address_txt{
+    color: #1A202C;
+    font-weight: 600;
+  }
+  
+  
+  @media screen and (max-width: 800px) {
+    .products{
+      display: flex;
+      flex-direction: column;
+    }
+  }

@@ -101,7 +101,7 @@ function Signup() {
             <Button className="login_in_btn" onClick={handleSubmit}>Sign Up</Button>
           </div>
           <div className="login_signup">
-            <Text className="already">Already have an account?</Text>
+          <Link to={"/login"} className="already">Already have an account?</Link>
             <Link to={"/login"} className="login_link">Log In</Link>
           </div>
         </div>

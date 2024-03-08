@@ -1,6 +1,12 @@
 .customize_page {
   background-color: #1a202c;
 }
+.scrollable-container {
+  width: 55vw;
+  height: 85vh;
+  overflow-y: auto;  
+}
+
 .customize_body {
   display: flex;
   flex-direction: row;
@@ -29,8 +35,8 @@
   margin-top: 30px;
 }
 .customize_theme {
-  width: 50vw;
-  height: 65vh;
+  width: 55vw;
+  height: 85vh;
   background-color: #171923;
   border-radius: 6px;
   border: 1px solid #44337a;
