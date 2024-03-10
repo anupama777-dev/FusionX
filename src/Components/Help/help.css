@@ -1,0 +1,52 @@
+.help_page{
+    background-color: #1a202c;
+    height: 700vh;
+    width: 99vw;
+}
+
+.dashboard2 {
+    display: flex;
+    flex-direction: column;
+    /* position: fixed; */
+    justify-content: flex-start;
+    padding-top: 70px;
+    padding-left: 50px;
+    padding-right: 50px;
+    min-height: 500vh;
+    min-width: 250px;
+    background-color: #171923;
+  }
+
+.help-container {
+    background-color: #1a202c;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    overflow-x: hidden;
+    width: 82.65vw;
+  }
+
+.help{
+    width: 50vw;
+    height: 50vh;
+    margin-top: 50px;
+    border: 1px solid #44337a;
+    margin-left: 15vw;
+}
+
+.help-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.help-text {
+    color: #cbd5e0;
+    font-size: 18px;
+    font-weight: 400;
+    opacity: 0.5;
+    margin-top: 30px;
+    text-align: center;
+    margin-left: 15vw;
+    margin-right: 16vw;
+
+  }

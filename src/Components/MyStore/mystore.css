@@ -1,7 +1,6 @@
 .store-name-desc {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 .sub-txt-left {
   font-size: 18px;
@@ -9,20 +8,32 @@
   line-height: 28px;
   margin-top: 30px;
   margin-left: 60px;
+  width: 23vw;
+
 }
+.sub-txt-right1{
+  font-size: 18px;
+  font-weight: 450;
+  line-height: 28px;
+  margin-top: 30px;
+  text-align: left;
+  margin-left: -130px;
+}
+
 .sub-txt-right {
   font-size: 18px;
   font-weight: 450;
   line-height: 28px;
   margin-top: 30px;
-  margin-right: 80px;
+  text-align: left;
+  margin-left: 30px;
 }
 .edit-store-details-box {
   display: flex;
   flex-direction: column;
   align-items: space-evenly;
   width: 64vw;
-  height: 50vh;
+  height: 70vh;
   border-radius: 8px;
   border: 1px solid var(--gray-700, #2d3748);
   opacity: 0.7;

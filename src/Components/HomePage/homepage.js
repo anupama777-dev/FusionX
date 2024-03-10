@@ -22,13 +22,13 @@ function HomePage() {
         <Image className="header_logo" src="\images\logo.svg" />
         <div className="header_nav">
           <div className="header_option">
-            <Link to={"/menu"}>Menu</Link>
-          </div>
-          <div className="header_option">
             <Link onClick={() => scrollToSection(homeRef)}>Home</Link>
           </div>
           <div className="header_option">
             <Link onClick={() => scrollToSection(aboutRef)}>About</Link>
+          </div>
+          <div className="header_option">
+            <Link to={"/help"}>Help</Link>
           </div>
           <div className="header_option">
             <Link onClick={() => scrollToSection(contactRef)}>Contact</Link>

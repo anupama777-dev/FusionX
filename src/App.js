@@ -17,6 +17,7 @@ import OthersAddProducts from "./Components/OthersAddProducts/othersaddproducts"
 import EditStore from './Components/EditStore/editstore';
 import MyStore from './Components/MyStore/mystore';
 import EditProduct from "./Components/EditProduct/editproduct";
+import Help from "./Components/Help/help";
 
 function App() {
   return (
@@ -76,6 +77,7 @@ function App() {
             <Route path="/mystore" exact element={<MyStore/>}></Route>
             <Route path="/editproduct" exact element={<EditProduct/>}></Route>
             <Route path="/userhome" exact element={<UserHome />}></Route>
+            <Route path="/help" exact element={<Help />}></Route>
           </Routes>
         </div>
       </Router>

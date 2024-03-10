@@ -139,7 +139,7 @@ function MyStore() {
                     <div key={index}>
                       <div className="store-name-desc">
                         <Text className="sub-txt-left">Store Name :</Text>
-                        <Text className="sub-txt-right">{store.storeName}</Text>
+                        <Text className="sub-txt-right1">{store.storeName}</Text>
                       </div>
                       <div className="store-name-desc">
                         <Text className="sub-txt-left">
@@ -151,7 +151,7 @@ function MyStore() {
                       </div>
                       <div className="store-name-desc">
                         <Text className="sub-txt-left">Store Address :</Text>
-                        <Text className="sub-txt-right">
+                        <Text className="sub-txt-right1">
                           {store.storeAddress}
                         </Text>
                       </div>
@@ -159,8 +159,16 @@ function MyStore() {
                         <Text className="sub-txt-left">
                           Store Contact Number :
                         </Text>
-                        <Text className="sub-txt-right">
+                        <Text className="sub-txt-right1">
                           {store.storeContact}
+                        </Text>
+                      </div>
+                      <div className="store-name-desc">
+                        <Text className="sub-txt-left">
+                          Store Link :
+                        </Text>
+                        <Text className="sub-txt-right1">
+                          {store.storeLink}
                         </Text>
                       </div>
                     </div>
