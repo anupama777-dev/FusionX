@@ -1,3 +1,9 @@
+.store-details-userhome{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .store-name-desc {
   display: flex;
   flex-direction: row;
@@ -31,9 +37,8 @@
 .edit-store-details-box {
   display: flex;
   flex-direction: column;
-  align-items: space-evenly;
   width: 64vw;
-  height: 70vh;
+  height: 100%;
   border-radius: 8px;
   border: 1px solid var(--gray-700, #2d3748);
   opacity: 0.7;
@@ -48,23 +53,22 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
-
-.edit_icon {
-  height: 25px;
-  margin-top: 2vw;
-  margin-left: 46vw;
+.store-txt{
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  margin-top: 32px;
+  white-space: nowrap;
 }
-.edit_icon1{
-  height: 25px;
-  margin-top: 2vw;
-  margin-left: 3vw;
+.btns-div{
+  display: flex;
+  flex-direction: row;
 }
-
-.edit_icon:hover {
-  border: 2px solid white;
-  border-radius: 4px;
+.edit_icon, .edit_icon1{
+  width: 70px;
+  margin-top: 30px;
 }
 .edit_txt {
   color: #edf2f7;

@@ -72,13 +72,16 @@ function MyStore() {
   const handleLogout = () => {
     localStorage.removeItem("token");
   };
+  const handleEdit = () => {
+    navigate(`/editstore?store=${storeID}`);
+  };
   return (
     <div className="store-details-page">
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
         <div className="header_categories">
           <Text className="edit_store_txt">My Stores</Text>
-        </div>{" "}
+        </div>
       </div>
       <div className="line_div1">
         <Image className="line" src="/images/line_1.svg" />
@@ -119,19 +122,30 @@ function MyStore() {
           </div>
         </div>
         <div className="categories_container">
-          <div className="store-details">
+          <div className="store-details-userhome">
             <div className="edit-store-details-box">
               <div className="edit_option">
-                <Text className="storetxt">Store Details</Text>
-                <Link to={`/editstore?store=${storeID}`}>
-                  <Image className="edit_icon" src="/images/edit_button.svg" />
-                </Link>
-                <Button
-                  className="edit_icon1"
-                  leftIcon={<IoTrash fontSize="1.4em" />}
-                  colorScheme="white"
-                  onClick={handleDelete}
-                ></Button>
+                <Text className="store-txt">Store Details</Text>
+                <div className="btns-div">
+                  <Button
+                    className="edit_icon"
+                    colorScheme="white"
+                    variant="ghost"
+                    _hover={{ backgroundColor: '#222b3b' }}
+                    onClick={handleEdit}
+                  >
+                    <Image src="/images/edit_button.svg" />
+                  </Button>
+                  <Button
+                    className="edit_icon1"
+                    colorScheme="white"
+                    variant="ghost"
+                    _hover={{ backgroundColor: '#222b3b' }}
+                    onClick={handleDelete}
+                  >
+                    <IoTrash fontSize="1.4em" />
+                  </Button>
+                </div>
               </div>
               {stores.length > 0 && (
                 <div>
@@ -139,7 +153,9 @@ function MyStore() {
                     <div key={index}>
                       <div className="store-name-desc">
                         <Text className="sub-txt-left">Store Name :</Text>
-                        <Text className="sub-txt-right1">{store.storeName}</Text>
+                        <Text className="sub-txt-right1">
+                          {store.storeName}
+                        </Text>
                       </div>
                       <div className="store-name-desc">
                         <Text className="sub-txt-left">
@@ -163,10 +179,11 @@ function MyStore() {
                           {store.storeContact}
                         </Text>
                       </div>
-                      <div className="store-name-desc">
-                        <Text className="sub-txt-left">
-                          Store Link :
-                        </Text>
+                      <div
+                        className="store-name-desc"
+                        style={{ marginBottom: "40px" }}
+                      >
+                        <Text className="sub-txt-left">Store Link :</Text>
                         <Text className="sub-txt-right1">
                           {store.storeLink}
                         </Text>
@@ -223,7 +240,7 @@ function MyStore() {
                             leftIcon={<IoTrash fontSize="1.4em" />}
                             colorScheme="white"
                             onClick={() => handleDeleteProduct(product._id)}
-                            ></Button>
+                          ></Button>
                         </CardFooter>
                       </Card>
                     </div>
