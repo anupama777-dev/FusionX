@@ -13,6 +13,7 @@ function TemplateHomePage() {
                     selectedColor === 'yellow' ? 'template-home_page-yellow' :
                     selectedColor === 'pink' ? 'template-home_page-pink' :
                     selectedColor === 'purple' ? 'template-home_page-purple' :
+                    selectedColor === 'orange' ? 'template-home_page-orange' :
                     selectedColor === 'teal' ? 'template-home_page-teal' :
                     selectedColor === 'cyan' ? 'template-home_page-cyan' :
                     selectedColor === 'gray' ? 'template-home_page-gray' : ''}>  
@@ -41,7 +42,16 @@ function TemplateHomePage() {
       <div className="template-homepage_body">
         <div className="home_body_top">
         <div className="home_image">
-          <Image className="home_image1" src="/images/template-home.svg" />
+          <Image className="home_image1" src={selectedColor==="blue" ? "/images/template-home-blue.svg":
+                                              selectedColor === 'red' ? '/images/template-home-red.svg' :
+                                              selectedColor === 'green' ? '/images/template-home-green.svg' :
+                                              selectedColor === 'yellow' ? '/images/template-home-yellow.svg' :
+                                              selectedColor === 'pink' ? '/images/template-home-pink.svg' :
+                                              selectedColor === 'purple' ? '/images/template-home-purple.svg' :
+                                              selectedColor === 'orange' ? '/images/template-home-orange.svg' :
+                                              selectedColor === 'teal' ? '/images/template-home-teal.svg' :
+                                              selectedColor === 'cyan' ? '/images/template-home-cyan.svg' :
+                                              selectedColor === 'gray' ? '/images/template-home-gray.svg' : ''} />
         </div>
         <div className="home_store_txt">
           <Text className="store_name_txt">Store Name</Text>

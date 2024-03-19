@@ -70,6 +70,15 @@
     flex-direction: column;
   } 
 
+  .template-home_page-orange {
+    background-color:#FBD38D;
+    height: 251vh;
+    width: 55vw;
+    display: flex;
+    flex-direction: column;
+  } 
+
+
   .template-font-1{
     font-family: 'Arial';
   }
