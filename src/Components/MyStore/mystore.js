@@ -75,6 +75,9 @@ function MyStore() {
   const handleEdit = () => {
     navigate(`/editstore?store=${storeID}`);
   };
+  const handleEditProduct = (productId) => {
+    navigate(`/editproduct?store=${storeID}&category=${category}&product=${productId}`);
+  };
   return (
     <div className="store-details-page">
       <div className="header1">
@@ -131,7 +134,7 @@ function MyStore() {
                     className="edit_icon"
                     colorScheme="white"
                     variant="ghost"
-                    _hover={{ backgroundColor: '#222b3b' }}
+                    _hover={{ backgroundColor: "#222b3b" }}
                     onClick={handleEdit}
                   >
                     <Image src="/images/edit_button.svg" />
@@ -140,7 +143,7 @@ function MyStore() {
                     className="edit_icon1"
                     colorScheme="white"
                     variant="ghost"
-                    _hover={{ backgroundColor: '#222b3b' }}
+                    _hover={{ backgroundColor: "#222b3b" }}
                     onClick={handleDelete}
                   >
                     <IoTrash fontSize="1.4em" />
@@ -153,9 +156,7 @@ function MyStore() {
                     <div key={index}>
                       <div className="store-name-desc">
                         <Text className="sub-txt-left">Store Name :</Text>
-                        <Text className="sub-txt-right1">
-                          {store.storeName}
-                        </Text>
+                        <Text className="sub-txt-right">{store.storeName}</Text>
                       </div>
                       <div className="store-name-desc">
                         <Text className="sub-txt-left">
@@ -167,7 +168,7 @@ function MyStore() {
                       </div>
                       <div className="store-name-desc">
                         <Text className="sub-txt-left">Store Address :</Text>
-                        <Text className="sub-txt-right1">
+                        <Text className="sub-txt-right">
                           {store.storeAddress}
                         </Text>
                       </div>
@@ -175,7 +176,7 @@ function MyStore() {
                         <Text className="sub-txt-left">
                           Store Contact Number :
                         </Text>
-                        <Text className="sub-txt-right1">
+                        <Text className="sub-txt-right">
                           {store.storeContact}
                         </Text>
                       </div>
@@ -184,9 +185,7 @@ function MyStore() {
                         style={{ marginBottom: "40px" }}
                       >
                         <Text className="sub-txt-left">Store Link :</Text>
-                        <Text className="sub-txt-right1">
-                          {store.storeLink}
-                        </Text>
+                        <Text className="sub-txt-right">{store.storeLink}</Text>
                       </div>
                     </div>
                   ))}
@@ -229,61 +228,23 @@ function MyStore() {
                           </div>
                         </CardBody>
                         <CardFooter className="footer">
-                          <Link
-                            to={`/editproduct?store=${storeID}&category=${category}&product=${product._id}`}
-                            className="edit-product-link"
-                          >
-                            Edit
-                          </Link>
                           <Button
                             className="edit_icon2"
-                            leftIcon={<IoTrash fontSize="1.4em" />}
                             colorScheme="white"
-                            onClick={() => handleDeleteProduct(product._id)}
-                          ></Button>
-                        </CardFooter>
-                      </Card>
-                    </div>
-                  );
-                })}
-            </div>
-            <div className="products-container1">
-              {products &&
-                products.map((product, index) => {
-                  let imagePath = product.productImage.image;
-                  if (typeof imagePath === "string") {
-                    imagePath = imagePath.replace(/\\/g, "/");
-                    imagePath = `http://localhost:3001/${imagePath}`;
-                  }
-                  return (
-                    <div key={index} className="product-card">
-                      <Card bg="#1A202C">
-                        <CardBody>
-                          <Image
-                            className="edit-product-image"
-                            src={imagePath}
-                            alt={product.productName}
-                            style={{ width: "150px", height: "120px" }}
-                          />
-                          <div className="edit-prdct-icon-txt">
-                            <Text className="edit-product-txt">
-                              {product.productName}
-                            </Text>
-                          </div>
-                        </CardBody>
-                        <CardFooter className="footer">
-                          <Link
-                            to={`/editproduct?store=${storeID}&category=${category}&product=${product._id}`}
-                            className="edit-product-link"
+                            variant="ghost"
+                            _hover={{ backgroundColor: "#222b3b" }}
+                            onClick={() => handleEditProduct(product._id)}
                           >
-                            Edit
-                          </Link>
+                            <Image src="/images/edit_button.svg" />
+                          </Button>
                           <Button
-                            className="edit_icon2"
-                            leftIcon={<IoTrash fontSize="1.4em" />}
+                            className="edit_icon3"
                             colorScheme="white"
+                            _hover={{ backgroundColor: "#222b3b" }}
                             onClick={() => handleDeleteProduct(product._id)}
-                          ></Button>
+                          >
+                            <IoTrash fontSize="1.4em" />
+                          </Button>
                         </CardFooter>
                       </Card>
                     </div>
