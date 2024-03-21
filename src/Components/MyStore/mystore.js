@@ -204,8 +204,10 @@ function MyStore() {
               </Link>
             </div>
             <div className="products-container">
-              {products &&
-                products.map((product, index) => {
+              {products && 
+                products
+                .slice(0,9)
+                .map((product, index) => {
                   let imagePath = product.productImage.image;
                   if (typeof imagePath === "string") {
                     imagePath = imagePath.replace(/\\/g, "/");
