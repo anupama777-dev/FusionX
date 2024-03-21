@@ -204,6 +204,7 @@ function MyStore() {
               </Link>
             </div>
             <div className="products-container">
+              <div className="products-list">
               {products && 
                 products
                 .slice(0,9)
@@ -214,7 +215,7 @@ function MyStore() {
                     imagePath = `http://localhost:3001/${imagePath}`;
                   }
                   return (
-                    <div key={index} className="product-card">
+                    <div key={index} className="product-card ">
                       <Card bg="#1A202C">
                         <CardBody>
                           <Image
@@ -252,6 +253,7 @@ function MyStore() {
                     </div>
                   );
                 })}
+                </div>
             </div>
           </div>
         </div>
