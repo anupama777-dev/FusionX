@@ -26,6 +26,8 @@ const StoreDetails = () => {
     storeCountry: "",
     storeState: "",
     storeCity: "",
+    razorpayKey: "",
+    secretKey: ""
   });
   const [proceedClicked, setProceedClicked] = useState(false);
 
@@ -70,6 +72,8 @@ const StoreDetails = () => {
     formData.append("storeCountry", form.storeCountry);
     formData.append("storeState", form.storeState);
     formData.append("storeCity", form.storeCity);
+    formData.append("razorpayKey", form.razorpayKey)
+    formData.append("secretKey",form.secretKey)
     try {
       const response = await axios.post(
         "http://localhost:3001/storedetails",
@@ -93,6 +97,8 @@ const StoreDetails = () => {
         storeCountry: "",
         storeState: "",
         storeCity: "",
+        razorpayKey: "",
+        secretKey: "",
       });
       navigate(`/categories?store=${newStoreId}`);
     } catch (error) {
@@ -307,6 +313,32 @@ const StoreDetails = () => {
                   name="storeCity"
                   value={form.storeCity}
                   onChange={(e) => updateForm({ storeCity: e.target.value })}
+                  required
+                />
+
+                <div className="text">
+                  <Text className="sub-txt">Razorpay Key</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
+                <Input
+                  className="input-box"
+                  placeholder="Enter Razorpay Key"
+                  name="razorpayKey"
+                  value={form.razorpayKey}
+                  onChange={(e) => updateForm({ razorpayKey: e.target.value })}
+                  required
+                />
+
+                <div className="text">
+                  <Text className="sub-txt">Secret Key</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
+                <Input
+                  className="input-box"
+                  placeholder="Enter Secret Key"
+                  name="secretKey"
+                  value={form.secretKey}
+                  onChange={(e) => updateForm({ secretKey: e.target.value })}
                   required
                 />
               </div>
