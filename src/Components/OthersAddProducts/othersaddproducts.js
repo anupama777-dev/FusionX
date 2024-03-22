@@ -41,7 +41,7 @@ const OthersAddProducts = () => {
     productSizeList: [],
     productSizeChart: null,
     productColorList: [],
-    productMaterialList: [],
+    productMaterial: "",
   });
   function updateForm(value) {
     setForm((prev) => {
@@ -80,10 +80,11 @@ const OthersAddProducts = () => {
       "productPrice",
       "productWeight",
       "productColorList",
-      "productMaterialList",
+      "productMaterial",
       "productImage",
       "productFeatures",
       "productSizeList",
+      "productMaterial",
     ];
     const isFormValid = requiredFields.every((field) => !!form[field]);
     if (!isFormValid) {
@@ -119,7 +120,7 @@ const OthersAddProducts = () => {
     formData.append("productColorCount", productColorCount);
     formData.append("productColorList", form.productColorList);
     formData.append("productMaterialCount", productMaterialCount);
-    formData.append("productMaterialList", form.productMaterialList);
+    formData.append("productMaterial", form.productMaterial);
     try {
       await axios.post(
         `http://localhost:3001/othersaddproducts?store=${storeID}&category=others&theme=${theme}`,
@@ -144,7 +145,7 @@ const OthersAddProducts = () => {
         productSizeList: [],
         productSizeChart: null,
         productColorList: [],
-        productMaterialList: [],
+        productMaterial: "",
       });
       add === "1" && navigate(`/mystore?store=${storeID}`);
     } catch (error) {
@@ -171,10 +172,11 @@ const OthersAddProducts = () => {
       "productPrice",
       "productWeight",
       "productColorList",
-      "productMaterialList",
+      "productMaterial",
       "productImage",
       "productFeatures",
       "productSizeList",
+      "productMaterial",
     ];
     const isFormValid = requiredFields.every((field) => !!form[field]);
     if (!isFormValid) {
@@ -585,30 +587,20 @@ const OthersAddProducts = () => {
                   }
                 />
               </div>
-              <div className="color-details-box">
+              <div className="color-details-box" style={{height: "100%"}}>
                 <Text className="storetxt">Material Details</Text>
-                <Text className="sub-txt">Number of Materials</Text>
+                <Text className="sub-txt">Material</Text>
                 <Input
                   className="input-box"
-                  placeholder="Enter the number of materials"
-                  name="productMaterialCount"
-                  value={form.productMaterialList.length}
-                  readOnly
+                  style={{marginBottom: "60px"}}
+                  placeholder="Enter the material"
+                  name="productMaterial"
+                  value={form.productMaterial}
+                  onChange={(e) =>
+                    updateForm({ productMaterial: e.target.value })
+                  }
+                  required
                 />
-                <Text className="sub-txt">Types of Materials</Text>
-                <div className="color-box">
-                  <Input
-                    className="input-box-1"
-                    placeholder="Enter the materials (comma-separated)"
-                    name="productMaterialList"
-                    value={form.productMaterialList.join(",")}
-                    onChange={(e) =>
-                      updateForm({
-                        productMaterialList: e.target.value.split(","),
-                      })
-                    }
-                  />
-                </div>
               </div>
             </div>
             <div className="proceed_btn">
