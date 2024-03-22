@@ -34,7 +34,8 @@ const ClothingAddProducts = () => {
     productTax: false,
     productSizeList: [],
     productSizeChart: null,
-    productColorList: []
+    productColorList: [],
+    productMaterial: "",
   });
   function updateForm(value) {
     setForm((prev) => {
@@ -74,6 +75,7 @@ const ClothingAddProducts = () => {
       "productSizeList",
       "productColorList",
       "productImage",
+      "productMaterial",
     ];
     const isFormValid = requiredFields.every((field) => !!form[field]);
 
@@ -105,6 +107,7 @@ const ClothingAddProducts = () => {
     formData.append("productSizeChart", form.productSizeChart);
     formData.append("productColorCount", productColorCount);
     formData.append("productColorList", form.productColorList);
+    formData.append("productMaterial", form.productMaterial);
     try {
       await axios.post(
         `http://localhost:3001/clothingaddproducts?store=${storeID}&category=clothing&theme=${theme}`,
@@ -126,6 +129,7 @@ const ClothingAddProducts = () => {
         productSizeList: [],
         productSizeChart: null,
         productColorList: [],
+        productMaterial: "",
       });
       add === "1" && navigate(`/mystore?store=${storeID}`);
     } catch (error) {
@@ -153,6 +157,7 @@ const ClothingAddProducts = () => {
       "productPrice",
       "productSizeList",
       "productColorList",
+      "productMaterial",
       "productImage",
     ];
     const isFormValid = requiredFields.every((field) => !!form[field]);
@@ -503,7 +508,21 @@ const ClothingAddProducts = () => {
                   required
                 />
               </div>
-
+              <div className="color-details-box" style={{height: "100%"}}>
+                <Text className="storetxt">Material Details</Text>
+                <Text className="sub-txt">Material</Text>
+                <Input
+                  className="input-box"
+                  style={{marginBottom: "60px"}}
+                  placeholder="Enter the material"
+                  name="productMaterial"
+                  value={form.productMaterial}
+                  onChange={(e) =>
+                    updateForm({ productMaterial: e.target.value })
+                  }
+                  required
+                />
+              </div>
             </div>
             <div className="proceed_btn">
               {add !== "1" && (
