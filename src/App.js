@@ -16,6 +16,7 @@ import HealthAddProducts from "./Components/HealthAddProducts/healthaddproducts"
 import OthersAddProducts from "./Components/OthersAddProducts/othersaddproducts";
 import EditStore from './Components/EditStore/editstore';
 import MyStore from './Components/MyStore/mystore';
+import ManageOrders from './Components/ManageOrders/manageorders';
 import EditProduct from "./Components/EditProduct/editproduct";
 import Help from "./Components/Help/help";
 
@@ -75,6 +76,7 @@ function App() {
             <Route path="/editstore" exact element={<EditStore/>}></Route>
 
             <Route path="/mystore" exact element={<MyStore/>}></Route>
+            <Route path="/manageorders" exact element={<ManageOrders/>}></Route>
             <Route path="/editproduct" exact element={<EditProduct/>}></Route>
             <Route path="/userhome" exact element={<UserHome />}></Route>
             <Route path="/help" exact element={<Help />}></Route>

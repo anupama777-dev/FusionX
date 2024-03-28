@@ -13,6 +13,7 @@ function MyStore() {
   const searchParams = new URLSearchParams(location.search);
   const storeID = searchParams.get("store");
   const [storeData, setStoreData] = useState({ stores: [], products: [] });
+  const [ordersData, setOrdersData] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchStoreData = async () => {
@@ -20,8 +21,6 @@ function MyStore() {
         const response = await axios.get(
           `http://localhost:3001/mystore/${storeID}`
         );
-        console.log("Response data:", response.data);
-
         setStoreData(response.data);
         setLoading(false);
       } catch (error) {
@@ -30,12 +29,25 @@ function MyStore() {
         setLoading(false);
       }
     };
+    const fetchOrdersData = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:3001/mystore/orders/${storeID}`
+        );
+        setOrdersData(response.data);
+      } catch (error) {
+        console.error("Error fetching orders:", error);
+        setOrdersData([]);
+      }
+    };
     fetchStoreData();
+    fetchOrdersData();
   }, [storeID]);
   if (loading) {
     return <div>Loading...</div>;
   }
   const { stores, products } = storeData;
+  const orders = ordersData;
   const category = stores[0].storeCategory;
   const theme = stores[0].storeTheme;
   const handleDelete = async () => {
@@ -76,7 +88,12 @@ function MyStore() {
     navigate(`/editstore?store=${storeID}`);
   };
   const handleEditProduct = (productId) => {
-    navigate(`/editproduct?store=${storeID}&category=${category}&product=${productId}`);
+    navigate(
+      `/editproduct?store=${storeID}&category=${category}&product=${productId}`
+    );
+  };
+  const handleView = () => {
+    navigate(`/manageorders?store=${storeID}`);
   };
   return (
     <div className="store-details-page">
@@ -205,55 +222,77 @@ function MyStore() {
             </div>
             <div className="products-container">
               <div className="products-list">
-              {products && 
-                products
-                .slice(0,9)
-                .map((product, index) => {
-                  let imagePath = product.productImage.image;
-                  if (typeof imagePath === "string") {
-                    imagePath = imagePath.replace(/\\/g, "/");
-                    imagePath = `http://localhost:3001/${imagePath}`;
-                  }
-                  return (
-                    <div key={index} className="product-card ">
-                      <Card bg="#1A202C">
-                        <CardBody>
-                          <Image
-                            className="edit-product-image"
-                            src={imagePath}
-                            alt={product.productName}
-                            style={{ width: "180px", height: "120px" }}
-                          />
-                          <div className="edit-prdct-icon-txt">
-                            <Text className="edit-product-txt">
-                              {product.productName}
-                            </Text>
-                          </div>
-                        </CardBody>
-                        <CardFooter className="footer">
-                          <Button
-                            className="edit_icon2"
-                            colorScheme="white"
-                            variant="ghost"
-                            _hover={{ backgroundColor: "#222b3b" }}
-                            onClick={() => handleEditProduct(product._id)}
-                          >
-                            <Image src="/images/edit_button.svg" />
-                          </Button>
-                          <Button
-                            className="edit_icon3"
-                            colorScheme="white"
-                            _hover={{ backgroundColor: "#222b3b" }}
-                            onClick={() => handleDeleteProduct(product._id)}
-                          >
-                            <IoTrash fontSize="1.4em" />
-                          </Button>
-                        </CardFooter>
-                      </Card>
-                    </div>
-                  );
-                })}
-                </div>
+                {products &&
+                  products.slice(0, 9).map((product, index) => {
+                    let imagePath = product.productImage.image;
+                    if (typeof imagePath === "string") {
+                      imagePath = imagePath.replace(/\\/g, "/");
+                      imagePath = `http://localhost:3001/${imagePath}`;
+                    }
+                    return (
+                      <div key={index} className="product-card ">
+                        <Card bg="#1A202C">
+                          <CardBody>
+                            <Image
+                              className="edit-product-image"
+                              src={imagePath}
+                              alt={product.productName}
+                              style={{ width: "180px", height: "120px" }}
+                            />
+                            <div className="edit-prdct-icon-txt">
+                              <Text className="edit-product-txt">
+                                {product.productName}
+                              </Text>
+                            </div>
+                          </CardBody>
+                          <CardFooter className="footer">
+                            <Button
+                              className="edit_icon2"
+                              colorScheme="white"
+                              variant="ghost"
+                              _hover={{ backgroundColor: "#222b3b" }}
+                              onClick={() => handleEditProduct(product._id)}
+                            >
+                              <Image src="/images/edit_button.svg" />
+                            </Button>
+                            <Button
+                              className="edit_icon3"
+                              colorScheme="white"
+                              _hover={{ backgroundColor: "#222b3b" }}
+                              onClick={() => handleDeleteProduct(product._id)}
+                            >
+                              <IoTrash fontSize="1.4em" />
+                            </Button>
+                          </CardFooter>
+                        </Card>
+                      </div>
+                    );
+                  })}
+              </div>
+            </div>
+          </div>
+          <div className="orders-container">
+            <div className="orders-heading">
+              <Text className="storetxt">Orders</Text>
+            </div>
+            <div className="orders-list">
+              {orders.length === 0 ? (
+                <Text>No orders</Text>
+              ) : (
+                orders.map((order, index) => (
+                  <div className="order-item" key={index}>
+                    <Text className="order-user">
+                      Username: {order.username}
+                    </Text>
+                    <Text className="order-product">
+                      Product Name: {order.productName}
+                    </Text>
+                    <Button className="view-btn" onClick={handleView}>
+                      View
+                    </Button>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </div>
