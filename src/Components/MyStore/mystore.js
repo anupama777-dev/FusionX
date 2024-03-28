@@ -285,7 +285,7 @@ function MyStore() {
                       Username: {order.username}
                     </Text>
                     <Text className="order-product">
-                      Product Name: {order.productName}
+                      Product ID: {order.productID}
                     </Text>
                     <Button className="view-btn" onClick={handleView}>
                       View
