@@ -218,6 +218,24 @@ function EditStore() {
                   value={storeData.storeCity || ""}
                   onChange={handleInputChange}
                 />
+
+                <Text className="sub-txt">Razorpay Key</Text>
+                <Input
+                  className="input-box"
+                  placeholder="Enter Razorpay Key"
+                  name="razorpayKey"
+                  value={storeData.razorpayKey || ""}
+                  onChange={handleInputChange}
+                />
+
+                <Text className="sub-txt">Secret Key</Text>
+                <Input
+                  className="input-box"
+                  placeholder="Enter Secret Key"
+                  name="secretKey"
+                  value={storeData.secretKey || ""}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
             <div className="proceed_btn">
