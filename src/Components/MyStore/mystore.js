@@ -1,6 +1,6 @@
 import React from "react";
 import "./mystore.css";
-import { Image, Text, Button } from "@chakra-ui/react";
+import { Image, Text, Button, Box } from "@chakra-ui/react";
 import { Card, CardBody, CardFooter } from "@chakra-ui/react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -285,16 +285,17 @@ function MyStore() {
                       Username: {order.username}
                     </Text>
                     <Text className="order-product">
-                      Product ID: {order.productID}
+                      Order ID: {order._id}
                     </Text>
-                    <Button className="view-btn" onClick={handleView}>
+                    <Link className="view-btn" to={`/manageorders?order=${order._id}`}>
                       View
-                    </Button>
+                    </Link>
                   </div>
                 ))
               )}
             </div>
           </div>
+
         </div>
       </div>
     </div>
