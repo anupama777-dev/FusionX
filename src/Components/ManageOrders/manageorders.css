@@ -1,3 +1,9 @@
+.manage-orders-page {
+    background-color: #1a202c;
+    height: 100vh;
+    width: 99vw;
+  }
+
 .order-table{
 margin-top: 30px;
 width: 70vw !important;
@@ -35,6 +41,7 @@ background:#1A202C;
     width: 5vw;
     height: 30px !important;
     font-size: 13px !important;
+
 }
 
 .ship-btn:hover {

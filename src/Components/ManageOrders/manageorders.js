@@ -14,7 +14,7 @@ function ManageOrders() {
     console.log(orderID)
     const [ordersData, setOrdersData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [Order,setOrder] = useState({orderStatus:'Placed'})
+    
   
     useEffect(() => {
       const fetchOrderData = async () => {
@@ -37,25 +37,29 @@ function ManageOrders() {
     if (loading) {
       return <div>Loading...</div>;
     }
-    
-    const updateOrderStatus = async () => {
-        try {
-          const response = await axios.put(`http://localhost:3001/manageorders/orders?orderid=${orderID}`, { orderStatus: 'Shipped' });
-          setOrder({...Order, orderStatus: response.data.orderStatus });
-          alert('Order status updated successfully');
-        } catch (error) {
-          console.error('Error updating order status:', error);
-          alert('Failed to update order status');
-        }
-      };
   
   const handleLogout = () => {
     localStorage.removeItem("token");
   };
   const order = ordersData;
 
+  const updateorder = async () => {
+    try {
+      await axios.put(`http://localhost:3001/manageorders/orders?orderid=${orderID}`, { orderStatus: 'Shipped' });
+      alert('Order status updated successfully');
+      
+      // Fetch updated order data after status update
+      const updatedResponse = await axios.get(`http://localhost:3001/manageorders/orders?orderid=${orderID}`);
+      console.log(updatedResponse.data);
+      setOrdersData(updatedResponse.data);
+    } catch (error) {
+      console.error('Error updating order status:', error);
+      alert('Failed to update order status');
+    }
+  }
+
     return (
-    <div className="store-details-page">
+    <div className="manage-orders-page" style={{overflow:'hidden'}}>
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
         <div className="header_categories">
@@ -134,16 +138,14 @@ function ManageOrders() {
                                 </Tr>
                             </Thead>
                             <Tbody>
-                            {ordersData.map((orders, index) => (
-                                <Tr key={index}>
-                                    <Td className='product-data'>{orders.productID}</Td>
-                                    <Td className='product-data'>{orders.productName}</Td>
-                                    <Td className='product-data'>{orders.quantity}</Td>
-                                    <Td className='product-data'>{orders.productSize}</Td>
-                                    <Td className='product-data'>{orders.productColor}</Td>
-                                    <Td className='product-data'><Button className="ship-btn" onClick={() => updateOrderStatus()}>{orders.orderStatus}</Button></Td>
+                                <Tr>
+                                    <Td className='product-data'>{order.productID}</Td>
+                                    <Td className='product-data'>{order.productName}</Td>
+                                    <Td className='product-data'>{order.quantity}</Td>
+                                    <Td className='product-data'>{order.productSize}</Td>
+                                    <Td className='product-data'>{order.productColor}</Td>
+                                    <Td className='product-data'><Button className="ship-btn" onClick={updateorder} disabled={order.orderStatus === 'Shipped'}>{order.orderStatus}</Button></Td>
                                 </Tr> 
-                            ))}
                             </Tbody>
                         </Table>
                     </TableContainer>
