@@ -92,11 +92,42 @@
   }
 
   .template-font-4{
-    font-family: 'Courier New';
+    font-family: 'Tahoma';
   }
 
   .template-font-5{
     font-family: 'Verdana';
+  }
+
+  .template-font-6{
+    font-family: fantasy;
+  }
+
+  .template-font-7{
+    font-family: monospace;
+  }
+  
+  .template-font-8{
+    font-family: cursive;
+  }
+
+  .template-font-9{
+    font-family: system-ui;
+  }
+
+  .template-font-10{
+    font-family: math;
+  }
+
+  .template-font-11{
+    font-family: 'Lucida Handwriting';
+  }
+
+  .template-font-12{
+    font-family: Papyrus;
+  }
+  .template-font-13{
+    font-family: 'Calibri';
   }
 
   .template-header_logo{

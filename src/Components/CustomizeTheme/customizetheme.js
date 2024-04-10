@@ -139,11 +139,35 @@ function CustomizeTheme() {
                 <option value="times" className="options">
                   Times New Roman
                 </option>
-                <option value="courier" className="options">
-                  Courier New
+                <option value="tahoma" className="options">
+                  Tahoma
                 </option>
                 <option value="verdana" className="options">
                   Verdana
+                </option>
+                <option value="fantasy" className="options">
+                  Fantasy
+                </option>
+                <option value="monospace" className="options">
+                  Monospace
+                </option>
+                <option value="cursive" className="options">
+                  Cursive
+                </option>
+                <option value="system-ui" className="options">
+                System-ui
+                </option>
+                <option value="math" className="options">
+                Math
+                </option>
+                <option value="lucida-handwriting" className="options">
+                Lucida Handwriting
+                </option>
+                <option value="papyrus" className="options">
+                Papyrus
+                </option>
+                <option value="calibri" className="options">
+                Calibri
                 </option>
               </Select>
             </div>

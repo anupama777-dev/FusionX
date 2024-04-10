@@ -20,8 +20,16 @@ function TemplateHomePage() {
       <div className={selectedFont=== "arial" ? "template-font-1" :
                       selectedFont=== "georgia" ? "template-font-2" :
                       selectedFont=== "times" ? "template-font-3" :
-                      selectedFont=== "courier" ? "template-font-4" :
-                      selectedFont=== "verdana" ? "template-font-5" : "" }>                            
+                      selectedFont=== "tahoma" ? "template-font-4" :
+                      selectedFont=== "verdana" ? "template-font-5" :
+                      selectedFont=== "fantasy" ? "template-font-6" :
+                      selectedFont=== "monospace" ? "template-font-7" :
+                      selectedFont=== "cursive" ? "template-font-8" :
+                      selectedFont=== "system-ui" ? "template-font-9" :
+                      selectedFont=== "math" ? "template-font-10" : 
+                      selectedFont=== "lucida-handwriting" ? "template-font-11" : 
+                      selectedFont=== "papyrus" ? "template-font-12" : 
+                      selectedFont=== "calibri" ? "template-font-13" : "" }>                            
       <div className="template-homepage_header">
         <div className="logo_name">
         <Image className="template-header_logo" src="/images/logo.svg" />
