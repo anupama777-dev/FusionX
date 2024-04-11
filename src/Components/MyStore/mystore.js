@@ -1,6 +1,6 @@
 import React from "react";
 import "./mystore.css";
-import { Image, Text, Button, Box } from "@chakra-ui/react";
+import { Image, Text, Button } from "@chakra-ui/react";
 import { Card, CardBody, CardFooter } from "@chakra-ui/react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -91,9 +91,6 @@ function MyStore() {
     navigate(
       `/editproduct?store=${storeID}&category=${category}&product=${productId}`
     );
-  };
-  const handleView = () => {
-    navigate(`/manageorders?store=${storeID}`);
   };
   return (
     <div className="store-details-page">
@@ -287,7 +284,7 @@ function MyStore() {
                     <Text className="order-product">
                       Order ID: {order._id}
                     </Text>
-                    <Link className="view-btn" to={`/manageorders?order=${order._id}`}>
+                    <Link className="view-btn" to={`/manageorders?store=${storeID}&order=${order._id}`}>
                       View
                     </Link>
                   </div>

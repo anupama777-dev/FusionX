@@ -1,65 +1,79 @@
 import React from "react";
-import moment from 'moment';
+import moment from "moment";
 import "./manageorders.css";
-import { Image, TableContainer, Text, Thead,Th,Table,Tr, Tbody, Td, Button} from "@chakra-ui/react";
-import { Link,useLocation} from "react-router-dom";
+import {
+  Image,
+  TableContainer,
+  Text,
+  Thead,
+  Th,
+  Table,
+  Tr,
+  Tbody,
+  Td,
+  Button,
+} from "@chakra-ui/react";
+import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { useState, useEffect } from "react";
 
-
 function ManageOrders() {
-    const location = useLocation();
-    const searchParams = new URLSearchParams(location.search);
-    const orderID = searchParams.get("order");
-    console.log(orderID)
-    const [ordersData, setOrdersData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    
-  
-    useEffect(() => {
-      const fetchOrderData = async () => {
-        try {
-          const response = await axios.get(
-            `http://localhost:3001/manageorders/orders?orderid=${orderID}`
-          );
-          console.log(response.data);
-          setOrdersData(response.data);
-          setLoading(false);
-        } catch (error) {
-          console.error("Error fetching orders:", error);
-          setOrdersData([]);
-          setLoading(false);
-        }
-      };
-      fetchOrderData();
-    }, [orderID]);
-  
-    if (loading) {
-      return <div>Loading...</div>;
-    }
-  
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const storeID = searchParams.get("store");
+  const orderID = searchParams.get("order");
+  const [store, setStore] = useState({});
+  const [ordersData, setOrdersData] = useState([]);
+  const [orderStatus, setOrderStatus] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchOrderData = async () => {
+      try {
+        const orderResponse = await axios.get(
+          `http://localhost:3001/manageorders/orders?orderid=${orderID}`
+        );
+        console.log(orderResponse.data);
+        setOrdersData(orderResponse.data);
+        setOrderStatus(orderResponse.data[0].orderStatus);
+        const storeResponse = await axios.get(
+          `http://localhost:3001/manageorders/store?store=${storeID}`
+        );
+        console.log(storeResponse.data);
+        setStore(storeResponse.data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+        setOrdersData([]);
+        setStore({});
+        setLoading(false);
+      }
+    };
+    fetchOrderData();
+  }, [orderID, storeID]);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
   const handleLogout = () => {
     localStorage.removeItem("token");
   };
   const order = ordersData;
-
   const updateorder = async () => {
     try {
-      await axios.put(`http://localhost:3001/manageorders/orders?orderid=${orderID}`, { orderStatus: 'Shipped' });
-      alert('Order status updated successfully');
-      
-      // Fetch updated order data after status update
-      const updatedResponse = await axios.get(`http://localhost:3001/manageorders/orders?orderid=${orderID}`);
-      console.log(updatedResponse.data);
-      setOrdersData(updatedResponse.data);
+      await axios.put(
+        `http://localhost:3001/manageorders/orders?orderid=${orderID}`,
+        { orderStatus: "Shipped" }
+      );
+      alert("Order status updated successfully");
+      setOrderStatus("Shipped");
     } catch (error) {
-      console.error('Error updating order status:', error);
-      alert('Failed to update order status');
+      console.error("Error updating order status:", error);
+      alert("Failed to update order status");
     }
-  }
+  };
 
-    return (
-    <div className="manage-orders-page" style={{overflow:'hidden'}}>
+  return (
+    <div className="manage-orders-page" style={{ overflow: "hidden" }}>
       <div className="header1">
         <Image className="header_logo" src="\images\logo.svg" />
         <div className="header_categories">
@@ -103,61 +117,95 @@ function ManageOrders() {
               Log Out
             </Link>
           </div>
-          </div>
-          <div className="categories_container">
-            <div className="store-details-userhome">
+        </div>
+        <div className="categories_container">
+          <div className="store-details-userhome">
             {order.length > 0 && (
-                <div>
-                  {order.map((order, index) => (
-                    <div key={index} className="order-details-box">
+              <div>
+                {order.map((order, index) => (
+                  <div key={index} className="order-details-box">
                     <div className="store-name-desc">
-                        <Text className="sub-txt-left">Order ID :</Text>
-                        <Text className="sub-txt-right">{order._id}</Text>
+                      <Text className="sub-txt-left">Order ID :</Text>
+                      <Text className="sub-txt-right">{order._id}</Text>
                     </div>
                     <div className="store-name-desc">
-                        <Text className="sub-txt-left">Buyer Name :</Text>
-                        <Text className="sub-txt-right">{order.username}</Text>
+                      <Text className="sub-txt-left">Buyer Name :</Text>
+                      <Text className="sub-txt-right">{order.username}</Text>
                     </div>
                     <div className="store-name-desc">
-                        <Text className="sub-txt-left">Order Date :</Text> 
-                        <Text className="sub-txt-right">{moment(order.createdAt).format('MMMM Do YYYY, h:mm:ss a')}</Text>
+                      <Text className="sub-txt-left">Order Date :</Text>
+                      <Text className="sub-txt-right">
+                        {moment(order.createdAt).format(
+                          "MMMM Do YYYY, h:mm:ss a"
+                        )}
+                      </Text>
                     </div>
                     <div className="store-name-desc">
-                        <Text className="store-txt">Products</Text>
+                      <Text className="store-txt">Products</Text>
                     </div>
                     <TableContainer className="order-table">
-                        <Table>
-                            <Thead>
-                                <Tr>
-                                    <Th className="heading">Product ID</Th>
-                                    <Th className="heading">Product Name</Th>
-                                    <Th className="heading">Quantity</Th>
-                                    <Th className="heading">Size</Th>
-                                    <Th className="heading">Color</Th>
-                                    <Th className="heading">Status</Th>   
-                                </Tr>
-                            </Thead>
-                            <Tbody>
-                                <Tr>
-                                    <Td className='product-data'>{order.productID}</Td>
-                                    <Td className='product-data'>{order.productName}</Td>
-                                    <Td className='product-data'>{order.quantity}</Td>
-                                    <Td className='product-data'>{order.productSize}</Td>
-                                    <Td className='product-data'>{order.productColor}</Td>
-                                    <Td className='product-data'><Button className="ship-btn" onClick={updateorder} disabled={order.orderStatus === 'Shipped'}>{order.orderStatus}</Button></Td>
-                                </Tr> 
-                            </Tbody>
-                        </Table>
+                      <Table>
+                        <Thead>
+                          <Tr>
+                            <Th className="heading">Product ID</Th>
+                            <Th className="heading">Product Name</Th>
+                            <Th className="heading">Quantity</Th>
+                            {store.storeCategory === "clothing" ||
+                            store.storeCategory === "others" ? (
+                              <Th className="heading">Size</Th>
+                            ) : null}
+                            {store.storeCategory === "clothing" ||
+                            store.storeCategory === "others" ||
+                            store.storeCategory === "electronics" ? (
+                              <Th className="heading">Color</Th>
+                            ) : null}
+                            <Th className="heading">Status</Th>
+                          </Tr>
+                        </Thead>
+                        <Tbody>
+                          <Tr>
+                            <Td className="product-data">{order.productID}</Td>
+                            <Td className="product-data">
+                              {order.productName}
+                            </Td>
+                            <Td className="product-data">{order.quantity}</Td>
+                            {store.storeCategory === "clothing" ||
+                            store.storeCategory === "others" ? (
+                              <Td className="product-data">
+                                {order.productSize}
+                              </Td>
+                            ) : null}
+                            {store.storeCategory === "clothing" ||
+                            store.storeCategory === "others" ||
+                            store.storeCategory === "electronics" ? (
+                              <Td className="product-data">
+                                {order.productColor}
+                              </Td>
+                            ) : null}
+                            <Td className="product-data">
+                              <Button
+                                className={`ship-btn ${
+                                  orderStatus === "Shipped" ? "disabled" : ""
+                                }`}
+                                onClick={
+                                  orderStatus === "Placed" ? updateorder : null
+                                }
+                              >
+                                {orderStatus}
+                              </Button>
+                            </Td>
+                          </Tr>
+                        </Tbody>
+                      </Table>
                     </TableContainer>
-                </div>
-            ))}
-            </div>
-          )}
-        </div>
-        </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
       </div>
-      
-    );
+    </div>
+  );
 }
 export default ManageOrders;
