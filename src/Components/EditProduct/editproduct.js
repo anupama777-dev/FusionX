@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router";
 import axios from "axios";
+import Iframe from "react-iframe";
 import {
   Image,
   Tab,
@@ -31,6 +32,10 @@ const EditProduct = () => {
   const [sizeChart, setSizeChart] = useState(null);
   const [colorChange, setColorChange] = useState(false);
   const [materialChange, setMaterialChange] = useState(false);
+  const [chatboxOpen, setChatboxOpen] = useState(false);
+  const toggleChatbox = () => {
+    setChatboxOpen(!chatboxOpen);
+  };
   useEffect(() => {
     const fetchProductData = async () => {
       try {
@@ -189,6 +194,20 @@ const EditProduct = () => {
           </div>
         </div>
         <div className="categories_container">
+        <div className="chatbox">
+          {chatboxOpen && (
+            <div>
+              <Iframe
+                url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                width="400px"
+                height="600px"
+              />
+            </div>
+          )}
+        </div>
+        <button onClick={toggleChatbox} className="chatbox__button">
+          <Image src="/images/chatbox-icon.svg" />
+        </button>
           <form onSubmit={handleSubmit}>
             <div className="store-details">
               <div className="product-details-box">

@@ -124,7 +124,6 @@
     height: 250vh;
   }
 }
-
 @media screen and (max-width: 1200px) {
   .home_page {
     height: 270vh;
@@ -187,7 +186,6 @@
   margin-top: 30px;
   display: flex;
   flex-direction: row;
-
 }
 .contact-us1{
   display: flex;
@@ -209,7 +207,6 @@
   margin-top: 10px;
   width: 250px;
 }
-
 .visit-us{
   display: flex;
   flex-direction: column;
@@ -221,8 +218,6 @@
   font-weight: 500;
   line-height: 24px;
 }
-
-
 .reach-us{
   display: flex;
   flex-direction: column;
@@ -234,6 +229,3 @@
   font-weight: 500;
   line-height: 24px;
 }
-
-
-

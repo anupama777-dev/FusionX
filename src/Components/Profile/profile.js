@@ -4,11 +4,15 @@ import { Link } from "react-router-dom";
 import "./profile.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import Iframe from "react-iframe";
 
 const Profile = () => {
   const [user, setUser] = useState([]);
   const token = localStorage.getItem("token");
-
+  const [chatboxOpen, setChatboxOpen] = useState(false);
+  const toggleChatbox = () => {
+    setChatboxOpen(!chatboxOpen);
+  };
   useEffect(() => {
     const fetchUser = async () => {
       try {
@@ -80,6 +84,20 @@ const Profile = () => {
         </div>
 
         <div className="profile_container">
+        <div className="chatbox">
+          {chatboxOpen && (
+            <div>
+              <Iframe
+                url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                width="400px"
+                height="600px"
+              />
+            </div>
+          )}
+        </div>
+        <button onClick={toggleChatbox} className="chatbox__button">
+          <Image src="/images/chatbox-icon.svg" />
+        </button>
           <div className="prof1">
             <Text className="prof_title">Personal Information</Text>
             <div className="rect">

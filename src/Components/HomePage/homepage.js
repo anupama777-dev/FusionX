@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./homepage.css";
 import { Image, Text, Icon } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
@@ -7,6 +7,8 @@ import {
   IoLogoInstagram,
   IoLogoLinkedin,
 } from "react-icons/io5";
+import Iframe from "react-iframe";
+
 function HomePage() {
   const aboutRef = useRef(null);
   const contactRef = useRef(null);
@@ -15,7 +17,11 @@ function HomePage() {
   const scrollToSection = (ref) => {
     ref.current.scrollIntoView({ behavior: "smooth" });
   };
+  const [chatboxOpen, setChatboxOpen] = useState(false);
 
+  const toggleChatbox = () => {
+    setChatboxOpen(!chatboxOpen);
+  };
   return (
     <div className="home_page">
       <div className="header">
@@ -63,6 +69,20 @@ function HomePage() {
         <div className="right_eclipse">
           <Image className="eclipse_2" src="/images/eclipse2.svg" />
         </div>
+        <div className="chatbox">
+          {chatboxOpen && (
+            <div>
+              <Iframe
+                url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                width="400px"
+                height="600px"
+              />
+            </div>
+          )}
+        </div>
+        <button onClick={toggleChatbox} className="chatbox__button">
+          <Image src="/images/chatbox-icon.svg" />
+        </button>
       </div>
       <div className="about-us">
         <Text className="about-us-title">About FusionX</Text>

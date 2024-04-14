@@ -6,6 +6,7 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
 import { IoTrash } from "react-icons/io5";
 import { useState, useEffect } from "react";
+import Iframe from "react-iframe";
 
 function MyStore() {
   const location = useLocation();
@@ -15,6 +16,10 @@ function MyStore() {
   const [storeData, setStoreData] = useState({ stores: [], products: [] });
   const [ordersData, setOrdersData] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [chatboxOpen, setChatboxOpen] = useState(false);
+  const toggleChatbox = () => {
+    setChatboxOpen(!chatboxOpen);
+  };
   useEffect(() => {
     const fetchStoreData = async () => {
       try {
@@ -206,6 +211,20 @@ function MyStore() {
                 </div>
               )}
             </div>
+            <div className="chatbox">
+          {chatboxOpen && (
+            <div>
+              <Iframe
+                url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                width="400px"
+                height="600px"
+              />
+            </div>
+          )}
+        </div>
+        <button onClick={toggleChatbox} className="chatbox__button">
+          <Image src="/images/chatbox-icon.svg" />
+        </button>
           </div>
           <div className="edit-products-container">
             <div className="products-heading">

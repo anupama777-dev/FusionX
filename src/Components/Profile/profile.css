@@ -99,12 +99,6 @@
   color: #a0aec0;
   margin-left: 12.4vw;
 }
- @media screen and (max-width: 768px) {
-  .rect1{
-    margin-left: 10px;
-    min-width: 500px;
-  }
-}
 
 @media screen and (max-width: 1300px) {
   .col1{
@@ -121,5 +115,11 @@
   }
   .left, .right{
     font-size: 15px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .rect1{
+    margin-left: 10px;
+    min-width: 500px;
   }
 }

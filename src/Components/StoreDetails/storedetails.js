@@ -2,6 +2,7 @@ import "./storedetails.css";
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import axios from "axios";
+import Iframe from "react-iframe";
 import {
   Image,
   Tabs,
@@ -27,7 +28,7 @@ const StoreDetails = () => {
     storeState: "",
     storeCity: "",
     razorpayKey: "",
-    secretKey: ""
+    secretKey: "",
   });
   const [proceedClicked, setProceedClicked] = useState(false);
 
@@ -72,8 +73,8 @@ const StoreDetails = () => {
     formData.append("storeCountry", form.storeCountry);
     formData.append("storeState", form.storeState);
     formData.append("storeCity", form.storeCity);
-    formData.append("razorpayKey", form.razorpayKey)
-    formData.append("secretKey",form.secretKey)
+    formData.append("razorpayKey", form.razorpayKey);
+    formData.append("secretKey", form.secretKey);
     try {
       const response = await axios.post(
         "http://localhost:3001/storedetails",
@@ -110,6 +111,10 @@ const StoreDetails = () => {
   }
   const handleLogout = () => {
     localStorage.removeItem("token");
+  };
+  const [chatboxOpen, setChatboxOpen] = useState(false);
+  const toggleChatbox = () => {
+    setChatboxOpen(!chatboxOpen);
   };
   return (
     <div className="store-details-page">
@@ -175,6 +180,20 @@ const StoreDetails = () => {
         </div>
 
         <div className="categories_container">
+        <div className="chatbox">
+          {chatboxOpen && (
+            <div>
+              <Iframe
+                url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                width="400px"
+                height="600px"
+              />
+            </div>
+          )}
+        </div>
+        <button onClick={toggleChatbox} className="chatbox__button">
+          <Image src="/images/chatbox-icon.svg" />
+        </button>
           <form onSubmit={onSubmit}>
             <div className="store-details">
               <div className="store-details-box">

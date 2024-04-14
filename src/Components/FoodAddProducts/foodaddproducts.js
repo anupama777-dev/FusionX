@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router";
 import { FaCopy, FaTimes } from "react-icons/fa";
 import axios from "axios";
+import Iframe from "react-iframe";
 import {
   Image,
   Tab,
@@ -163,6 +164,10 @@ const FoodAddProducts = () => {
       console.error("Error adding more products:", error.message);
     }
   };
+  const [chatboxOpen, setChatboxOpen] = useState(false);
+  const toggleChatbox = () => {
+    setChatboxOpen(!chatboxOpen);
+  };
   return (
     <div className="store-details-page">
       <div className="header1">
@@ -262,6 +267,20 @@ const FoodAddProducts = () => {
           </div>
         </div>
         <div className="categories_container">
+        <div className="chatbox">
+          {chatboxOpen && (
+            <div>
+              <Iframe
+                url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                width="400px"
+                height="600px"
+              />
+            </div>
+          )}
+        </div>
+        <button onClick={toggleChatbox} className="chatbox__button">
+          <Image src="/images/chatbox-icon.svg" />
+        </button>
           <form onSubmit={onSubmit}>
             <div className="store-details">
               <div className="product-details-box1">

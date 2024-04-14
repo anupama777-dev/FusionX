@@ -15,6 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
+import Iframe from "react-iframe";
 import { useState, useEffect } from "react";
 
 function ManageOrders() {
@@ -26,7 +27,10 @@ function ManageOrders() {
   const [ordersData, setOrdersData] = useState([]);
   const [orderStatus, setOrderStatus] = useState(null);
   const [loading, setLoading] = useState(true);
-
+  const [chatboxOpen, setChatboxOpen] = useState(false);
+  const toggleChatbox = () => {
+    setChatboxOpen(!chatboxOpen);
+  };
   useEffect(() => {
     const fetchOrderData = async () => {
       try {
@@ -71,7 +75,6 @@ function ManageOrders() {
       alert("Failed to update order status");
     }
   };
-
   return (
     <div className="manage-orders-page" style={{ overflow: "hidden" }}>
       <div className="header1">
@@ -120,6 +123,20 @@ function ManageOrders() {
         </div>
         <div className="categories_container">
           <div className="store-details-userhome">
+            <div className="chatbox">
+              {chatboxOpen && (
+                <div>
+                  <Iframe
+                    url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                    width="400px"
+                    height="600px"
+                  />
+                </div>
+              )}
+            </div>
+            <button onClick={toggleChatbox} className="chatbox__button">
+              <Image src="/images/chatbox-icon.svg" />
+            </button>
             {order.length > 0 && (
               <div>
                 {order.map((order, index) => (

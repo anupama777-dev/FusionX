@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Image, Tab, Tabs, TabList, Text } from "@chakra-ui/react";
 import "./categories.css";
 import { Link, useLocation } from "react-router-dom";
+import Iframe from "react-iframe";
 
 function Categories() {
   const location = useLocation();
@@ -9,6 +10,10 @@ function Categories() {
   const storeID = searchParams.get("store");
   const handleLogout = () => {
     localStorage.removeItem("token");
+  };
+  const [chatboxOpen, setChatboxOpen] = useState(false);
+  const toggleChatbox = () => {
+    setChatboxOpen(!chatboxOpen);
   };
   return (
     <div className="categories_page">
@@ -40,6 +45,20 @@ function Categories() {
         <Image className="line" src="/images/line_1.svg" />
       </div>
       <div className="categories_body">
+      <div className="chatbox">
+          {chatboxOpen && (
+            <div>
+              <Iframe
+                url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                width="400px"
+                height="600px"
+              />
+            </div>
+          )}
+        </div>
+        <button onClick={toggleChatbox} className="chatbox__button">
+          <Image src="/images/chatbox-icon.svg" />
+        </button>
         <div className="dashboard1">
           <div className="dash_items">
             <Link  to={"/userhome"}>

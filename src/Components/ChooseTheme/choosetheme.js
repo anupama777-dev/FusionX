@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./choosetheme.css";
 import { Image, Tab, Tabs, TabList, Text } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
+import Iframe from "react-iframe";
 
 function ChooseTheme() {
   const location = useLocation();
@@ -10,6 +11,10 @@ function ChooseTheme() {
   const category = searchParams.get("category");
   const handleLogout = () => {
     localStorage.removeItem("token");
+  };
+  const [chatboxOpen, setChatboxOpen] = useState(false);
+  const toggleChatbox = () => {
+    setChatboxOpen(!chatboxOpen);
   };
   return (
     <div className="choose_theme_page">
@@ -77,6 +82,20 @@ function ChooseTheme() {
           </div>
         </div>
         <div className="choose_theme_container">
+        <div className="chatbox">
+          {chatboxOpen && (
+            <div>
+              <Iframe
+                url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                width="400px"
+                height="600px"
+              />
+            </div>
+          )}
+        </div>
+        <button onClick={toggleChatbox} className="chatbox__button">
+          <Image src="/images/chatbox-icon.svg" />
+        </button>
           {category === "electronics" && (
             <>
               <div className="theme1 gray">

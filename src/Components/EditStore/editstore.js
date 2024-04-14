@@ -4,7 +4,7 @@ import { Image, Text, Input, Textarea } from "@chakra-ui/react";
 import { Link, useLocation } from "react-router-dom";
 import { useNavigate } from "react-router";
 import axios from "axios";
-
+import Iframe from "react-iframe";
 function EditStore() {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
@@ -12,6 +12,10 @@ function EditStore() {
   const [storeData, setStoreData] = useState({});
   const [logo, setLogo] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [chatboxOpen, setChatboxOpen] = useState(false);
+  const toggleChatbox = () => {
+    setChatboxOpen(!chatboxOpen);
+  };
   const navigate = useNavigate();
   useEffect(() => {
     const fetchStoreData = async () => {
@@ -113,6 +117,20 @@ function EditStore() {
           </div>
         </div>
         <div className="categories_container">
+        <div className="chatbox">
+          {chatboxOpen && (
+            <div>
+              <Iframe
+                url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                width="400px"
+                height="600px"
+              />
+            </div>
+          )}
+        </div>
+        <button onClick={toggleChatbox} className="chatbox__button">
+          <Image src="/images/chatbox-icon.svg" />
+        </button>
           <form onSubmit={handleSubmit}>
             <div className="store-details">
               <div className="store-details-box">

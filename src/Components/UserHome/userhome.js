@@ -3,6 +3,7 @@ import { Image, Avatar, Text } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Iframe from "react-iframe";
 
 const UserHome = () => {
   const [user, setUser] = useState({});
@@ -45,7 +46,11 @@ const UserHome = () => {
   const handleLogout = () => {
     localStorage.removeItem("token");
   };
+  const [chatboxOpen, setChatboxOpen] = useState(false);
 
+  const toggleChatbox = () => {
+    setChatboxOpen(!chatboxOpen);
+  };
   return (
     <div className="userhome_page">
       <div className="header1">
@@ -96,7 +101,6 @@ const UserHome = () => {
             </Link>
           </div>
         </div>
-
         <div className="userhome_container">
           <div className="begin">
             <Text className="line1">
@@ -137,33 +141,46 @@ const UserHome = () => {
                 );
               })}
             </div>
-          </div>
-
-          <div className="prev_work_container1">
-            {stores.map((store, index) => {
-              let imagePath = store.storeLogo ? store.storeLogo.image : "";
-              if (typeof imagePath === "string") {
-                imagePath = imagePath.replace(/\\/g, "/");
-                imagePath = `http://localhost:3001/${imagePath}`;
-              }
-              return (
-                <Link
-                  to={{ pathname: "/mystore", search: `?store=${store._id}` }}
-                  key={store._id}
-                >
-                  <div className="box">
-                    <Image
-                      className="previmg"
-                      src={imagePath}
-                      alt={`Store ${index + 1} Logo`}
-                      style={{ width: "150px", height: "120px" }}
-                    />
-                  </div>
-                </Link>
-              );
-            })}
+            <div className="prev_work_container1">
+              {stores.map((store, index) => {
+                let imagePath = store.storeLogo ? store.storeLogo.image : "";
+                if (typeof imagePath === "string") {
+                  imagePath = imagePath.replace(/\\/g, "/");
+                  imagePath = `http://localhost:3001/${imagePath}`;
+                }
+                return (
+                  <Link
+                    to={{ pathname: "/mystore", search: `?store=${store._id}` }}
+                    key={store._id}
+                  >
+                    <div className="box">
+                      <Image
+                        className="previmg"
+                        src={imagePath}
+                        alt={`Store ${index + 1} Logo`}
+                        style={{ width: "150px", height: "120px" }}
+                      />
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
+        <div className="chatbox">
+          {chatboxOpen && (
+            <div>
+              <Iframe
+                url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                width="400px"
+                height="600px"
+              />
+            </div>
+          )}
+        </div>
+        <button onClick={toggleChatbox} className="chatbox__button">
+          <Image src="/images/chatbox-icon.svg" />
+        </button>
       </div>
     </div>
   );

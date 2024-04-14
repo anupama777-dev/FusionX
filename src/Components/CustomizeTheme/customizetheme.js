@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import "./customizetheme.css";
 import TemplateHomePage from "./templatehome";
 import axios from "axios";
+import Iframe from "react-iframe";
 
 function CustomizeTheme() {
   const location = useLocation();
@@ -12,7 +13,10 @@ function CustomizeTheme() {
   console.log("Store id: ", storeID);
   const category = searchParams.get("category");
   const theme = searchParams.get("theme");
-
+  const [chatboxOpen, setChatboxOpen] = useState(false);
+  const toggleChatbox = () => {
+    setChatboxOpen(!chatboxOpen);
+  };
   const [selectedColor, setSelectedColor] = useState(theme);
   const [selectedFont, setSelectedFont] = useState('Arial');
   console.log(selectedColor);
@@ -78,6 +82,20 @@ function CustomizeTheme() {
         <Image className="line" src="/images/line_1.svg" />
       </div>
       <div className="customize_body">
+      <div className="chatbox">
+          {chatboxOpen && (
+            <div>
+              <Iframe
+                url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                width="400px"
+                height="600px"
+              />
+            </div>
+          )}
+        </div>
+        <button onClick={toggleChatbox} className="chatbox__button">
+          <Image src="/images/chatbox-icon.svg" />
+        </button>
         <div className="dashboard2">
         <div className="dash_items">
             <Link to={"/userhome"}>
