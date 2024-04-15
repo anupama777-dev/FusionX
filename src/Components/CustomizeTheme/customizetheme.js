@@ -142,7 +142,7 @@ function CustomizeTheme() {
             <div className="choose_font">
               <Text className="font">Font</Text>
               <Select
-                placeholder="Choose font"
+                placeholder={selectedFont}
                 className="select_font"
                 minWidth="120px"
                 width="180px"
@@ -191,8 +191,214 @@ function CustomizeTheme() {
             </div>
             <div className="choose_color">
               <Text className="color">Color</Text>
-              <Select
-                placeholder="Choose color"
+              <div>
+              {selectedColor === "blue"
+              ? (<Select
+                placeholder={selectedColor}
+                className="select_color"
+                onChange={handleColorChange}
+                minWidth="120px"
+                width="180px"
+              >
+                <option value="red" className="options">
+                  Red
+                </option>
+                <option value="yellow" className="options">
+                  Yellow
+                </option>
+                <option value="gray" className="options">
+                  Gray
+                </option>
+                <option value="green" className="options">
+                  Green
+                </option>
+                <option value="teal" className="options">
+                  Teal
+                </option>
+                <option value="cyan" className="options">
+                  Cyan
+                </option>
+                <option value="purple" className="options">
+                  Purple
+                </option>
+                <option value="pink" className="options">
+                  Pink
+                </option>
+              </Select>)
+
+              : selectedColor === "red"
+              ? (<Select
+                placeholder={selectedColor}
+                className="select_color"
+                onChange={handleColorChange}
+                minWidth="120px"
+                width="180px"
+              >
+                <option value="yellow" className="options">
+                  Yellow
+                </option>
+                <option value="gray" className="options">
+                  Gray
+                </option>
+                <option value="green" className="options">
+                  Green
+                </option>
+                <option value="teal" className="options">
+                  Teal
+                </option>
+                <option value="blue" className="options">
+                  Blue
+                </option>
+                <option value="cyan" className="options">
+                  Cyan
+                </option>
+                <option value="purple" className="options">
+                  Purple
+                </option>
+                <option value="pink" className="options">
+                  Pink
+                </option>
+              </Select>)
+
+              : selectedColor === "green"
+              ? (<Select
+                placeholder={selectedColor}
+                className="select_color"
+                onChange={handleColorChange}
+                minWidth="120px"
+                width="180px"
+              >
+                <option value="red" className="options">
+                  Red
+                </option>
+                <option value="yellow" className="options">
+                  Yellow
+                </option>
+                <option value="gray" className="options">
+                  Gray
+                </option>
+                <option value="teal" className="options">
+                  Teal
+                </option>
+                <option value="blue" className="options">
+                  Blue
+                </option>
+                <option value="cyan" className="options">
+                  Cyan
+                </option>
+                <option value="purple" className="options">
+                  Purple
+                </option>
+                <option value="pink" className="options">
+                  Pink
+                </option>
+              </Select>)
+
+              : selectedColor === "yellow"
+              ? (<Select
+                placeholder={selectedColor}
+                className="select_color"
+                onChange={handleColorChange}
+                minWidth="120px"
+                width="180px"
+              >
+                <option value="red" className="options">
+                  Red
+                </option>
+                <option value="gray" className="options">
+                  Gray
+                </option>
+                <option value="green" className="options">
+                  Green
+                </option>
+                <option value="teal" className="options">
+                  Teal
+                </option>
+                <option value="blue" className="options">
+                  Blue
+                </option>
+                <option value="cyan" className="options">
+                  Cyan
+                </option>
+                <option value="purple" className="options">
+                  Purple
+                </option>
+                <option value="pink" className="options">
+                  Pink
+                </option>
+              </Select>)
+
+              : selectedColor === "pink"
+              ? (<Select
+                placeholder={selectedColor}
+                className="select_color"
+                onChange={handleColorChange}
+                minWidth="120px"
+                width="180px"
+              >
+                <option value="red" className="options">
+                  Red
+                </option>
+                <option value="yellow" className="options">
+                  Yellow
+                </option>
+                <option value="gray" className="options">
+                  Gray
+                </option>
+                <option value="green" className="options">
+                  Green
+                </option>
+                <option value="teal" className="options">
+                  Teal
+                </option>
+                <option value="blue" className="options">
+                  Blue
+                </option>
+                <option value="cyan" className="options">
+                  Cyan
+                </option>
+                <option value="purple" className="options">
+                  Purple
+                </option>
+              </Select>)
+
+              : selectedColor === "purple"
+              ? (<Select
+                placeholder={selectedColor}
+                className="select_color"
+                onChange={handleColorChange}
+                minWidth="120px"
+                width="180px"
+              >
+                <option value="red" className="options">
+                  Red
+                </option>
+                <option value="yellow" className="options">
+                  Yellow
+                </option>
+                <option value="gray" className="options">
+                  Gray
+                </option>
+                <option value="green" className="options">
+                  Green
+                </option>
+                <option value="teal" className="options">
+                  Teal
+                </option>
+                <option value="blue" className="options">
+                  Blue
+                </option>
+                <option value="cyan" className="options">
+                  Cyan
+                </option>
+                <option value="pink" className="options">
+                  Pink
+                </option>
+              </Select>)
+
+              : selectedColor === "orange"
+              ? (<Select
+                placeholder={selectedColor}
                 className="select_color"
                 onChange={handleColorChange}
                 minWidth="120px"
@@ -225,7 +431,112 @@ function CustomizeTheme() {
                 <option value="pink" className="options">
                   Pink
                 </option>
-              </Select>
+              </Select>)
+
+              : selectedColor === "teal"
+              ? (<Select
+                placeholder={selectedColor}
+                className="select_color"
+                onChange={handleColorChange}
+                minWidth="120px"
+                width="180px"
+              >
+                <option value="red" className="options">
+                  Red
+                </option>
+                <option value="yellow" className="options">
+                  Yellow
+                </option>
+                <option value="gray" className="options">
+                  Gray
+                </option>
+                <option value="green" className="options">
+                  Green
+                </option>
+                <option value="blue" className="options">
+                  Blue
+                </option>
+                <option value="cyan" className="options">
+                  Cyan
+                </option>
+                <option value="purple" className="options">
+                  Purple
+                </option>
+                <option value="pink" className="options">
+                  Pink
+                </option>
+              </Select>)
+
+              : selectedColor === "cyan"
+              ? (<Select
+                placeholder={selectedColor}
+                className="select_color"
+                onChange={handleColorChange}
+                minWidth="120px"
+                width="180px"
+              >
+                <option value="red" className="options">
+                  Red
+                </option>
+                <option value="yellow" className="options">
+                  Yellow
+                </option>
+                <option value="gray" className="options">
+                  Gray
+                </option>
+                <option value="green" className="options">
+                  Green
+                </option>
+                <option value="teal" className="options">
+                  Teal
+                </option>
+                <option value="blue" className="options">
+                  Blue
+                </option>
+                <option value="purple" className="options">
+                  Purple
+                </option>
+                <option value="pink" className="options">
+                  Pink
+                </option>
+              </Select>)
+              
+              : selectedColor === "gray"
+              ? (<Select
+                placeholder={selectedColor}
+                className="select_color"
+                onChange={handleColorChange}
+                minWidth="120px"
+                width="180px"
+              >
+                <option value="red" className="options">
+                  Red
+                </option>
+                <option value="yellow" className="options">
+                  Yellow
+                </option>
+                <option value="green" className="options">
+                  Green
+                </option>
+                <option value="teal" className="options">
+                  Teal
+                </option>
+                <option value="blue" className="options">
+                  Blue
+                </option>
+                <option value="cyan" className="options">
+                  Cyan
+                </option>
+                <option value="purple" className="options">
+                  Purple
+                </option>
+                <option value="pink" className="options">
+                  Pink
+                </option>
+              </Select>)
+              : ""}
+              </div>
+              
             </div>
             <div className="proceed_btn1">
               <Link

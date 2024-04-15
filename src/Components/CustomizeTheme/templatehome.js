@@ -99,7 +99,7 @@ function TemplateHomePage() {
                     : selectedColor === "red"
                     ? "/images/template-home-red.svg"
                     : selectedColor === "green"
-                    ? "/images/template-home-green.svg"
+                    ? "/images/template-home-green.png"
                     : selectedColor === "yellow"
                     ? "/images/template-home-yellow.svg"
                     : selectedColor === "pink"
