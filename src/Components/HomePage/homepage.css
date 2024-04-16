@@ -14,6 +14,20 @@
   padding-top: 10px;
   z-index: 100;
 }
+.header_collapsed {
+  display: none;
+}
+.menu-item {
+  background-color: #171923 !important;
+  color: #cbd5e0 !important;
+  text-align: center !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+.menu-item:hover{
+  font-weight: 500;
+}
 .header_logo {
   width: 160px;
   object-fit: contain;
@@ -35,8 +49,10 @@
 }
 .header_signup {
   display: flex;
+  position: absolute;
   align-items: center;
   justify-content: center;
+  right: 30px;
 }
 .signup {
   background-color: transparent;
@@ -56,7 +72,7 @@
 }
 .line_div_1 {
   background-color: #1a202c;
-  margin-top:250px;
+  margin-top: 250px;
 }
 .line {
   stroke-width: 2px !important;
@@ -92,13 +108,13 @@
   right: 0;
   top: 200px;
 }
-.about-us{
+.about-us {
   display: flex;
   flex-direction: column;
   justify-content: center;
   background-color: transparent;
 }
-.about-us-title{
+.about-us-title {
   color: #cbd5e0;
   font-size: 30px;
   font-style: normal;
@@ -119,17 +135,6 @@
   text-align: center;
   max-width: 1000px;
 }
-
-@media screen and (max-width: 968px) {
-  .left_eclipse {
-    display: none;
-  }
-  .right_eclipse {
-    display: none;
-  }
-}
-
-  
 .title {
   color: white;
   text-align: center;
@@ -169,7 +174,7 @@
 .create_store:hover {
   background-color: #50338e;
 }
-.arrow{
+.arrow {
   padding-left: 3px;
 }
 .contact-us {
@@ -178,24 +183,22 @@
   flex-direction: column;
   margin-left: 20px;
 }
-
-.contact-us1{
+.contact-us1 {
   width: 100%;
-  padding: 0 20px; 
-  margin-bottom: 20px; 
+  padding: 0 20px;
+  margin-bottom: 20px;
 }
-.visit-us{
+.visit-us {
   width: 100%;
-  padding: 0 20px; 
-  margin-bottom: 20px; 
+  padding: 0 20px;
+  margin-bottom: 20px;
 }
 .reach-us {
   width: 100%;
-  padding: 0 20px; 
+  padding: 0 20px;
   margin-bottom: 20px;
-  margin-right: 120px; 
+  margin-right: 120px;
 }
-
 .contact-us-txt1,
 .contact-us-txt2,
 .contact-us-txt3 {
@@ -204,7 +207,6 @@
   font-weight: 500;
   line-height: 24px;
 }
-
 .contact-us-subtitle {
   color: #cbd5e0;
   font-size: 16px;
@@ -213,24 +215,42 @@
   opacity: 0.5;
   margin-top: 10px;
 }
-
+@media screen and (max-width: 968px) {
+  .left_eclipse,
+  .right_eclipse {
+    display: none;
+  }
+  .header_nav{
+    margin-left: 0;
+    flex-basis: 55%;
+  }
+}
+@media screen and (max-width: 700px) {
+  .header_option,
+  .header_signup {
+    display: none;
+  }
+  .header_collapsed {
+    display: block;
+    position: absolute;
+    right: 30px;
+  }
+}
 @media (min-width: 768px) {
   .contact-us {
     flex-direction: row;
   }
-
-  .contact-us1{
+  .contact-us1 {
     flex: 1;
-    margin-bottom: 0; 
+    margin-bottom: 0;
   }
   .visit-us {
     flex: 1;
-    margin-bottom: 0; 
+    margin-bottom: 0;
   }
-
   .reach-us {
     width: auto;
-    flex-shrink: 0; 
-    margin-left: auto; 
+    flex-shrink: 0;
+    margin-left: auto;
   }
 }

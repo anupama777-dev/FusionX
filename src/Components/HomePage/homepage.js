@@ -1,7 +1,17 @@
 import React, { useRef, useState } from "react";
 import "./homepage.css";
-import { Image, Text, Icon } from "@chakra-ui/react";
+import {
+  Image,
+  Text,
+  Icon,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuButton,
+  IconButton,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import { MdMenu } from "react-icons/md";
 import {
   IoLogoFacebook,
   IoLogoInstagram,
@@ -44,6 +54,40 @@ function HomePage() {
           <div className="signup">
             <Link to={"/signup"}>Sign Up</Link>
           </div>
+        </div>
+        <div className="header_collapsed">
+          <Menu>
+            <MenuButton
+              as={IconButton}
+              aria-label="Options"
+              icon={<MdMenu />}
+              bg="#fff"
+              _hover={{ bg: '#805ad5' }}
+              variant="outline"
+            />
+            <MenuList
+              style={{
+                width: "100vw",
+                backgroundColor: "#171923",
+              }}
+            >
+              <MenuItem className="menu-item">
+                <Link onClick={() => scrollToSection(homeRef)}>Home</Link>
+              </MenuItem>
+              <MenuItem className="menu-item">
+                <Link onClick={() => scrollToSection(aboutRef)}>About</Link>
+              </MenuItem>
+              <MenuItem className="menu-item">
+                <Link to={"/help"}>Help</Link>
+              </MenuItem>
+              <MenuItem className="menu-item">
+                <Link onClick={() => scrollToSection(contactRef)}>Contact</Link>
+              </MenuItem>
+              <MenuItem className="menu-item">
+              <Link to={"/signup"}>Sign Up</Link>
+              </MenuItem>
+            </MenuList>
+          </Menu>
         </div>
       </div>
       <div className="line_div" ref={homeRef}>
