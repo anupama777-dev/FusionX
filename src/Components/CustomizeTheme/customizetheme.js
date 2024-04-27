@@ -19,10 +19,34 @@ function CustomizeTheme() {
   };
   const [selectedColor, setSelectedColor] = useState(theme);
   const [selectedFont, setSelectedFont] = useState('Arial');
+  const [placeholder, setPlaceholder] = useState();
   console.log(selectedColor);
   console.log(selectedFont);
+
+  const colorMapping = {
+    blue: { placeholder: 'Blue', options: ['red', 'yellow', 'gray', 'green', 'teal', 'cyan', 'purple', 'pink', 'orange'] },
+    red: { placeholder: 'Red', options: ['yellow', 'gray', 'green', 'teal', 'blue', 'cyan', 'purple', 'pink', 'orange'] },
+    green: { placeholder: 'Green', options: ['red', 'yellow', 'gray', 'teal', 'blue', 'cyan', 'purple', 'pink', 'orange'] },
+    yellow: { placeholder: 'Yellow', options: ['red', 'gray', 'green', 'teal', 'blue', 'cyan', 'purple', 'pink', 'orange'] },
+    pink: { placeholder: 'Pink', options: ['red', 'yellow', 'gray', 'green', 'teal', 'blue', 'cyan', 'purple', 'orange'] },
+    purple: { placeholder: 'Purple', options: ['red', 'yellow', 'gray', 'green', 'teal', 'blue', 'cyan', 'pink', 'orange'] },
+    orange: { placeholder: 'Orange', options: ['red', 'yellow', 'gray', 'green', 'teal', 'blue', 'cyan', 'purple', 'pink'] },
+    teal: { placeholder: 'Teal', options: ['red', 'yellow', 'gray', 'green', 'blue', 'cyan', 'purple', 'pink', 'orange'] },
+    cyan: { placeholder: 'Cyan', options: ['red', 'yellow', 'gray', 'green', 'teal', 'blue', 'purple', 'pink', 'orange'] },
+    gray: { placeholder: 'Gray', options: ['red', 'yellow', 'green', 'teal', 'blue', 'cyan', 'purple', 'pink', 'orange'] },
+};
+
+const getOptionsForColor = (color) => {
+    return colorMapping[color].options.map((option) => (
+        <option key={option} value={option} className="options">
+            {option.charAt(0).toUpperCase() + option.slice(1)}
+        </option>
+    ));
+};
+
   const handleColorChange = (event) => {
     setSelectedColor(event.target.value);
+    setPlaceholder(event.target.value);
   };
   const handleFontChange = (event) => {
     setSelectedFont(event.target.value);
@@ -192,350 +216,18 @@ function CustomizeTheme() {
             <div className="choose_color">
               <Text className="color">Color</Text>
               <div>
-              {selectedColor === "blue"
-              ? (<Select
-                placeholder={selectedColor}
-                className="select_color"
-                onChange={handleColorChange}
-                minWidth="120px"
-                width="180px"
-              >
-                <option value="red" className="options">
-                  Red
-                </option>
-                <option value="yellow" className="options">
-                  Yellow
-                </option>
-                <option value="gray" className="options">
-                  Gray
-                </option>
-                <option value="green" className="options">
-                  Green
-                </option>
-                <option value="teal" className="options">
-                  Teal
-                </option>
-                <option value="cyan" className="options">
-                  Cyan
-                </option>
-                <option value="purple" className="options">
-                  Purple
-                </option>
-                <option value="pink" className="options">
-                  Pink
-                </option>
-              </Select>)
-
-              : selectedColor === "red"
-              ? (<Select
-                placeholder={selectedColor}
-                className="select_color"
-                onChange={handleColorChange}
-                minWidth="120px"
-                width="180px"
-              >
-                <option value="yellow" className="options">
-                  Yellow
-                </option>
-                <option value="gray" className="options">
-                  Gray
-                </option>
-                <option value="green" className="options">
-                  Green
-                </option>
-                <option value="teal" className="options">
-                  Teal
-                </option>
-                <option value="blue" className="options">
-                  Blue
-                </option>
-                <option value="cyan" className="options">
-                  Cyan
-                </option>
-                <option value="purple" className="options">
-                  Purple
-                </option>
-                <option value="pink" className="options">
-                  Pink
-                </option>
-              </Select>)
-
-              : selectedColor === "green"
-              ? (<Select
-                placeholder={selectedColor}
-                className="select_color"
-                onChange={handleColorChange}
-                minWidth="120px"
-                width="180px"
-              >
-                <option value="red" className="options">
-                  Red
-                </option>
-                <option value="yellow" className="options">
-                  Yellow
-                </option>
-                <option value="gray" className="options">
-                  Gray
-                </option>
-                <option value="teal" className="options">
-                  Teal
-                </option>
-                <option value="blue" className="options">
-                  Blue
-                </option>
-                <option value="cyan" className="options">
-                  Cyan
-                </option>
-                <option value="purple" className="options">
-                  Purple
-                </option>
-                <option value="pink" className="options">
-                  Pink
-                </option>
-              </Select>)
-
-              : selectedColor === "yellow"
-              ? (<Select
-                placeholder={selectedColor}
-                className="select_color"
-                onChange={handleColorChange}
-                minWidth="120px"
-                width="180px"
-              >
-                <option value="red" className="options">
-                  Red
-                </option>
-                <option value="gray" className="options">
-                  Gray
-                </option>
-                <option value="green" className="options">
-                  Green
-                </option>
-                <option value="teal" className="options">
-                  Teal
-                </option>
-                <option value="blue" className="options">
-                  Blue
-                </option>
-                <option value="cyan" className="options">
-                  Cyan
-                </option>
-                <option value="purple" className="options">
-                  Purple
-                </option>
-                <option value="pink" className="options">
-                  Pink
-                </option>
-              </Select>)
-
-              : selectedColor === "pink"
-              ? (<Select
-                placeholder={selectedColor}
-                className="select_color"
-                onChange={handleColorChange}
-                minWidth="120px"
-                width="180px"
-              >
-                <option value="red" className="options">
-                  Red
-                </option>
-                <option value="yellow" className="options">
-                  Yellow
-                </option>
-                <option value="gray" className="options">
-                  Gray
-                </option>
-                <option value="green" className="options">
-                  Green
-                </option>
-                <option value="teal" className="options">
-                  Teal
-                </option>
-                <option value="blue" className="options">
-                  Blue
-                </option>
-                <option value="cyan" className="options">
-                  Cyan
-                </option>
-                <option value="purple" className="options">
-                  Purple
-                </option>
-              </Select>)
-
-              : selectedColor === "purple"
-              ? (<Select
-                placeholder={selectedColor}
-                className="select_color"
-                onChange={handleColorChange}
-                minWidth="120px"
-                width="180px"
-              >
-                <option value="red" className="options">
-                  Red
-                </option>
-                <option value="yellow" className="options">
-                  Yellow
-                </option>
-                <option value="gray" className="options">
-                  Gray
-                </option>
-                <option value="green" className="options">
-                  Green
-                </option>
-                <option value="teal" className="options">
-                  Teal
-                </option>
-                <option value="blue" className="options">
-                  Blue
-                </option>
-                <option value="cyan" className="options">
-                  Cyan
-                </option>
-                <option value="pink" className="options">
-                  Pink
-                </option>
-              </Select>)
-
-              : selectedColor === "orange"
-              ? (<Select
-                placeholder={selectedColor}
-                className="select_color"
-                onChange={handleColorChange}
-                minWidth="120px"
-                width="180px"
-              >
-                <option value="red" className="options">
-                  Red
-                </option>
-                <option value="yellow" className="options">
-                  Yellow
-                </option>
-                <option value="gray" className="options">
-                  Gray
-                </option>
-                <option value="green" className="options">
-                  Green
-                </option>
-                <option value="teal" className="options">
-                  Teal
-                </option>
-                <option value="blue" className="options">
-                  Blue
-                </option>
-                <option value="cyan" className="options">
-                  Cyan
-                </option>
-                <option value="purple" className="options">
-                  Purple
-                </option>
-                <option value="pink" className="options">
-                  Pink
-                </option>
-              </Select>)
-
-              : selectedColor === "teal"
-              ? (<Select
-                placeholder={selectedColor}
-                className="select_color"
-                onChange={handleColorChange}
-                minWidth="120px"
-                width="180px"
-              >
-                <option value="red" className="options">
-                  Red
-                </option>
-                <option value="yellow" className="options">
-                  Yellow
-                </option>
-                <option value="gray" className="options">
-                  Gray
-                </option>
-                <option value="green" className="options">
-                  Green
-                </option>
-                <option value="blue" className="options">
-                  Blue
-                </option>
-                <option value="cyan" className="options">
-                  Cyan
-                </option>
-                <option value="purple" className="options">
-                  Purple
-                </option>
-                <option value="pink" className="options">
-                  Pink
-                </option>
-              </Select>)
-
-              : selectedColor === "cyan"
-              ? (<Select
-                placeholder={selectedColor}
-                className="select_color"
-                onChange={handleColorChange}
-                minWidth="120px"
-                width="180px"
-              >
-                <option value="red" className="options">
-                  Red
-                </option>
-                <option value="yellow" className="options">
-                  Yellow
-                </option>
-                <option value="gray" className="options">
-                  Gray
-                </option>
-                <option value="green" className="options">
-                  Green
-                </option>
-                <option value="teal" className="options">
-                  Teal
-                </option>
-                <option value="blue" className="options">
-                  Blue
-                </option>
-                <option value="purple" className="options">
-                  Purple
-                </option>
-                <option value="pink" className="options">
-                  Pink
-                </option>
-              </Select>)
-              
-              : selectedColor === "gray"
-              ? (<Select
-                placeholder={selectedColor}
-                className="select_color"
-                onChange={handleColorChange}
-                minWidth="120px"
-                width="180px"
-              >
-                <option value="red" className="options">
-                  Red
-                </option>
-                <option value="yellow" className="options">
-                  Yellow
-                </option>
-                <option value="green" className="options">
-                  Green
-                </option>
-                <option value="teal" className="options">
-                  Teal
-                </option>
-                <option value="blue" className="options">
-                  Blue
-                </option>
-                <option value="cyan" className="options">
-                  Cyan
-                </option>
-                <option value="purple" className="options">
-                  Purple
-                </option>
-                <option value="pink" className="options">
-                  Pink
-                </option>
-              </Select>)
-              : ""}
-              </div>
+                {colorMapping[selectedColor] ? (
+                <Select
+                  placeholder={colorMapping[selectedColor].placeholder}
+                  className="select_color"
+                  onChange={handleColorChange}
+                  minWidth="120px"
+                  width="180px"
+                >
+                {getOptionsForColor(selectedColor)}
+            </Select>
+        ) : null}
+    </div>
               
             </div>
             <div className="proceed_btn1">
