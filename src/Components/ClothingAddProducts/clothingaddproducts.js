@@ -287,20 +287,20 @@ const ClothingAddProducts = () => {
           </div>
         </div>
         <div className="categories_container">
-        <div className="chatbox">
-          {chatboxOpen && (
-            <div>
-              <Iframe
-                url="http://127.0.0.1:5501/standalone-frontend/base.html"
-                width="400px"
-                height="600px"
-              />
-            </div>
-          )}
-        </div>
-        <button onClick={toggleChatbox} className="chatbox__button">
-          <Image src="/images/chatbox-icon.svg" />
-        </button>
+          <div className="chatbox">
+            {chatboxOpen && (
+              <div>
+                <Iframe
+                  url="http://127.0.0.1:5501/standalone-frontend/base.html"
+                  width="400px"
+                  height="600px"
+                />
+              </div>
+            )}
+          </div>
+          <button onClick={toggleChatbox} className="chatbox__button">
+            <Image src="/images/chatbox-icon.svg" />
+          </button>
           <form onSubmit={onSubmit}>
             <div className="store-details">
               <div className="product-details-box">
@@ -329,7 +329,10 @@ const ClothingAddProducts = () => {
                   onChange={(e) => updateForm({ productName: e.target.value })}
                   required
                 />
-                <Text className="sub-txt">Upload Product Image</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Image</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <div className="upload-box">
                   <label className="upload-button">
                     Upload
@@ -527,12 +530,15 @@ const ClothingAddProducts = () => {
                   required
                 />
               </div>
-              <div className="color-details-box" style={{height: "100%"}}>
+              <div className="color-details-box" style={{ height: "100%" }}>
                 <Text className="storetxt">Material Details</Text>
-                <Text className="sub-txt">Material</Text>
+                <div className="text">
+                  <Text className="sub-txt">Material</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <Input
                   className="input-box"
-                  style={{marginBottom: "60px"}}
+                  style={{ marginBottom: "60px" }}
                   placeholder="Enter the material"
                   name="productMaterial"
                   value={form.productMaterial}

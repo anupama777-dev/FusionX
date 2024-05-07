@@ -19,7 +19,7 @@ function CustomizeTheme() {
   };
   const [selectedColor, setSelectedColor] = useState(theme);
   const [selectedFont, setSelectedFont] = useState('Arial');
-  const [placeholder, setPlaceholder] = useState();
+  // const [placeholder, setPlaceholder] = useState();
   console.log(selectedColor);
   console.log(selectedFont);
 
@@ -46,7 +46,7 @@ const getOptionsForColor = (color) => {
 
   const handleColorChange = (event) => {
     setSelectedColor(event.target.value);
-    setPlaceholder(event.target.value);
+    // setPlaceholder(event.target.value);
   };
   const handleFontChange = (event) => {
     setSelectedFont(event.target.value);

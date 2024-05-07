@@ -310,7 +310,10 @@ const HealthAddProducts = () => {
                   onChange={(e) => updateForm({ productName: e.target.value })}
                   required
                 />
-                <Text className="sub-txt">Upload Product Image</Text>
+                <div className="text">
+                  <Text className="sub-txt">Product Image</Text>
+                  <Text className="asterisk">*</Text>
+                </div>
                 <div className="upload-box">
                   <label className="upload-button">
                     Upload
@@ -320,6 +323,7 @@ const HealthAddProducts = () => {
                       style={{ display: "none" }}
                       accept=".jpg, .jpeg, .png, .pdf,.svg"
                       onChange={handleImageChange}
+                      required
                     />
                   </label>
                   {form.productImage && <Text>{form.productImage.name}</Text>}
