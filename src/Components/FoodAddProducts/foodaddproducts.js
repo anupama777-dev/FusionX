@@ -1,4 +1,3 @@
-import "./foodaddproducts.css";
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router";
 import { FaCopy, FaTimes } from "react-icons/fa";
@@ -283,7 +282,7 @@ const FoodAddProducts = () => {
         </button>
           <form onSubmit={onSubmit}>
             <div className="store-details">
-              <div className="product-details-box1">
+              <div className="product-details-box">
                 <Text className="storetxt">Product Details</Text>
                 <div className="text">
                   <Text className="sub-txt">Product Type</Text>

@@ -284,7 +284,7 @@ const HealthAddProducts = () => {
         </button>
           <form onSubmit={onSubmit}>
             <div className="store-details">
-              <div className="product-details-box1">
+              <div className="product-details-box">
                 <Text className="storetxt">Product Details</Text>
                 <div className="text">
                   <Text className="sub-txt">Product Type</Text>
